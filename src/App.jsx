@@ -1,10 +1,11 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <h1>Hello fika world!</h1>
-    </div>
+    </BrowserRouter>
   );
 };
 
