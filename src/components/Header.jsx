@@ -1,23 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import HomeIcon from "@mui/icons-material/Home";
+import HelpIcon from "@mui/icons-material/Help";
+import EventIcon from "@mui/icons-material/Event";
 
 const Header = () => {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+    <Box sx={{ width: 1000 }}>
+      <BottomNavigation showLabels>
+        <Link to="/">
+          <BottomNavigationAction icon={<HomeIcon />} label="Home" />
+        </Link>
+        <Link to="/Events">
+          <BottomNavigationAction icon={<EventIcon />} label="Events" />
+        </Link>
+        <Link to="/About">
+          <BottomNavigationAction icon={<HelpIcon />} label="About" />
+        </Link>
+      </BottomNavigation>
+    </Box>
   );
 };
 
