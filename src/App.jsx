@@ -1,10 +1,19 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Events from "./components/Events";
+import About from "./components/About";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <h1>Hello fika world!</h1>
+      <Header />
+      <Routes>
+        <Route exact path="/" component={Home} />
+        <Route path="/events" component={Events} />
+        <Route path="/about" component={About} />
+      </Routes>
     </BrowserRouter>
   );
 };
