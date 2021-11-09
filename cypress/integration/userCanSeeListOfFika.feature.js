@@ -17,8 +17,8 @@ describe("User can see a list of Fikas", () => {
         ".MuiDataGrid-columnHeaderWrapper"
       ).within(() => {
         cy.contains("ID");
-        cy.contains("Goer_1");
-        cy.contains("Goer_2");
+        cy.contains("Participant 1");
+        cy.contains("Participant 2");
         cy.contains("Date");
       });
     });
