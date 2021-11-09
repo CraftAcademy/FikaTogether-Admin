@@ -5,6 +5,7 @@ import Departments from "./components/Departments";
 import Events from "./components/Events";
 import About from "./components/About";
 
+
 const App = () => {
   return (
     <BrowserRouter>

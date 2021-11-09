@@ -1,5 +1,5 @@
 const initialState = {
-  fikas = []
+  fikas: []
   
 };
 

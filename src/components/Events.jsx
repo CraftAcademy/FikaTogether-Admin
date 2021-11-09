@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { Fika } from "../modules/apiHelpers/fikaHelper";
 
 const Events = () => {
+
+  useEffect(() => {
+    Fika.index();
+    debugger;
+  }, []);
+
   const columns = [
-    { field: "id", headerName: "ID", flex:0.5 },
+    { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "date",
       headerName: "Date",
       type: "date",
-      flex:0.75,
+      flex: 0.75,
       editable: true,
     },
     {
       field: "participant_1",
       headerName: "Participant 1",
-      flex:1,
+      flex: 1,
       editable: true,
     },
     {
       field: "participant_2",
       headerName: "Participant 2",
-      flex:1,
+      flex: 1,
       editable: true,
     },
   ];

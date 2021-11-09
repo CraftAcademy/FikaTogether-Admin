@@ -1,10 +1,10 @@
 describe("User can see a list of Fikas", () => {
   beforeEach(() => {
-    cy.visit("/");
-    cy.intercept("GET", "**api/", {
+    cy.intercept("GET", "**/api/fikas**", {
       fixture: "fikaList.json",
       statusCode: 200,
     });
+    cy.visit("/");
   });
 
   describe("the upcoming Fikas", () => {
