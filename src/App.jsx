@@ -7,11 +7,11 @@ import About from "./components/About";
 
 const App = () => {
   return (
-    <BrowserRouter>     
-      <Routes>        
+    <BrowserRouter>
+      <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />        
-        <Route path="/about" element={<About />} />        
+        <Route path="/events" element={<Events />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Header />
     </BrowserRouter>
