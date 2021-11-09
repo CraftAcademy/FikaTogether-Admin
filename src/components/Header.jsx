@@ -9,71 +9,37 @@ import EventIcon from "@mui/icons-material/Event";
 
 const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
-
+  const sx = isTabletOrMobile
+    ? { position: "fixed", bottom: 0, left: 0, right: 0 }
+    : { position: "relative" };
   return (
-    <>
-      {isTabletOrMobile && (
-        <Box sx={{ pb: 7 }}>
-          <Paper
-            sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-            elevation={3}
-          >
-            <BottomNavigation showLabels>
-              <BottomNavigationAction
-                component={Link}
-                to="/"
-                data-cy="events-btn"
-                icon={<HomeIcon />}
-                label="Events"
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/departments"
-                data-cy="departments-btn"
-                label="Departments"
-                icon={<EventIcon />}
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/about"
-                data-cy="about-btn"
-                icon={<HelpIcon />}
-                label="About"
-              />
-            </BottomNavigation>
-          </Paper>
-        </Box>
-      )}
-      {!isTabletOrMobile && (
-        <Box sx={{ pb: 7 }}>
-          <Paper sx={{ position: "relative" }} elevation={3} margin="50">
-            <BottomNavigation showLabels>
-              <BottomNavigationAction
-                component={Link}
-                to="/"
-                data-cy="events-btn"
-                icon={<HomeIcon />}
-                label="Events"
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/departments"
-                data-cy="departments-btn"
-                label="Departments"
-                icon={<EventIcon />}
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/about"
-                data-cy="about-btn"
-                icon={<HelpIcon />}
-                label="About"
-              />
-            </BottomNavigation>
-          </Paper>
-        </Box>
-      )}
-    </>
+    <Box sx={{ pb: 7 }}>
+      <Paper sx={sx} elevation={3}>
+        <BottomNavigation showLabels>
+          <BottomNavigationAction
+            component={Link}
+            to="/"
+            data-cy="events-btn"
+            icon={<HomeIcon />}
+            label="Events"
+          />
+          <BottomNavigationAction
+            component={Link}
+            to="/departments"
+            data-cy="departments-btn"
+            label="Departments"
+            icon={<EventIcon />}
+          />
+          <BottomNavigationAction
+            component={Link}
+            to="/about"
+            data-cy="about-btn"
+            icon={<HelpIcon />}
+            label="About"
+          />
+        </BottomNavigation>
+      </Paper>
+    </Box>
   );
 };
 
