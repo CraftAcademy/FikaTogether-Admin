@@ -1,0 +1,79 @@
+{
+  "fikas": [
+    {
+      "id": "1",
+      "start_date": "2017-01-25T09:00:00",
+      "end_date": "2017-01-25T09:30:00",
+      "fika_goers": [
+        {
+          "name": "Jane Doe",
+          "id": 1
+        },
+        {
+          "name": "John Doe",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "start_date": "2017-01-25T09:30:00",
+      "end_date": "2017-01-25T10:00:00",
+      "fika_goers": [
+        {
+          "name": "Jane Doe",
+          "id": 1
+        },
+        {
+          "name": "John Doe",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "start_date": "2017-01-25T10:00:00",
+      "end_date": "2017-01-25T10:30:00",
+      "fika_goers": [
+        {
+          "name": "Jane Doe",
+          "id": 1
+        },
+        {
+          "name": "John Doe",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "start_date": "2017-01-25T10:30:00",
+      "end_date": "2017-01-25T11:00:00",
+      "fika_goers": [
+        {
+          "name": "Jane Doe",
+          "id": 1
+        },
+        {
+          "name": "John Doe",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "start_date": "2017-01-25T10:30:00",
+      "end_date": "2017-01-25T11:00:00",
+      "fika_goers": [
+        {
+          "name": "Jane Doe",
+          "id": 1
+        },
+        {
+          "name": "John Doe",
+          "id": 2
+        }
+      ]
+    }
+  ]
+}

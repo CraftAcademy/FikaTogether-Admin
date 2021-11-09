@@ -46,10 +46,7 @@ const Header = () => {
       )}
       {!isTabletOrMobile && (
         <Box sx={{ pb: 7 }}>
-          <Paper
-            sx={{ position: "fixed", top: 0, left: 0, right: 0 }}
-            elevation={3}
-          >
+          <Paper sx={{ position: "relative" }} elevation={3} margin="50">
             <BottomNavigation showLabels>
               <BottomNavigationAction
                 component={Link}

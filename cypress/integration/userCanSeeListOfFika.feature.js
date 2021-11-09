@@ -9,16 +9,18 @@ describe("User can see a list of Fikas", () => {
 
   describe("the upcoming Fikas", () => {
     it("is expected to display five different Fika meetings in a table", () => {
-      cy.get("[data-cy=fika-table]").children().should("have.length", 5)
+      cy.get("[data-cy=fika-table]").should("be.visible");
     });
 
-    it('is expected that the table has the following columns', () => {
-      cy.get("[data-cy=fika-table]").within(() => {
-        cy.get("data-cy=id").should("be.visible")
-        cy.get("data-cy=goer_1").should("be.visible")
-        cy.get("data-cy=goer_2").should("be.visible")
-        cy.get("data-cy=date").should("be.visible")
-      })
+    it("is expected that the table has the following columns", () => {
+      cy.get(
+        ".MuiDataGrid-columnHeaderWrapper"
+      ).within(() => {
+        cy.contains("ID");
+        cy.contains("Goer_1");
+        cy.contains("Goer_2");
+        cy.contains("Date");
+      });
     });
   });
 });
