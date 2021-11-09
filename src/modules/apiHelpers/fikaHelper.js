@@ -8,6 +8,7 @@ const Fika = {
       type: "SET_FIKA_INDEX",
       payload: response.data.fikas,
     });
+    debugger
   },
 };
 

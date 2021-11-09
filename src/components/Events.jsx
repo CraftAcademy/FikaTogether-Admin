@@ -1,13 +1,25 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Fika } from "../modules/apiHelpers/fikaHelper";
+import { useSelector } from "react-redux";
 
 const Events = () => {
+  const { fikas } = useSelector((state) => state);
 
   useEffect(() => {
     Fika.index();
     debugger;
   }, []);
+
+  let rows = fikas.map((fika) => {
+    return {
+      id: fika.id,
+      date: fika.start_date,
+      participant_1: fika.fika_goers[0].name,
+      participant_2: fika.fika_goers[1].name,
+    };
+  });
+  console.log(rows);
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -32,27 +44,27 @@ const Events = () => {
     },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      date: "Snow Snow Snow Snow Snow Snow Snow",
-      participant_1: "Jon",
-      participant_2: 35,
-    },
-    { id: 2, date: "Lannister", participant_1: "Cersei", participant_2: 42 },
-    { id: 3, date: "Lannister", participant_1: "Jaime", participant_2: 45 },
-    { id: 4, date: "Stark", participant_1: "Arya", participant_2: 16 },
-    {
-      id: 5,
-      date: "Targaryen",
-      participant_1: "Daenerys",
-      participant_2: null,
-    },
-    { id: 6, date: "Melisandre", participant_1: null, participant_2: 150 },
-    { id: 7, date: "Clifford", participant_1: "Ferrara", participant_2: 44 },
-    { id: 8, date: "Frances", participant_1: "Rossini", participant_2: 36 },
-    { id: 9, date: "Roxie", participant_1: "Harvey", participant_2: 65 },
-  ];
+  // const rows = [
+  //   {
+  //     id: 1,
+  //     date: "Snow Snow Snow Snow Snow Snow Snow",
+  //     participant_1: "Jon",
+  //     participant_2: 35,
+  //   },
+  //   { id: 2, date: "Lannister", participant_1: "Cersei", participant_2: 42 },
+  //   { id: 3, date: "Lannister", participant_1: "Jaime", participant_2: 45 },
+  //   { id: 4, date: "Stark", participant_1: "Arya", participant_2: 16 },
+  //   {
+  //     id: 5,
+  //     date: "Targaryen",
+  //     participant_1: "Daenerys",
+  //     participant_2: null,
+  //   },
+  //   { id: 6, date: "Melisandre", participant_1: null, participant_2: 150 },
+  //   { id: 7, date: "Clifford", participant_1: "Ferrara", participant_2: 44 },
+  //   { id: 8, date: "Frances", participant_1: "Rossini", participant_2: 36 },
+  //   { id: 9, date: "Roxie", participant_1: "Harvey", participant_2: 65 },
+  // ];
 
   return (
     <div style={{ height: 400, width: "100%" }} data-cy="fika-table">

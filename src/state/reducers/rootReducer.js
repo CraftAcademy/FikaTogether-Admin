@@ -3,8 +3,10 @@ const rootReducer = (state, action) => {
     case "SET_FIKA_INDEX":
       return {
         ...state,
-        ...action.payload,
+        fikas: action.payload,
       };
+    default:
+      return state;
   }
 };
 export default rootReducer;
