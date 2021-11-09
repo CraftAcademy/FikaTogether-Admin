@@ -3,8 +3,10 @@ describe("User can navigate through the app", () => {
     cy.visit("/");
   });
 
-  it("is expected to display a navbar and contain Home, Events and About", () => {
-    cy.get("[data-cy=home-btn]").should("be.visible").and("have.text", "Home");
+  it("is expected to display a navbar and contain Departments, Events and About", () => {
+    cy.get("[data-cy=departments-btn]")
+      .should("be.visible")
+      .and("have.text", "Departments");
     cy.get("[data-cy=events-btn]")
       .should("be.visible")
       .and("have.text", "Events");
@@ -13,18 +15,18 @@ describe("User can navigate through the app", () => {
       .and("have.text", "About");
   });
 
-  it('is expected to display the correct url when at the home page', () => {
-    cy.get("[data-cy=home-btn]").click()
-    cy.url().should("contain", "/")    
+  it("is expected to display the correct url when at the Departments page", () => {
+    cy.get("[data-cy=departments-btn]").click();
+    cy.url().should("contain", "/departments");
   });
 
-  it('is expected to display the correct url when at the event page', () => {
-    cy.get("[data-cy=events-btn]").click()
-    cy.url().should("contain", "/events")    
+  it("is expected to display the correct url when at the event page", () => {
+    cy.get("[data-cy=events-btn]").click();
+    cy.url().should("contain", "/");
   });
 
-  it('is expected to display the correct url when at the about page', () => {
-    cy.get("[data-cy=about-btn]").click()
-    cy.url().should("contain", "/about")    
+  it("is expected to display the correct url when at the about page", () => {
+    cy.get("[data-cy=about-btn]").click();
+    cy.url().should("contain", "/about");
   });
 });

@@ -12,24 +12,22 @@ const Header = () => {
       <Paper
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
         elevation={3}
-        color="dark"
       >
         <BottomNavigation showLabels>
           <BottomNavigationAction
             component={Link}
             to="/"
-            data-cy="home-btn"
-            label="Home"
+            data-cy="events-btn"
             icon={<HomeIcon />}
+            label="Events"
           />
           <BottomNavigationAction
             component={Link}
-            to="/events"
-            data-cy="events-btn"
+            to="/departments"
+            data-cy="departments-btn"
+            label="Departments"
             icon={<EventIcon />}
-            label="Events"
           />
-
           <BottomNavigationAction
             component={Link}
             to="/about"
