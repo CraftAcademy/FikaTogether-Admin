@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
 import store from "./state/store/configureStore";
-
+import { Provider } from "react-redux";
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -13,8 +13,8 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 
 window.store = store;
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );

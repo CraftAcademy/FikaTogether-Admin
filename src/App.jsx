@@ -8,12 +8,12 @@ import About from "./components/About";
 const App = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route exact path="/" element={<Events />} />
         <Route path="/departments" element={<Departments />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      <Header />
     </BrowserRouter>
   );
 };
