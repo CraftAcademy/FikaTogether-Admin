@@ -7,13 +7,13 @@ import About from "./components/About";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route exact path="/" component={Home} />
-        <Route path="/events" component={Events} />
-        <Route path="/about" component={About} />
+    <BrowserRouter>     
+      <Routes>        
+        <Route exact path="/" element={<Home />} />
+        <Route path="/events" element={<Events />} />        
+        <Route path="/about" element={<About />} />        
       </Routes>
+      <Header />
     </BrowserRouter>
   );
 };

@@ -1,4 +1,4 @@
-describe("User can browse through the app", () => {
+describe("User can navigate through the app", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -11,5 +11,20 @@ describe("User can browse through the app", () => {
     cy.get("[data-cy=about-btn]")
       .should("be.visible")
       .and("have.text", "About");
+  });
+
+  it('is expected to display the correct url when at the home page', () => {
+    cy.get("[data-cy=home-btn]").click()
+    cy.url().should("contain", "/")    
+  });
+
+  it('is expected to display the correct url when at the event page', () => {
+    cy.get("[data-cy=events-btn]").click()
+    cy.url().should("contain", "/events")    
+  });
+
+  it('is expected to display the correct url when at the about page', () => {
+    cy.get("[data-cy=about-btn]").click()
+    cy.url().should("contain", "/about")    
   });
 });
