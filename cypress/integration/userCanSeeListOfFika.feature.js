@@ -22,11 +22,9 @@ describe("User can see a list of Fikas", () => {
     });
 
     it("is expected that there will be five meeting in the table", () => {
-      cy.get("data-cy=meeting-1").should("be.visble");
-      cy.get("data-cy=meeting-2").should("be.visble");
-      cy.get("data-cy=meeting-3").should("be.visble");
-      cy.get("data-cy=meeting-4").should("be.visble");
-      cy.get("data-cy=meeting-5").should("be.visble");
+      cy.get(".MuiDataGrid-virtualScrollerRenderZone")
+        .children()
+        .should("have.length", 5);
     });
   });
 });
