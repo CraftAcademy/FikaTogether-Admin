@@ -3,24 +3,24 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const Events = () => {
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", flex:0.5 },
     {
       field: "date",
       headerName: "Date",
       type: "date",
-      width: 150,
+      flex:0.75,
       editable: true,
     },
     {
       field: "participant_1",
       headerName: "Participant 1",
-      width: 150,
+      flex:1,
       editable: true,
     },
     {
       field: "participant_2",
       headerName: "Participant 2",
-      width: 150,
+      flex:1,
       editable: true,
     },
   ];
@@ -54,7 +54,6 @@ const Events = () => {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
         disableSelectionOnClick
       />
     </div>
