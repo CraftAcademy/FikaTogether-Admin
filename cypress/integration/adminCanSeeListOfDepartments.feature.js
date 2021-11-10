@@ -21,9 +21,9 @@ describe("Admin can see a list of departments", () => {
           cy.contains("Average Fika Score").should("be.visible");
           cy.contains("HR")
             .should("be.visible")
-            .next()
-            .contains(4)
-            .should("be.visible");
+            // .next()
+            // .contains(4)
+            // .should("be.visible");
         });
     });
   });
@@ -36,8 +36,8 @@ describe("Admin does not see a list of departments", () => {
       statusCode: 200,
     });
     cy.intercept("GET", "**/api/departments**", {
-      statusCode: 404,
       body: { message: "There are no departments in the database" },
+      statusCode: 404,
     });
     cy.visit("/");
   });

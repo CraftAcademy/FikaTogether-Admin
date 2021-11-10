@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Box, Paper } from "@mui/material";
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
@@ -14,11 +14,16 @@ const Header = () => {
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
     : { position: "relative" };
+
   return (
     <Box sx={{ pb: 7 }}>
       <Paper sx={sx} elevation={3}>
+        {!isTabletOrMobile ? (
+          <img src={logo} alt="Logo" height="50" className="logo" />
+        ) : (
+          <></>
+        )}
         <BottomNavigation showLabels>
-        <img src={logo} alt="Logo" />
           <BottomNavigationAction
             component={Link}
             to="/"

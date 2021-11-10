@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { Department } from "../modules/apiHelpers/departmentHelper";
 import Container from "@mui/material/Container";
+import Link from "@mui/material/Link"
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
@@ -24,6 +25,9 @@ const Departments = () => {
       field: "department",
       headerName: "Departments",
       flex: 1,
+      renderCell: (params) => (
+        <Link href={`${params.value}`}>{params.value}</Link>
+      )
     },
     {
       field: "score",
