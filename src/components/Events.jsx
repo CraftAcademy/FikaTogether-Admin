@@ -14,8 +14,8 @@ const Events = () => {
     return {
       id: fika.id,
       date: fika.start_date,
-      participant_1: fika.fika_goers[0].name,
-      participant_2: fika.fika_goers[1].name,
+      participant_1: fika.participants[0].name,
+      participant_2: fika.participants[1].name,
     };
   });
 
