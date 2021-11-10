@@ -7,7 +7,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
-// import logo from "../img/logo.png";
+import logo from "../img/logo.png";
 
 const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
@@ -18,7 +18,7 @@ const Header = () => {
     <Box sx={{ pb: 7 }}>
       <Paper sx={sx} elevation={3}>
         <BottomNavigation showLabels>
-        {/* <img src={logo} alt="Logo" /> */}
+        <img src={logo} alt="Logo" />
           <BottomNavigationAction
             component={Link}
             to="/"
