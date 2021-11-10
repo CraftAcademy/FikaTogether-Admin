@@ -4,7 +4,7 @@ describe("Admin can see a list of departments", () => {
       fixture: "fikaList.json",
       statusCode: 200,
     });
-    cy.intercept("GET", "**api/departments**", {
+    cy.intercept("GET", "**/api/departments**", {
       fixture: "departmentList.json",
       statusCode: 200,
     });
@@ -35,9 +35,9 @@ describe("Admin does not see a list of departments", () => {
       fixture: "fikaList.json",
       statusCode: 200,
     });
-    cy.intercept("GET", "**api/departments**", {
-      fixture: "",
-      statusCode: 422,
+    cy.intercept("GET", "**/api/departments**", {
+      statusCode: 404,
+      fixture: "errorResponseMessage.json",
     });
     cy.visit("/");
   });

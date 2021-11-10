@@ -1,0 +1,6 @@
+{
+  "status": "error",
+  "errors": {
+    "message": ["There are no fikas in the database"]
+  }
+}
