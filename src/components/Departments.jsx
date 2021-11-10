@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
-import { Department } from "../modules/apiHelpers/fikaHelper";
+import { Department } from "../modules/apiHelpers/departmentHelper";
 import Container from "@mui/material/Container";
 
 const Departments = () => {

@@ -37,13 +37,14 @@ describe("Admin does not see a list of departments", () => {
     });
     cy.intercept("GET", "**/api/departments**", {
       statusCode: 404,
-      fixture: "errorResponseMessage.json",
+      // fixture: "errorResponseMessage.json",
+      body: { message: "There are no departments in the database" },
     });
     cy.visit("/");
   });
 
   it("is expected to unsuccessfully display api response from departments", () => {
-    cy.get("[data-cy=departments-btn]").click()
+    cy.get("[data-cy=departments-btn]").click();
     cy.get("[data-cy=department-table]").within(() => {
       cy.contains("No rows").should("be.visible");
     });
