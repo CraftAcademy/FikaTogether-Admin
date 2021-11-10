@@ -19,11 +19,7 @@ describe("Admin can see a list of departments", () => {
         .within(() => {
           cy.contains("Department").should("be.visible");
           cy.contains("Average Fika Score").should("be.visible");
-          cy.contains("HR")
-            .should("be.visible")
-            // .next()
-            // .contains(4)
-            // .should("be.visible");
+          cy.contains("HR").should("be.visible");
         });
     });
   });
