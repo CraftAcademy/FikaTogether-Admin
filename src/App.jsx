@@ -37,7 +37,6 @@ const App = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <BrowserRouter>
           <Header />
           <Routes>
