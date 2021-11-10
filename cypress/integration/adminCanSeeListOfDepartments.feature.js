@@ -16,5 +16,10 @@ describe("Admin can see a list of departments", () => {
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").should("be.visible");
     });
+
+    it('is expected to display Department and Average Fika Score columns', () => {
+      
+      
+    });
   });
 });

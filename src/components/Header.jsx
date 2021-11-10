@@ -6,7 +6,6 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
-// import Image from "material-ui-image";
 import logo from "../img/logo.png";
 
 const Header = () => {

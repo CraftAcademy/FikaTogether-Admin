@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { Department } from "../modules/apiHelpers/fikaHelper";
+import Container from "@mui/material/Container";
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
@@ -20,7 +21,6 @@ const Departments = () => {
   });
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "department",
       headerName: "Departments",
@@ -35,14 +35,16 @@ const Departments = () => {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }} data-cy="department-table">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-      />
-    </div>
+    <Container maxWidth="sm">
+      <div style={{width: "100%", height: 400}} data-cy="department-table">
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+        />
+      </div>
+    </Container>
   );
 };
 
