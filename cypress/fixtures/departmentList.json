@@ -3,32 +3,32 @@
     {
       "id": 1,
       "name": "HR",
-      "score": 4
+      "average_score": 4
     },
     {
       "id": 2,
       "name": "Production",
-      "score": 3
+      "average_score": 3
     },
     {
       "id": 3,
       "name": "Marketing",
-      "score": 5
+      "average_score": 5
     },
     {
       "id": 4,
       "name": "Management",
-      "score": 2
+      "average_score": 2
     },
     {
       "id": 5,
       "name": "Sales",
-      "score": 3
+      "average_score": 3
     },
     {
       "id": 6,
       "name": "Accounting",
-      "score": 4
+      "average_score": 4
     }
   ]
 }

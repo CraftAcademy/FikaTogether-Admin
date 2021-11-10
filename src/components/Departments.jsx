@@ -9,26 +9,25 @@ const Departments = () => {
 
   useEffect(() => {
     Department.index();
-    debugger
   }, []);
 
   let rows = departments.map((department) => {
     return {
       id: department.id,
-      name: department.name,
-      score: department.score,
+      department: department.name,
+      score: department.average_score,
     };
   });
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
-      field: "departments",
+      field: "department",
       headerName: "Departments",
       flex: 1,
     },
     {
-      field: "scores",
+      field: "score",
       headerName: "Average Fika Score",
       type: "number",
       flex: 1,
@@ -40,8 +39,8 @@ const Departments = () => {
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
       />
     </div>
   );
