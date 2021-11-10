@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { Department } from "../modules/apiHelpers/fikaHelper";
@@ -36,7 +35,7 @@ const Departments = () => {
 
   return (
     <Container maxWidth="sm">
-      <div style={{width: "100%", height: 400}} data-cy="department-table">
+      <div style={{ width: "100%", height: 400 }} data-cy="department-table">
         <DataGrid
           rows={rows}
           columns={columns}
