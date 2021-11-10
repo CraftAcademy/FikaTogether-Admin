@@ -2,28 +2,33 @@
   "departments": [
     {
       "id": 1,
-      "name": "HR"
+      "name": "HR",
+      "score": 4
     },
     {
       "id": 2,
-      "name": "Production"
+      "name": "Production",
+      "score": 3
     },
     {
       "id": 3,
-      "name": "Marketing"
+      "name": "Marketing",
+      "score": 5
     },
     {
       "id": 4,
-      "name": "Management"
+      "name": "Management",
+      "score": 2
     },
     {
       "id": 5,
-      "name": "Sales"
+      "name": "Sales",
+      "score": 3
     },
     {
       "id": 6,
-      "name": "Accounting"
+      "name": "Accounting",
+      "score": 4
     }
-
   ]
 }

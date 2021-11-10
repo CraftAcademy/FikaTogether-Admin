@@ -11,4 +11,14 @@ const Fika = {
   },
 };
 
-export { Fika };
+const Department = {
+  async index() {
+    let response = await axios.get("/api/departments");
+    store.dispatch({
+      type: "SET_DEPARTMENT_INDEX",
+      payload: response.data.departments,
+    });
+  },
+};
+
+export { Fika, Department };

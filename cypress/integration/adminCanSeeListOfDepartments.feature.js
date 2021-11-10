@@ -8,7 +8,8 @@ describe("Admin can see a list of departments", () => {
   });
 
   describe("Departments are displayed in the data table", () => {
-    it("is expected that the fika table is visible", () => {
+    it("is expected that the fika table is visible", () => {      
+      cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").should("be.visible");
     });
   });
