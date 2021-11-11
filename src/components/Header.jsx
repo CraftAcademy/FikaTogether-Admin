@@ -31,6 +31,29 @@ const Header = () => {
       createTheme({
         palette: {
           mode,
+          ...(mode === "light"
+            ? {              
+                text: {
+                  primary: "#011326",
+                  
+                },
+              }
+            : {
+              primary: {
+                main: "#ffffff",
+                default: "#ffffff",
+                container: "#011326",             
+              },
+              background: {
+                default: "#011326",
+                paper: "#011326",
+                
+              },
+              text: {
+                primary: "#D6BC01",
+                secondary: "#4C9074",                
+              },
+            }),
         },
       }),
     [mode]
