@@ -9,7 +9,6 @@ import EventIcon from "@mui/icons-material/Event";
 import logo from "../img/logo.png";
 
 const Header = () => {
-
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
