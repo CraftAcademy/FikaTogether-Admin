@@ -15,16 +15,15 @@ describe("Admin can create Fikas by clicking a button", () => {
 
     it.only("is expected that a message is displayed when button is clicked", () => {
       cy.get("[data-cy=submit-btn]").click();
-      cy.get("[data-cy=submit-response-toast]").should(
-        "contain.text",
-        "Your fikas are being scheduled"
-      );
+      cy.get("[data-cy=submit-response-toast]").within(() => {
+        cy.contains("Your fikas are being scheduled").should("be.visible");
+      });
     });
   });
   describe("After create request is sent", () => {
     beforeEach(() => {
       cy.intercept("POST", "**/api/fikas**", {
-        body: { message: 'Fikas successfully created'},
+        body: { message: "Fikas successfully created" },
         statusCode: 201,
       });
       cy.visit("/");
