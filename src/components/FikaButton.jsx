@@ -1,17 +1,18 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Button, Container } from "@mui/material";
+import { Button } from "@mui/material";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/apiHelpers/fikaHelper";
 
 const FikaButton = () => {
-  const notify = () => toast("Your fikas are being scheduled");
+  const { message } = useSelector((state) => state);
 
   const onSubmit = () => {
     Fika.create();
-    notify();
-    Fika.index()
+    console.log(message)
+    Fika.index();
   };
 
   return (

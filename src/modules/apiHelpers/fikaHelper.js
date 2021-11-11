@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import axios from "axios";
 import store from "../../state/store/configureStore";
 
@@ -13,8 +14,11 @@ const Fika = {
   },
   async create() {
     try {
-      await axios.post("/api/fikas");
-    } catch (error) {}
+      let response = await axios.post("/api/fikas");
+      toast.success(response.data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   },
 };
 
