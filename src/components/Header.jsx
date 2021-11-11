@@ -2,9 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Box, Paper } from "@mui/material";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from "@mui/icons-material/Home";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
 import logo from "../img/logo.png";
@@ -28,7 +27,7 @@ const Header = () => {
             component={Link}
             to="/"
             data-cy="events-btn"
-            icon={<HomeIcon />}
+            icon={<EventIcon />}
             label="Events"
           />
           <BottomNavigationAction
@@ -36,7 +35,7 @@ const Header = () => {
             to="/departments"
             data-cy="departments-btn"
             label="Departments"
-            icon={<EventIcon />}
+            icon={<BusinessIcon />}
           />
           <BottomNavigationAction
             component={Link}
