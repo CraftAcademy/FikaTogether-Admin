@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Fika } from "../modules/apiHelpers/fikaHelper";
 import { useSelector } from "react-redux";
+import { Button, Container } from "@mui/material";
+import CoffeeIcon from "@mui/icons-material/Coffee";
 
 const Events = () => {
   const { fikas } = useSelector((state) => state);
@@ -40,14 +42,24 @@ const Events = () => {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
-    </div>
+    <Container>
+      <Button
+        data-cy="submit-btn"
+        variant="outlined"
+        startIcon={<CoffeeIcon />}
+        style={{ color: "inherit", textDecoration: "inherit" }}
+      >
+        Create Fikas
+      </Button>
+      <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+        />
+      </div>
+    </Container>
   );
 };
 

@@ -9,11 +9,11 @@ describe("Admin can create Fikas by clicking a button", () => {
       cy.visit("/");
     });
 
-    it.only("is expected to render a button", () => {
+    it("is expected to render a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
-    it("is expected that a message is displayed when button is clicked", () => {
+    it.only("is expected that a message is displayed when button is clicked", () => {
       cy.get("[data-cy=submit-btn]").click();
       cy.get("[data-cy=submit-response-toast]").should(
         "contain.text",
