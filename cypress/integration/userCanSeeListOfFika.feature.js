@@ -37,7 +37,7 @@ describe("User can see a list of Fikas", () => {
       cy.visit("/");
     });
 
-    it.only("is expected that no fika event will be displayed", () => {
+    it("is expected that no fika event will be displayed", () => {
       cy.get("[data-cy=fika-table]").within(() => {
         cy.contains("No rows").should("be.visible");
       });
