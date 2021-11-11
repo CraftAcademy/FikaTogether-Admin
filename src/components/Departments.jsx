@@ -26,7 +26,7 @@ const Departments = () => {
       headerName: "Departments",
       flex: 1,
       renderCell: (params) => (
-        <Link to={`/departments/${params.value}`}>{params.value}</Link>
+        <Link to={`/departments/${params.value}`} style={{ color: 'inherit', textDecoration: 'inherit'}} >{params.value}</Link>
       ),
     },
     {
