@@ -5,6 +5,11 @@ const rootReducer = (state, action) => {
         ...state,
         fikas: action.payload,
       };
+    case "SET_DEPARTMENT_INDEX":
+      return {
+        ...state,
+        departments: action.payload,
+      };
     default:
       return state;
   }

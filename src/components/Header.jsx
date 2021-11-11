@@ -6,15 +6,22 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
+import logo from "../img/logo.png";
 
 const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
     : { position: "relative" };
+
   return (
     <Box sx={{ pb: 7 }}>
       <Paper sx={sx} elevation={3}>
+        {!isTabletOrMobile ? (
+          <img src={logo} alt="Logo" height="50" className="logo" />
+        ) : (
+          <></>
+        )}
         <BottomNavigation showLabels>
           <BottomNavigationAction
             component={Link}

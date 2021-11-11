@@ -1,0 +1,34 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "HR",
+      "average_score": 4
+    },
+    {
+      "id": 2,
+      "name": "Production",
+      "average_score": 3
+    },
+    {
+      "id": 3,
+      "name": "Marketing",
+      "average_score": 5
+    },
+    {
+      "id": 4,
+      "name": "Management",
+      "average_score": 2
+    },
+    {
+      "id": 5,
+      "name": "Sales",
+      "average_score": 3
+    },
+    {
+      "id": 6,
+      "name": "Accounting",
+      "average_score": 4
+    }
+  ]
+}

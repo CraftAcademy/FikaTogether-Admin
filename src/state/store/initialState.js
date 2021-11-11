@@ -1,6 +1,6 @@
 const initialState = {
-  fikas: []
-  
+  fikas: [],
+  departments: [],
 };
 
 export default initialState;

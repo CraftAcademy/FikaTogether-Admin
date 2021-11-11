@@ -1,5 +1,13 @@
 describe("User can navigate through the app", () => {
   beforeEach(() => {
+    cy.intercept("GET", "**/api/fikas**", {
+      fixture: "fikaList.json",
+      statusCode: 200,
+    });
+    cy.intercept("GET", "**api/departments**", {
+      fixture: "departmentList.json",
+      statusCode: 200,
+    });
     cy.visit("/");
   });
 
