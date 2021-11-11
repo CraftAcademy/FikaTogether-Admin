@@ -11,6 +11,11 @@ const Fika = {
       });
     } catch (error) {}
   },
+  async create() {
+    try {
+      await axios.post("/api/fikas");
+    } catch (error) {}
+  },
 };
 
 export { Fika };

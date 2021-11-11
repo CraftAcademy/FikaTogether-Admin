@@ -43,8 +43,8 @@ const Events = () => {
   ];
 
   return (
-    <Container>
-      <FikaButton />
+    <Container sx={{textAlign:"center"}}>
+    <FikaButton />
       <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
         <DataGrid
           rows={rows}
