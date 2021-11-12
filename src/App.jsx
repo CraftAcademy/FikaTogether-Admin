@@ -6,8 +6,11 @@ import Events from "./components/Events";
 import About from "./components/About";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import Login from "./components/Login";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const { authenticated } = useSelector((state) => state);
   const our_custome_theme = useMemo(
     () =>
       createTheme({
@@ -47,12 +50,18 @@ const App = () => {
       <CssBaseline />
 
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Events />} />
-          <Route path="/departments" element={<Departments />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        {!authenticated ? (
+          <Login />
+        ) : (
+          <>
+            <Header />
+            <Routes>
+              <Route exact path="/" element={<Events />} />
+              <Route path="/departments" element={<Departments />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </>
+        )}
       </BrowserRouter>
     </ThemeProvider>
   );
