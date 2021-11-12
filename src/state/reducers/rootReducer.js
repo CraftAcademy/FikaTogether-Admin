@@ -10,6 +10,12 @@ const rootReducer = (state, action) => {
         ...state,
         departments: action.payload,
       };
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+        authenticated: true,
+      };
     default:
       return state;
   }
