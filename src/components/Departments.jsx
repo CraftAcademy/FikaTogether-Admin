@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
-import { Department } from "../modules/apiHelpers/departmentHelper";
+import { Department } from "../modules/departments";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 

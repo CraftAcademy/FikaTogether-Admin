@@ -28,6 +28,16 @@ const App = () => {
             },
           },
         },
+        components: {
+          MuiButton: {
+            text: "#011326",
+            styleOverrides: {
+              outlined: {
+                backgroundColor: "#4C9074",
+              },
+            },
+          },
+        },
       }),
     []
   );

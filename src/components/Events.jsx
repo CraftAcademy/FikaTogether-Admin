@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Fika } from "../modules/apiHelpers/fikaHelper";
+import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
+import { Container } from "@mui/material";
+
+import FikaButton from "./FikaButton";
 
 const Events = () => {
   const { fikas } = useSelector((state) => state);
@@ -40,14 +43,17 @@ const Events = () => {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
-    </div>
+    <Container sx={{ textAlign: "center" }}>
+      <FikaButton />
+      <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+        />
+      </div>
+    </Container>
   );
 };
 

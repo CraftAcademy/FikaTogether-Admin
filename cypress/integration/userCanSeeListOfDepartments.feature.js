@@ -1,13 +1,10 @@
 describe("Admin can see a list of departments", () => {
-  beforeEach(() => {
-    cy.intercept("GET", "**/api/fikas**", {
-      fixture: "fikaList.json",
-      statusCode: 200,
-    });
-  });
-
   describe("Departments are displayed in the data table", () => {
     before(() => {
+      cy.intercept("GET", "**/api/fikas**", {
+        fixture: "fikaList.json",
+        statusCode: 200,
+      });
       cy.intercept("GET", "**/api/departments**", {
         fixture: "departmentList.json",
         statusCode: 200,
@@ -29,6 +26,10 @@ describe("Admin can see a list of departments", () => {
 
   describe("Admin does not see a list of departments", () => {
     before(() => {
+      cy.intercept("GET", "**/api/fikas**", {
+        fixture: "fikaList.json",
+        statusCode: 200,
+      });
       cy.intercept("GET", "**/api/departments**", {
         body: { message: "There are no departments in the database" },
         statusCode: 404,
