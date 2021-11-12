@@ -27,7 +27,7 @@ const FikaButton = () => {
         disableElevation
         loading={loading}
       >
-        Create Fikas
+        {`${ loading === false ? ("Create"):("Creating")} Fikas`}
       </LoadingButton>
 
       <div data-cy="submit-response-toast">
