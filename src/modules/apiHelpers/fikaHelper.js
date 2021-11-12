@@ -12,12 +12,18 @@ const Fika = {
       });
     } catch (error) {}
   },
-  async create() {
+  async create(setLoading) {
     try {
       let response = await axios.post("/api/fikas");
-      toast.success(response.data.message);
+      toast.success(response.data.message,
+        {
+          onClose: () => setLoading(false),
+        });
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message,
+        {
+          onClose: () => setLoading(false),
+        });
     }
   },
 };

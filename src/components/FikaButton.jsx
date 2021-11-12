@@ -1,32 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/apiHelpers/fikaHelper";
 
 const FikaButton = () => {
-  const { message } = useSelector((state) => state);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
-    Fika.create();
-    console.log(message)
+    setLoading(true);
+    Fika.create(setLoading);
     Fika.index();
   };
 
   return (
     <>
-      <Button
+      <LoadingButton
         data-cy="submit-btn"
         variant="outlined"
         startIcon={<CoffeeIcon />}
+        loadingPosition="start"
         style={{ color: "inherit", textDecoration: "inherit" }}
         onClick={onSubmit}
         disableElevation
+        loading={loading}
       >
         Create Fikas
-      </Button>
+      </LoadingButton>
 
       <div data-cy="submit-response-toast">
         <ToastContainer
@@ -39,6 +40,7 @@ const FikaButton = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
+          onClose={() => setLoading(false)}
         />
       </div>
     </>
