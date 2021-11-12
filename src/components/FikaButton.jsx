@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoadingButton } from "@mui/lab";
 import CoffeeIcon from "@mui/icons-material/Coffee";
-import { Fika } from "../modules/apiHelpers/fikaHelper";
+import { Fika } from "../modules/fikas";
 
 const FikaButton = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +17,7 @@ const FikaButton = () => {
   return (
     <>
       <LoadingButton
+        sx={{ m: 5 }}
         data-cy="submit-btn"
         variant="outlined"
         startIcon={<CoffeeIcon />}

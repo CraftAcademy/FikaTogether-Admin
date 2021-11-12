@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../../state/store/configureStore";
+import store from "../state/store/configureStore";
 
 const Department = {
   async index() {

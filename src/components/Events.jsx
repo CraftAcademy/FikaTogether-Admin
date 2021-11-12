@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Fika } from "../modules/apiHelpers/fikaHelper";
+import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
@@ -43,8 +43,8 @@ const Events = () => {
   ];
 
   return (
-    <Container sx={{textAlign:"center"}}>
-    <FikaButton />
+    <Container sx={{ textAlign: "center" }}>
+      <FikaButton />
       <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
         <DataGrid
           rows={rows}

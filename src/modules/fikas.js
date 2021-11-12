@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import axios from "axios";
-import store from "../../state/store/configureStore";
+import store from "../state/store/configureStore";
 
 const Fika = {
   async index() {
