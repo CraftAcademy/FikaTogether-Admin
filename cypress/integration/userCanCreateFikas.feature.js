@@ -9,21 +9,15 @@ describe("Admin can create Fikas by clicking a button", () => {
         body: { message: "Fikas successfully created" },
         statusCode: 201,
       });
-      cy.intercept("POST", "**auth/sign_in", {
-        fixture: "authenticationSuccess.json",
-        headers: { uid: "user@email.com" },
-      });
-      cy.intercept("GET", "**auth/validate_token**", {
-        fixture: "authenticationSuccess.json",
-      });
       cy.intercept("GET", "**/api/fikas**", {
         fixture: "fikaList.json",
         statusCode: 200,
       });
       cy.visit("/");
-      cy.get("[data-cy=email-input]").type("user@email.com");
-      cy.get("[data-cy=password-input]").type("password");
-      cy.get("[data-cy=btn-login]").click();
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
       cy.get("[data-cy=submit-btn]").click();
     });
 
@@ -56,17 +50,11 @@ describe("Admin can create Fikas by clicking a button", () => {
         body: { message: "There are no participants in the database" },
         statusCode: 404,
       });
-      cy.intercept("POST", "**auth/sign_in", {
-        fixture: "authenticationSuccess.json",
-        headers: { uid: "user@email.com" },
-      });
-      cy.intercept("GET", "**auth/validate_token**", {
-        fixture: "authenticationSuccess.json",
-      });
       cy.visit("/");
-      cy.get("[data-cy=email-input]").type("user@email.com");
-      cy.get("[data-cy=password-input]").type("password");
-      cy.get("[data-cy=btn-login]").click();
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
       cy.get("[data-cy=submit-btn]").click();
     });
 
