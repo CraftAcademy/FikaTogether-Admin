@@ -9,6 +9,10 @@ describe("User can navigate through the app", () => {
       statusCode: 200,
     });
     cy.visit("/");
+    cy.window().its("store").invoke("dispatch", {
+      type: "SET_CURRENT_USER",
+      payload: true,
+    });
   });
 
   it("is expected to display a navbar and contain Departments, Events and About", () => {

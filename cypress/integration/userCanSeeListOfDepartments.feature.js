@@ -1,5 +1,5 @@
 describe("Admin can see a list of departments", () => {
-  describe("Departments are displayed in the data table", () => {
+  describe("successfully", () => {
     before(() => {
       cy.intercept("GET", "**/api/fikas**", {
         fixture: "fikaList.json",
@@ -10,8 +10,12 @@ describe("Admin can see a list of departments", () => {
         statusCode: 200,
       });
       cy.visit("/");
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
     });
-    
+
     it("is expected that the fika table is visible", () => {
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]")
@@ -24,7 +28,7 @@ describe("Admin can see a list of departments", () => {
     });
   });
 
-  describe("Admin does not see a list of departments", () => {
+  describe("unsuccessfully", () => {
     before(() => {
       cy.intercept("GET", "**/api/fikas**", {
         fixture: "fikaList.json",
@@ -35,6 +39,10 @@ describe("Admin can see a list of departments", () => {
         statusCode: 404,
       });
       cy.visit("/");
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
     });
 
     it("is expected to unsuccessfully display api response from departments", () => {

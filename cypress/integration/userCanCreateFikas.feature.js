@@ -9,10 +9,14 @@ describe("Admin can create Fikas by clicking a button", () => {
         body: { message: "Fikas successfully created" },
         statusCode: 201,
       });
-      cy.visit("/");
       cy.intercept("GET", "**/api/fikas**", {
         fixture: "fikaList.json",
         statusCode: 200,
+      });
+      cy.visit("/");
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
       });
       cy.get("[data-cy=submit-btn]").click();
     });
@@ -28,12 +32,14 @@ describe("Admin can create Fikas by clicking a button", () => {
         "Fikas successfully created"
       );
     });
+    
     it("is expected that there will be five meeting in the table", () => {
       cy.get(".MuiDataGrid-virtualScrollerRenderZone")
         .children()
         .should("have.length", 5);
     });
   });
+
   describe("unsuccessfully", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/api/fikas**", {
@@ -45,6 +51,10 @@ describe("Admin can create Fikas by clicking a button", () => {
         statusCode: 404,
       });
       cy.visit("/");
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
       cy.get("[data-cy=submit-btn]").click();
     });
 

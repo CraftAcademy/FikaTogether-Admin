@@ -5,9 +5,13 @@ describe("User can see a list of Fikas", () => {
       statusCode: 200,
     });
     cy.visit("/");
+    cy.window().its("store").invoke("dispatch", {
+      type: "SET_CURRENT_USER",
+      payload: true,
+    });
   });
 
-  describe("Displays the upcoming Fikas events", () => {
+  describe("successfully", () => {
     it("is expected that the Fika table will be visible", () => {
       cy.get("[data-cy=fika-table]").should("be.visible");
     });
@@ -28,13 +32,17 @@ describe("User can see a list of Fikas", () => {
     });
   });
 
-  describe("When events can not be displayed", () => {
+  describe("unsuccessfully", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/api/fikas**", {
         body: { message: "There are no fikas in the database" },
         statusCode: 404,
       });
       cy.visit("/");
+      cy.window().its("store").invoke("dispatch", {
+        type: "SET_CURRENT_USER",
+        payload: true,
+      });
     });
 
     it("is expected that no fika event will be displayed", () => {
