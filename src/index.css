@@ -1,6 +1,6 @@
 .logo{
   position: absolute;
-  left: 15%;
+  left: 20%;
 }
 
 .login-logo{
@@ -8,4 +8,11 @@
   right: 15%;
   top: 25%;
   display:inline-block;
+}
+
+.login-cup{
+  position: relative;
+  /* align-items: center; */
+  left: 20%;
+  top: 150%
 }

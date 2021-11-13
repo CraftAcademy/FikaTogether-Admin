@@ -6,11 +6,15 @@ import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import auth from "../modules/auth";
 import logo from "../img/logo.png";
+import logoCup from "../img/FikaTogetherCup.png";
 import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  const border = isTabletOrMobile
+    ? { border: "" }
+    : { border: "3px solid #4C9074" };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,7 +41,7 @@ const Login = () => {
       {!isTabletOrMobile ? (
         <img src={logo} alt="Logo" height="250" className="login-logo" />
       ) : (
-        <></>
+        <img src={logoCup} alt="Logo" height="250" className="login-cup" />
       )}
       <Box
         sx={{
@@ -45,8 +49,8 @@ const Login = () => {
           textAlign: "center",
           boxShadow: 1,
           borderRadius: 0,
-          p: 10,
-          border: "2px solid #4C9074",
+          p: 5,
+          border: border,
           position: "absolute",
           left: "15%",
           top: "25%",
