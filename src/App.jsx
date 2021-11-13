@@ -48,7 +48,6 @@ const App = () => {
   return (
     <ThemeProvider theme={our_custome_theme}>
       <CssBaseline />
-
       <BrowserRouter>
         {!authenticated ? (
           <Login />
