@@ -4,7 +4,17 @@ describe("User can see a list of Fikas", () => {
       fixture: "fikaList.json",
       statusCode: 200,
     });
+    cy.intercept("POST", "**auth/sign_in", {
+      fixture: "authenticationSuccess.json",
+      headers: { uid: "user@email.com" },
+    });
+    cy.intercept("GET", "**auth/validate_token**", {
+      fixture: "authenticationSuccess.json",
+    });
     cy.visit("/");
+    cy.get("[data-cy=email-input]").type("user@email.com");
+    cy.get("[data-cy=password-input]").type("password");
+    cy.get("[data-cy=btn-login]").click();
   });
 
   describe("Displays the upcoming Fikas events", () => {
@@ -34,7 +44,17 @@ describe("User can see a list of Fikas", () => {
         body: { message: "There are no fikas in the database" },
         statusCode: 404,
       });
+      cy.intercept("POST", "**auth/sign_in", {
+        fixture: "authenticationSuccess.json",
+        headers: { uid: "user@email.com" },
+      });
+      cy.intercept("GET", "**auth/validate_token**", {
+        fixture: "authenticationSuccess.json",
+      });
       cy.visit("/");
+      cy.get("[data-cy=email-input]").type("user@email.com");
+      cy.get("[data-cy=password-input]").type("password");
+      cy.get("[data-cy=btn-login]").click();
     });
 
     it("is expected that no fika event will be displayed", () => {

@@ -20,6 +20,7 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=password-input]").type("password");
       cy.get("[data-cy=btn-login]").click();
     });
+
     it("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
         cy.contains("Login Successful").should("be.visible");
@@ -43,11 +44,13 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=password-input]").type("wrong password");
       cy.get("[data-cy=btn-login]").click();
     });
-    
+
     it("is expected to display an error message", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
-        cy.contains("Invalid login credentials. Please try again.").should("be.visible")
-      })
+        cy.contains("Invalid login credentials. Please try again.").should(
+          "be.visible"
+        );
+      });
     });
   });
 });
