@@ -1,10 +1,10 @@
 describe("A login view render on site load", () => {
   beforeEach(() => {
-    cy.intercept("POST", "**api/auth/sign_in", {
+    cy.intercept("POST", "**auth/sign_in", {
       fixture: "authenticationSuccess.json",
       headers: { uid: "user@email.com" },
     });
-    cy.intercept("GET", "**api/auth/validate_token**", {
+    cy.intercept("GET", "**auth/validate_token**", {
       fixture: "authenticationSuccess.json",
     });
 
@@ -30,11 +30,11 @@ describe("A login view render on site load", () => {
 
   describe("when sign in is not successful", () => {
     beforeEach(() => {
-      cy.intercept("POST", "**api/auth/sign_in", {
+      cy.intercept("POST", "**auth/sign_in", {
         statusCode: 401,
         fixture: "authenticationFailure.json",
       });
-      cy.intercept("GET", "**api/auth/validate_token**", {
+      cy.intercept("GET", "**auth/validate_token**", {
         statusCode: 401,
         fixture: "authenticationFailure.json",
       });

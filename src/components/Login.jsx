@@ -5,9 +5,12 @@ import Button from "@mui/material/Button";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import auth from "../modules/auth";
+import logo from "../img/logo.png";
+import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,13 +34,27 @@ const Login = () => {
 
   return (
     <>
+      {!isTabletOrMobile ? (
+        <img src={logo} alt="Logo" height="250" className="login-logo" />
+      ) : (
+        <></>
+      )}
       <Box
         sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
+          "& > :not(style)": { m: 1, width: "20ch" },
           textAlign: "center",
+          boxShadow: 1,
+          borderRadius: 0,
+          p: 10,
+          border: "2px solid #4C9074",
+          position: "absolute",
+          left: "15%",
+          top: "25%",
+          display:"inline-block",
         }}
         noValidate
-        autoComplete="off"
+        autoComplete="on"
+        className="login-box"
       >
         <form onSubmit={handleSubmit} data-cy="sign-in-form">
           <TextField
@@ -60,6 +77,9 @@ const Login = () => {
             type="submit"
             variant="contained"
             margin="dense"
+            sx={{
+              backgroundColor: "#4C9074",
+            }}
           >
             Sign In
           </Button>
