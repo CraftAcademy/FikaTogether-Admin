@@ -9,11 +9,21 @@ describe("Admin can create Fikas by clicking a button", () => {
         body: { message: "Fikas successfully created" },
         statusCode: 201,
       });
-      cy.visit("/");
+      cy.intercept("POST", "**auth/sign_in", {
+        fixture: "authenticationSuccess.json",
+        headers: { uid: "user@email.com" },
+      });
+      cy.intercept("GET", "**auth/validate_token**", {
+        fixture: "authenticationSuccess.json",
+      });
       cy.intercept("GET", "**/api/fikas**", {
         fixture: "fikaList.json",
         statusCode: 200,
       });
+      cy.visit("/");
+      cy.get("[data-cy=email-input]").type("user@email.com");
+      cy.get("[data-cy=password-input]").type("password");
+      cy.get("[data-cy=btn-login]").click();
       cy.get("[data-cy=submit-btn]").click();
     });
 
@@ -28,12 +38,14 @@ describe("Admin can create Fikas by clicking a button", () => {
         "Fikas successfully created"
       );
     });
+    
     it("is expected that there will be five meeting in the table", () => {
       cy.get(".MuiDataGrid-virtualScrollerRenderZone")
         .children()
         .should("have.length", 5);
     });
   });
+
   describe("unsuccessfully", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/api/fikas**", {
@@ -44,7 +56,17 @@ describe("Admin can create Fikas by clicking a button", () => {
         body: { message: "There are no participants in the database" },
         statusCode: 404,
       });
+      cy.intercept("POST", "**auth/sign_in", {
+        fixture: "authenticationSuccess.json",
+        headers: { uid: "user@email.com" },
+      });
+      cy.intercept("GET", "**auth/validate_token**", {
+        fixture: "authenticationSuccess.json",
+      });
       cy.visit("/");
+      cy.get("[data-cy=email-input]").type("user@email.com");
+      cy.get("[data-cy=password-input]").type("password");
+      cy.get("[data-cy=btn-login]").click();
       cy.get("[data-cy=submit-btn]").click();
     });
 

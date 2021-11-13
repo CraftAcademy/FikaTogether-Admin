@@ -7,9 +7,9 @@ describe("A login view render on site load", () => {
     cy.intercept("GET", "**auth/validate_token**", {
       fixture: "authenticationSuccess.json",
     });
-
     cy.visit("/");
   });
+
   it("is expected to have two input fields and a submit button", () => {
     cy.get("[data-cy=sign-in-form]").children().should("have.length", 3);
   });
@@ -20,6 +20,7 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=password-input]").type("password");
       cy.get("[data-cy=btn-login]").click();
     });
+
     it("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
         cy.contains("Login Successful").should("be.visible");
@@ -38,14 +39,18 @@ describe("A login view render on site load", () => {
         statusCode: 401,
         fixture: "authenticationFailure.json",
       });
+      cy.visit("/");
       cy.get("[data-cy=email-input]").type("user@email.com");
       cy.get("[data-cy=password-input]").type("wrong password");
       cy.get("[data-cy=btn-login]").click();
     });
+
     it("is expected to display an error message", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
-        cy.contains("Invalid login credentials. Please try again.").should("be.visible")
-      })
+        cy.contains("Invalid login credentials. Please try again.").should(
+          "be.visible"
+        );
+      });
     });
   });
 });
