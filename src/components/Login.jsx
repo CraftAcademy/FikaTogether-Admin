@@ -42,7 +42,6 @@ const Login = () => {
         <form onSubmit={handleSubmit} data-cy="sign-in-form">
           <TextField
             data-cy="email-input"
-            defaultValue="email"
             id="email"
             label="Email"
             variant="outlined"
@@ -50,11 +49,11 @@ const Login = () => {
           />
           <TextField
             data-cy="password-input"
-            defaultValue="password"
             id="password"
             label="Password"
             variant="outlined"
             margin="dense"
+            type="password"
           />
           <Button
             data-cy="btn-login"

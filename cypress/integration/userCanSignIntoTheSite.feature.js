@@ -22,9 +22,30 @@ describe("A login view render on site load", () => {
     });
     it("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
-        cy.contains("Login Successful");
+        cy.contains("Login Successful").should("be.visible");
       });
       cy.get("[data-cy=fika-table]").should("be.visible");
+    });
+  });
+
+  describe("when sign in is not successful", () => {
+    beforeEach(() => {
+      cy.intercept("POST", "**api/auth/sign_in", {
+        statusCode: 401,
+        fixture: "authenticationFailure.json",
+      });
+      cy.intercept("GET", "**api/auth/validate_token**", {
+        statusCode: 401,
+        fixture: "authenticationFailure.json",
+      });
+      cy.get("[data-cy=email-input]").type("user@email.com");
+      cy.get("[data-cy=password-input]").type("wrong password");
+      cy.get("[data-cy=btn-login]").click();
+    });
+    it("is expected to display an error message", () => {
+      cy.get("[data-cy=sign-in-toast]").within(() => {
+        cy.contains("Invalid login credentials. Please try again.").should("be.visible")
+      })
     });
   });
 });
