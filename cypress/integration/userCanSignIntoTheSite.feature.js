@@ -20,12 +20,11 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=password-input]").type("password");
       cy.get("[data-cy=btn-login]").click();
     });
-    it("is expected to display a success message and return to home page", () => {
+    it("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
-        cy.contains("Successful Login");
+        cy.contains("Login Successful");
       });
-      cy.get("[data-cy=add-article]").should("be.visible");
-      cy.get("[data-cy=review-articles]").should("be.visible");
+      cy.get("[data-cy=fika-table]").should("be.visible");
     });
   });
 });

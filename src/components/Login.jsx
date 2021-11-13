@@ -3,8 +3,20 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const onSubmit = () => {
+    toast.success("Login Successful", {
+      onClose: () =>
+        dispatch({
+          type: "SET_CURRENT_USER",
+          payload: true,
+        }),
+    });
+  };
+
   return (
     <>
       <Box
@@ -31,11 +43,28 @@ const Login = () => {
           variant="outlined"
           margin="dense"
         />
-        <Button data-cy="btn-login" variant="contained" margin="dense">
+        <Button
+          data-cy="btn-login"
+          onClick={onSubmit}
+          variant="contained"
+          margin="dense"
+        >
           Sign In
         </Button>
       </Box>
-      
+      <div data-cy="sign-in-toast">
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
     </>
   );
 };
