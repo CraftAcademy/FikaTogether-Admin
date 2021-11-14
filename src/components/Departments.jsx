@@ -34,7 +34,7 @@ const Departments = () => {
       field: "score",
       headerName: t("fikaScore"),
       type: "number",
-      flex: 1,
+      flex: 0.5,
     },
   ];
 

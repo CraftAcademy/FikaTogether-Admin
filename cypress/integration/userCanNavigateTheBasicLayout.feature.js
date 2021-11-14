@@ -25,9 +25,9 @@ describe("User can navigate through the app", () => {
     cy.get("[data-cy=departments-btn]")
       .should("be.visible")
       .and("have.text", "Departments");
-    cy.get("[data-cy=events-btn]")
+    cy.get("[data-cy=language-btn]")
       .should("be.visible")
-      .and("have.text", "Events");
+      .and("have.text", "sv");
     cy.get("[data-cy=contact-btn]")
       .should("be.visible")
       .and("have.text", "Contact");
@@ -38,10 +38,6 @@ describe("User can navigate through the app", () => {
     cy.url().should("contain", "/departments");
   });
 
-  it("is expected to display the correct url when at the event page", () => {
-    cy.get("[data-cy=events-btn]").click();
-    cy.url().should("contain", "/");
-  });
 
   it("is expected to display the correct url when at the about page", () => {
     cy.get("[data-cy=contact-btn]").click();

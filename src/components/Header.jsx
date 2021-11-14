@@ -67,10 +67,9 @@ const Header = () => {
             label={t("contact")}
           />
           <BottomNavigationAction
-            position="right"
             data-cy="language-btn"
             icon={<LanguageIcon sx={{ fontSize: 45 }} />}
-            text={appLanguage}
+            // text={appLanguage}
             label={appLanguage}
             options={languageOptions}
             onClick={(event) => {

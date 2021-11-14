@@ -24,7 +24,7 @@ const Events = () => {
   });
 
   const columns = [
-    // { field: "id", headerName: "ID", flex: 0.5 },
+    
     {
       field: "date",
       headerName: t("date"),
@@ -45,7 +45,7 @@ const Events = () => {
   
 
   return (
-    <Container sx={{ textAlign: "center" }}>
+    <Container maxWidth="lg" sx={{ textAlign: "center" }}>
       <FikaButton />
       <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
         <DataGrid
