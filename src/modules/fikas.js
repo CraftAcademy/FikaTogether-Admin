@@ -16,6 +16,7 @@ const Fika = {
     try {
       const params = {};
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+      debugger
       let response = await axios.post("/api/fikas", params, {
         headers: headers,
       });
