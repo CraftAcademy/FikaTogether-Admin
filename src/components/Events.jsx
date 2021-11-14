@@ -3,10 +3,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import FikaButton from "./FikaButton";
-
 const Events = () => {
+  const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);
 
   useEffect(() => {
@@ -23,21 +24,21 @@ const Events = () => {
   });
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
+    // { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "date",
-      headerName: "Date",
+      headerName: t("date"),
       type: "date",
       flex: 0.75,
     },
     {
       field: "participant_1",
-      headerName: "Participant 1",
+      headerName: `${t("participant")} 1`,
       flex: 1,
     },
     {
       field: "participant_2",
-      headerName: "Participant 2",
+      headerName: `${t("participant")} 2`,
       flex: 1,
     },
   ];

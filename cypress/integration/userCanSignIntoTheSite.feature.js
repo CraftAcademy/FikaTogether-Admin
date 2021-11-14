@@ -28,7 +28,7 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=btn-login]").click();
     });
 
-    it("is expected to display a success message and go to the app", () => {
+    it.only("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
         cy.contains("Login Successful").should("be.visible");
       });

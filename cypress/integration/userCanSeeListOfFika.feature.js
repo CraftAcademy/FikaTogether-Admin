@@ -4,7 +4,13 @@ describe("User can see a list of Fikas", () => {
       fixture: "fikaList.json",
       statusCode: 200,
     });
-    cy.visit("/");
+    cy.visit("/", {
+      onBeforeLoad(window) {
+        Object.defineProperty(window.navigator, "language", {
+          get: cy.stub().returns("en-GB").as("language"),
+        });
+      },
+    });
     cy.window().its("store").invoke("dispatch", {
       type: "SET_CURRENT_USER",
       payload: true,
@@ -17,8 +23,7 @@ describe("User can see a list of Fikas", () => {
     });
 
     it("is expected that the table has the following columns properties", () => {
-      cy.get(".MuiDataGrid-columnHeaderWrapper").within(() => {
-        cy.contains("ID").should("be.visible");
+      cy.get(".MuiDataGrid-columnHeaderWrapper").within(() => {        
         cy.contains("Participant 1").should("be.visible");
         cy.contains("Participant 2").should("be.visible");
         cy.contains("Date").should("be.visible");

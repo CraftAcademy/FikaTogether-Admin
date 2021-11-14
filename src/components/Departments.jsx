@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { Department } from "../modules/departments";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
-
+  const { t } = useTranslation();
   useEffect(() => {
     Department.index();
   }, []);
@@ -23,7 +24,7 @@ const Departments = () => {
   const columns = [
     {
       field: "department",
-      headerName: "Departments",
+      headerName: t("departments"),
       flex: 1,
       renderCell: (params) => (
         <Link to={`/departments/${params.value}`} style={{ color: 'inherit', textDecoration: 'inherit'}} >{params.value}</Link>
@@ -31,7 +32,7 @@ const Departments = () => {
     },
     {
       field: "score",
-      headerName: "Average Fika Score",
+      headerName: t("fikaScore"),
       type: "number",
       flex: 1,
     },

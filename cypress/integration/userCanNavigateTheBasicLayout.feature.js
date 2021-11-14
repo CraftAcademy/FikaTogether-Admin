@@ -28,9 +28,9 @@ describe("User can navigate through the app", () => {
     cy.get("[data-cy=events-btn]")
       .should("be.visible")
       .and("have.text", "Events");
-    cy.get("[data-cy=about-btn]")
+    cy.get("[data-cy=contact-btn]")
       .should("be.visible")
-      .and("have.text", "About Fika-Together");
+      .and("have.text", "Contact");
   });
 
   it("is expected to display the correct url when at the Departments page", () => {
@@ -44,7 +44,7 @@ describe("User can navigate through the app", () => {
   });
 
   it("is expected to display the correct url when at the about page", () => {
-    cy.get("[data-cy=about-btn]").click();
-    cy.url().should("contain", "/about");
+    cy.get("[data-cy=contact-btn]").click();
+    cy.url().should("contain", "/contact");
   });
 });

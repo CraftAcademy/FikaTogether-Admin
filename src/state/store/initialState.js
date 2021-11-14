@@ -1,7 +1,8 @@
 const initialState = {
   fikas: [],
   departments: [],
-  authenticated: false
+  authenticated: false,
+  appLanguage: 'sv'
 };
 
 export default initialState;

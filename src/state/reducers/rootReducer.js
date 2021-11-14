@@ -16,6 +16,11 @@ const rootReducer = (state, action) => {
         currentUser: action.payload,
         authenticated: true,
       };
+    case "SET_LANGUAGE":
+      return {
+        ...state,
+        appLanguage: action.payload,
+      };
     default:
       return state;
   }
