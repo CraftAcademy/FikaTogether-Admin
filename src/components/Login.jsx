@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import auth from "../modules/auth";
 import logo from "../img/logo.png";
 import logoCup from "../img/FikaTogetherCup.png";
@@ -11,6 +12,7 @@ import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const border = isTabletOrMobile
     ? { border: "" }
@@ -24,7 +26,7 @@ const Login = () => {
     try {
       const response = await auth.signIn(email, password);
 
-      toast.success("Login Successful", {
+      toast.success(t("loginSuccess"), {
         onClose: () =>
           dispatch({
             type: "SET_CURRENT_USER",

@@ -1,4 +1,6 @@
 const sv = {
-  translation: {}
+  translation: {
+    loginSuccess: 'Inloggning lyckades',
+  }
 }
 export default sv

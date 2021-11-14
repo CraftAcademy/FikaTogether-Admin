@@ -1,4 +1,6 @@
 const en = {
-  translation: {}
+  translation: {
+    loginSuccess: 'Login Successful',
+  }
 }
 export default en

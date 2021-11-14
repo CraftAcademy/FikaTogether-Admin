@@ -8,9 +8,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Login from "./components/Login";
 import { useSelector } from "react-redux";
+import i18n from "./i18n";
 
 const App = () => {
   const { authenticated } = useSelector((state) => state);
+
+  if (navigator.language.includes("sv")) {
+    i18n.changeLanguage("sv");
+  }
+
   const our_custome_theme = useMemo(
     () =>
       createTheme({
