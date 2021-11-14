@@ -24,7 +24,6 @@ const Events = () => {
   });
 
   const columns = [
-    
     {
       field: "date",
       headerName: t("date"),
@@ -42,7 +41,6 @@ const Events = () => {
       flex: 1,
     },
   ];
-  
 
   return (
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>

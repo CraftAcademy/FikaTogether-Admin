@@ -1,9 +1,5 @@
 const en = {
   translation: {
-    languageNames: {
-      english: "English",
-      swedish: "Swedish",
-    },
     loginSuccess: "Login Successful",
     email: "Email",
     password: "Password",
@@ -17,6 +13,8 @@ const en = {
     participant: "Participant",
     fikaScore: "Average Fika Score",
     contactText: "If you have any questions, please contact us at:",
+    en: "English",
+    sv: "Swedish",
   },
 };
 export default en;

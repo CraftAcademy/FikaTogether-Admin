@@ -13,11 +13,11 @@ import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
 
 const Header = () => {
+  const { t } = useTranslation();
   const { appLanguage } = useSelector((state) => state);
   const [languageChoice, setLanguageChoice] = useState(
-    appLanguage === "en" ? "sv" : "en"
+    appLanguage === "en" ? t("sv") : t("en")
   );
-  const { t } = useTranslation();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
@@ -25,7 +25,7 @@ const Header = () => {
 
   const handleLanguageClick = () => {
     let newLanguage;
-    appLanguage === "en" ? (newLanguage = "sv") : (newLanguage = "en");
+    appLanguage === "en" ? (newLanguage = t("sv")) : (newLanguage = t("en"));
     setLanguageChoice(appLanguage);
     i18n.changeLanguage(newLanguage);
     store.dispatch({ type: "SET_LANGUAGE", payload: newLanguage });

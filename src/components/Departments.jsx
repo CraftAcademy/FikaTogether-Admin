@@ -27,7 +27,12 @@ const Departments = () => {
       headerName: t("departments"),
       flex: 1,
       renderCell: (params) => (
-        <Link to={`/departments/${params.value}`} style={{ color: 'inherit', textDecoration: 'inherit'}} >{params.value}</Link>
+        <Link
+          to={`/departments/${params.value}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
+          {params.value}
+        </Link>
       ),
     },
     {

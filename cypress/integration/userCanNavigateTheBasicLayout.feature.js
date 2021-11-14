@@ -27,7 +27,7 @@ describe("User can navigate through the app", () => {
       .and("have.text", "Departments");
     cy.get("[data-cy=language-btn]")
       .should("be.visible")
-      .and("have.text", "sv");
+      .and("have.text", "Swedish");
     cy.get("[data-cy=contact-btn]")
       .should("be.visible")
       .and("have.text", "Contact");
@@ -38,7 +38,6 @@ describe("User can navigate through the app", () => {
     cy.url().should("contain", "/departments");
   });
 
-
   it("is expected to display the correct url when at the about page", () => {
     cy.get("[data-cy=contact-btn]").click();
     cy.url().should("contain", "/contact");
@@ -46,15 +45,33 @@ describe("User can navigate through the app", () => {
 
   it("is expected to chose the language of the browser on load", () => {
     cy.get("[data-cy=language-btn]").within(() => {
-      cy.contains('sv').should('be.visible')
-    })
-
+      cy.contains("Swedish").should("be.visible");
+    });
   });
-  it("is expected to change language when language button is clicked", () => {
+
+});
+
+describe("When the language button is pressed", () => {
+  beforeEach(() => {
+    cy.intercept("GET", "**/api/fikas**", {
+      fixture: "fikaList.json",
+      statusCode: 200,
+    });
+    cy.intercept("GET", "**api/departments**", {
+      fixture: "departmentList.json",
+      statusCode: 200,
+    });
+    cy.visit("/");
+    cy.window().its("store").invoke("dispatch", {
+      type: "SET_CURRENT_USER",
+      payload: true,
+    });
+  });
+
+  it.only("is expected to change language when language button is clicked", () => {
     cy.get("[data-cy=language-btn]").click();
     cy.get("[data-cy=language-btn]").within(() => {
-      cy.contains('en').should('be.visible')
-    })
-
+      cy.contains("en").should("be.visible");
+    });
   });
 });
