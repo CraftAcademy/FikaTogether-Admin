@@ -16,14 +16,18 @@ const Fika = {
     try {
       const params = {};
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-      debugger
+      debugger;
       let response = await axios.post("/api/fikas", params, {
         headers: headers,
       });
       toast.success(response.data.message, {
-        onClose: () => setLoading(false),
+        onClose: () => {
+          setLoading(false);
+          Fika.index();
+        },
       });
     } catch (error) {
+      debugger;
       toast.error(error.response.data.message, {
         onClose: () => setLoading(false),
       });

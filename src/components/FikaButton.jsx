@@ -11,7 +11,7 @@ const FikaButton = () => {
   const onSubmit = () => {
     setLoading(true);
     Fika.create(setLoading);
-    Fika.index();
+    // Fika.index();
   };
 
   return (
