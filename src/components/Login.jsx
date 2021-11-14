@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { LoadingButton } from "@mui/lab";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -13,6 +13,7 @@ import { useMediaQuery } from "react-responsive";
 const Login = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const border = isTabletOrMobile
     ? { border: "" }
@@ -25,7 +26,7 @@ const Login = () => {
     const password = form.password.value;
     try {
       const response = await auth.signIn(email, password);
-
+      setLoading(true);
       toast.success(t("loginSuccess"), {
         onClose: () =>
           dispatch({
@@ -56,12 +57,12 @@ const Login = () => {
           position: "absolute",
           left: "15%",
           top: "25%",
-          display:"inline-block",
+          display: "inline-block",
         }}
         noValidate
         autoComplete="on"
         className="login-box"
-      >
+        >
         <form onSubmit={handleSubmit} data-cy="sign-in-form">
           <TextField
             data-cy="email-input"
@@ -69,7 +70,7 @@ const Login = () => {
             label={t("email")}
             variant="outlined"
             margin="dense"
-          />
+            />
           <TextField
             data-cy="password-input"
             id="password"
@@ -77,18 +78,19 @@ const Login = () => {
             variant="outlined"
             margin="dense"
             type="password"
-          />
-          <Button
+            />
+          <LoadingButton
             data-cy="btn-login"
             type="submit"
             variant="contained"
             margin="dense"
+            loading={loading}
             sx={{
               backgroundColor: "#4C9074",
             }}
           >
             {t("login")}
-          </Button>
+          </LoadingButton>
         </form>
       </Box>
       <div data-cy="sign-in-toast">
