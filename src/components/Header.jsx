@@ -7,8 +7,10 @@ import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
 import EventIcon from "@mui/icons-material/Event";
 import logo from "../img/logo.png";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t } = useTranslation();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
@@ -28,13 +30,13 @@ const Header = () => {
             to="/"
             data-cy="events-btn"
             icon={<EventIcon />}
-            label="Events"
+            label={t("events")}
           />
           <BottomNavigationAction
             component={Link}
             to="/departments"
             data-cy="departments-btn"
-            label="Departments"
+            label={t("departments")}
             icon={<BusinessIcon />}
           />
           <BottomNavigationAction
@@ -42,7 +44,7 @@ const Header = () => {
             to="/about"
             data-cy="about-btn"
             icon={<HelpIcon />}
-            label="About"
+            label={t("about")}
           />
         </BottomNavigation>
       </Paper>

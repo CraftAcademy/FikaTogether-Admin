@@ -66,14 +66,14 @@ const Login = () => {
           <TextField
             data-cy="email-input"
             id="email"
-            label="Email"
+            label={t("email")}
             variant="outlined"
             margin="dense"
           />
           <TextField
             data-cy="password-input"
             id="password"
-            label="Password"
+            label={t("password")}
             variant="outlined"
             margin="dense"
             type="password"
@@ -87,7 +87,7 @@ const Login = () => {
               backgroundColor: "#4C9074",
             }}
           >
-            Sign In
+            {t("login")}
           </Button>
         </form>
       </Box>

@@ -8,7 +8,13 @@ describe("User can navigate through the app", () => {
       fixture: "departmentList.json",
       statusCode: 200,
     });
-    cy.visit("/");
+    cy.visit("/", {
+      onBeforeLoad(window) {
+        Object.defineProperty(window.navigator, "language", {
+          get: cy.stub().returns("en-GB").as("language"),
+        });
+      },
+    });
     cy.window().its("store").invoke("dispatch", {
       type: "SET_CURRENT_USER",
       payload: true,
@@ -24,7 +30,7 @@ describe("User can navigate through the app", () => {
       .and("have.text", "Events");
     cy.get("[data-cy=about-btn]")
       .should("be.visible")
-      .and("have.text", "About");
+      .and("have.text", "About Fika-Together");
   });
 
   it("is expected to display the correct url when at the Departments page", () => {
