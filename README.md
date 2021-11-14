@@ -12,7 +12,7 @@ Netlify [https://fika-together-admin.netlify.app/]
 
 ### Authors
 [Fraser Hughes](https://github.com/Fraseer) </br>
-[Dorain Buck](https://github.com/dorianbuck) </br>
+[Dorian Buck](https://github.com/dorianbuck) </br>
 [Max Anderson](https://github.com/maxarvid) </br>
 [August Enhager](https://github.com/AugustEnhager) </br>
 [Oliver Ochman](https://github.com/oliverochman) </br>

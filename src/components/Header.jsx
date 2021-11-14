@@ -7,7 +7,6 @@ import { Box, Paper } from "@mui/material";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
-import EventIcon from "@mui/icons-material/Event";
 import LanguageIcon from "@mui/icons-material/Language";
 import logo from "../img/logo.png";
 import { useTranslation } from "react-i18next";
@@ -20,7 +19,6 @@ const Header = () => {
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
     : { position: "relative" };
-  const picHeight = isTabletOrMobile ? { height: 6 } : { height: 6 };
 
   const languageOptions = [
     { key: "1", value: "en", text: "en" },

@@ -16,8 +16,8 @@ const Events = () => {
 
   let rows = fikas.map((fika) => {
     return {
+      date: new Date(Date.parse(fika.start_date)).toLocaleString(),
       id: fika.id,
-      date: fika.start_date,
       participant_1: fika.participants[0].name,
       participant_2: fika.participants[1].name,
     };
@@ -42,6 +42,7 @@ const Events = () => {
       flex: 1,
     },
   ];
+  
 
   return (
     <Container sx={{ textAlign: "center" }}>
