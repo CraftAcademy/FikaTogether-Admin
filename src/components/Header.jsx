@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
@@ -14,25 +14,21 @@ import i18n from "../i18n";
 
 const Header = () => {
   const { appLanguage } = useSelector((state) => state);
+  const [languageChoice, setLanguageChoice] = useState(
+    appLanguage === "en" ? "sv" : "en"
+  );
   const { t } = useTranslation();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
     ? { position: "fixed", bottom: 0, left: 0, right: 0 }
     : { position: "relative" };
 
-  const languageOptions = [
-    { key: "1", value: "en", text: "en" },
-    { key: "2", value: "sv", text: "sv" },
-  ];
-
-  const switchLanguage = (language) => {
-    i18n.changeLanguage(language);
-    store.dispatch({ type: "SET_LANGUAGE", payload: language });
-  };
-
-  const handleChangeLanguage = (event) => {
-    let language = event.target.value;
-    ["en", "sv"].includes(language) && switchLanguage(language);
+  const handleLanguageClick = () => {
+    let newLanguage;
+    appLanguage === "en" ? (newLanguage = "sv") : (newLanguage = "en");
+    setLanguageChoice(appLanguage);
+    i18n.changeLanguage(newLanguage);
+    store.dispatch({ type: "SET_LANGUAGE", payload: newLanguage });
   };
 
   return (
@@ -69,12 +65,8 @@ const Header = () => {
           <BottomNavigationAction
             data-cy="language-btn"
             icon={<LanguageIcon sx={{ fontSize: 45 }} />}
-            // text={appLanguage}
-            label={appLanguage}
-            options={languageOptions}
-            onClick={(event) => {
-              handleChangeLanguage(event);
-            }}
+            label={languageChoice}
+            onClick={() => handleLanguageClick()}
           />
         </BottomNavigation>
       </Paper>

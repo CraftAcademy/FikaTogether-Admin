@@ -7,7 +7,11 @@ describe("A login view render on site load", () => {
     cy.intercept("GET", "**api/auth/validate_token**", {
       fixture: "authenticationSuccess.json",
     });
-    
+    cy.intercept("GET", "**/api/fikas**", {
+      fixture: "fikaList.json",
+      statusCode: 200,
+    });
+
     cy.visit("/", {
       onBeforeLoad(window) {
         Object.defineProperty(window.navigator, "language", {
@@ -28,7 +32,7 @@ describe("A login view render on site load", () => {
       cy.get("[data-cy=btn-login]").click();
     });
 
-    it.only("is expected to display a success message and go to the app", () => {
+    it("is expected to display a success message and go to the app", () => {
       cy.get("[data-cy=sign-in-toast]").within(() => {
         cy.contains("Login Successful").should("be.visible");
       });

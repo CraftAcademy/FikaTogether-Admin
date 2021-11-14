@@ -43,4 +43,18 @@ describe("User can navigate through the app", () => {
     cy.get("[data-cy=contact-btn]").click();
     cy.url().should("contain", "/contact");
   });
+
+  it("is expected to chose the language of the browser on load", () => {
+    cy.get("[data-cy=language-btn]").within(() => {
+      cy.contains('sv').should('be.visible')
+    })
+
+  });
+  it("is expected to change language when language button is clicked", () => {
+    cy.get("[data-cy=language-btn]").click();
+    cy.get("[data-cy=language-btn]").within(() => {
+      cy.contains('en').should('be.visible')
+    })
+
+  });
 });
