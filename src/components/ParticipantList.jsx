@@ -21,7 +21,7 @@ const ParticipantList = () => {
   ];
 
   debugger
-  let rows = departments[0].participants.map((participant) => {
+  let rows = departments[participantList].participants.map((participant) => {
     return {
       id: participant.id,
       name: participant.name,

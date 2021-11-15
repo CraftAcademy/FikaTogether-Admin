@@ -16,7 +16,7 @@ const rootReducer = (state, action) => {
         currentUser: action.payload,
         authenticated: true,
       };
-      case "SET_Participant_LIST":
+      case "SET_PARTICIPANT_LIST":
         return {
           ...state,
           participantList: action.payload,

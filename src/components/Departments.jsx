@@ -38,8 +38,8 @@ const Departments = () => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           onClick={() => {
             dispatch({
-              type: "SET_EMPLOYEE_LIST",
-              payload: params.value,
+              type: "SET_PARTICIPANT_LIST",
+              payload: departments[0].id - 1,
             });
           }}
         >

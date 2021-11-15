@@ -16,7 +16,8 @@
     {
       "id": 2,
       "name": "Production",
-      "average_score": 3
+      "average_score": 3,
+      "participants": []
     },
     {
       "id": 3,
