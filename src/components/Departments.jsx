@@ -5,6 +5,7 @@ import { Department } from "../modules/departments";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { makeStyles } from "@mui/styles";
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
@@ -24,6 +25,8 @@ const Departments = () => {
   const columns = [
     {
       field: "department",
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
       headerName: t("departments"),
       flex: 1,
       renderCell: (params) => (
@@ -40,12 +43,28 @@ const Departments = () => {
       headerName: t("fikaScore"),
       type: "number",
       flex: 0.5,
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
     },
   ];
 
+  const useStyles = makeStyles({
+    root: {
+      "& .super-app-theme--header": {
+        backgroundColor: "rgba(0,0,0,.85)",
+      },
+    },
+  });
+
+  const classes = useStyles();
+
   return (
     <Container maxWidth="sm">
-      <div style={{ width: "100%", height: 400 }} data-cy="department-table">
+      <div
+        style={{ width: "100%", height: 400 }}
+        data-cy="department-table"
+        className={classes.root}
+      >
         <DataGrid
           rows={rows}
           columns={columns}

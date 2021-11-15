@@ -4,6 +4,7 @@ import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { makeStyles } from "@mui/styles";
 
 import FikaButton from "./FikaButton";
 const Events = () => {
@@ -27,25 +28,45 @@ const Events = () => {
     {
       field: "date",
       headerName: t("date"),
-      type: "date",
+      type: "dateTime",
       flex: 0.75,
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
     },
     {
       field: "participant_1",
       headerName: `${t("participant")} 1`,
       flex: 1,
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
     },
     {
       field: "participant_2",
       headerName: `${t("participant")} 2`,
       flex: 1,
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
     },
   ];
+
+  const useStyles = makeStyles({
+    root: {
+      "& .super-app-theme--header": {
+        backgroundColor: "rgba(0,0,0,.85)",
+      },
+    },
+  });
+
+  const classes = useStyles();
 
   return (
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>
       <FikaButton />
-      <div style={{ height: 400, width: "100%" }} data-cy="fika-table">
+      <div
+        style={{ height: 400, width: "100%" }}
+        data-cy="fika-table"
+        className={classes.root}
+      >
         <DataGrid
           rows={rows}
           columns={columns}
