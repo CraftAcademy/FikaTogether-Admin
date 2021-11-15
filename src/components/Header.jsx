@@ -12,7 +12,7 @@ import i18n from "../i18n";
 
 const Header = () => {
   const { t } = useTranslation();
-  const [languageChoice, setLanguageChoice] = useState("en");
+  const [languageChoice, setLanguageChoice] = useState(true);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
@@ -20,8 +20,16 @@ const Header = () => {
     : { position: "relative" };
 
   const handleLanguageClick = () => {
-    setLanguageChoice("sv");
-    i18n.changeLanguage(languageChoice);
+    setLanguageChoice(!languageChoice);
+
+    let language = "en";
+    if (languageChoice === true) {
+      language = "en";
+    } else {
+      language = "sv";
+    }
+
+    i18n.changeLanguage(language);
   };
 
   return (
@@ -61,7 +69,6 @@ const Header = () => {
             label={t("language")}
             onClick={() => {
               handleLanguageClick();
-              debugger;
             }}
           />
         </BottomNavigation>

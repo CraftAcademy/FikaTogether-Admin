@@ -67,7 +67,7 @@ describe("When the language button is pressed", () => {
     });
   });
 
-  it("is expected to change language when language button is clicked", () => {
+  it.only("is expected to change language when language button is clicked", () => {
     cy.get("[data-cy=language-btn]").click();
     cy.get("[data-cy=language-btn]").within(() => {
       cy.contains("Svenska").should("be.visible");
