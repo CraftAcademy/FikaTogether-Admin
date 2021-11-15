@@ -29,6 +29,7 @@ const Departments = () => {
       headerAlign: "center",
       headerName: t("departments"),
       flex: 1,
+      cellClassName: "super-app-theme--cell",
       renderCell: (params) => (
         <Link
           to={`/departments/${params.value}`}
@@ -45,6 +46,7 @@ const Departments = () => {
       flex: 0.5,
       headerClassName: "super-app-theme--header",
       headerAlign: "center",
+      cellClassName: "super-app-theme--cell",
     },
   ];
 
@@ -52,6 +54,12 @@ const Departments = () => {
     root: {
       "& .super-app-theme--header": {
         backgroundColor: "rgba(0,0,0,.85)",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      },
+      "& .super-app-theme--cell": {
+        fontWeight: "600",
+        textAlign: "center",
       },
     },
   });

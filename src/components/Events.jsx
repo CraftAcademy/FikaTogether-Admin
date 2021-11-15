@@ -32,6 +32,7 @@ const Events = () => {
       flex: 0.75,
       headerClassName: "super-app-theme--header",
       headerAlign: "center",
+      cellClassName: "super-app-theme--cell",
     },
     {
       field: "participant_1",
@@ -39,6 +40,7 @@ const Events = () => {
       flex: 1,
       headerClassName: "super-app-theme--header",
       headerAlign: "center",
+      cellClassName: "super-app-theme--cell",
     },
     {
       field: "participant_2",
@@ -46,6 +48,7 @@ const Events = () => {
       flex: 1,
       headerClassName: "super-app-theme--header",
       headerAlign: "center",
+      cellClassName: "super-app-theme--cell",
     },
   ];
 
@@ -53,6 +56,12 @@ const Events = () => {
     root: {
       "& .super-app-theme--header": {
         backgroundColor: "rgba(0,0,0,.85)",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      },
+      "& .super-app-theme--cell": {
+        fontWeight: "600",
+        textAlign: "center",
       },
     },
   });
