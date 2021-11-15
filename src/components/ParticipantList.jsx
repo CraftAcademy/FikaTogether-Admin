@@ -1,8 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import Container from "@mui/material/Container";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
+import { LoadingButton } from "@mui/lab";
 
 const ParticipantList = () => {
   const { participantList, departments } = useSelector((state) => state);
@@ -53,6 +54,18 @@ const ParticipantList = () => {
 
   return (
     <Container maxWidth="sm">
+      <LoadingButton
+            data-cy="manage-participants-btn"
+            type="link"
+            variant="contained"
+            margin="dense"
+            // loading={loading}
+            sx={{
+              backgroundColor: "#4C9074",
+            }}
+          >
+            Manage Participant
+          </LoadingButton>
       <div
         style={{ width: "100%", height: 400 }}
         data-cy="participant-table"
