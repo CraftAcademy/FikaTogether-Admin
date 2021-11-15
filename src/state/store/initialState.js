@@ -1,7 +1,7 @@
 const initialState = {
   fikas: [],
   departments: [],
-  authenticated: false
+  authenticated: false,
 };
 
 export default initialState;

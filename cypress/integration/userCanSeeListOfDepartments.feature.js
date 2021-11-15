@@ -9,7 +9,13 @@ describe("Admin can see a list of departments", () => {
         fixture: "departmentList.json",
         statusCode: 200,
       });
-      cy.visit("/");
+      cy.visit("/", {
+        onBeforeLoad(window) {
+          Object.defineProperty(window.navigator, "language", {
+            get: cy.stub().returns("en-GB").as("language"),
+          });
+        },
+      });
       cy.window().its("store").invoke("dispatch", {
         type: "SET_CURRENT_USER",
         payload: true,

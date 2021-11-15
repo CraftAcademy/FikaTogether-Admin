@@ -4,14 +4,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { LoadingButton } from "@mui/lab";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/fikas";
+import { useTranslation } from "react-i18next";
 
 const FikaButton = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
     setLoading(true);
     Fika.create(setLoading);
-    Fika.index();
   };
 
   return (
@@ -27,7 +28,7 @@ const FikaButton = () => {
         disableElevation
         loading={loading}
       >
-        {`${ loading === false ? ("Create"):("Creating")} Fikas`}
+        {`${loading === false ? t("create") : t("creating")}`}
       </LoadingButton>
 
       <div data-cy="submit-response-toast">

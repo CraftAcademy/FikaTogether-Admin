@@ -3,14 +3,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Departments from "./components/Departments";
 import Events from "./components/Events";
-import About from "./components/About";
+import Contact from "./components/Contact";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Login from "./components/Login";
 import { useSelector } from "react-redux";
+import store from "./state/store/configureStore";
+import i18n from "./i18n";
 
 const App = () => {
   const { authenticated } = useSelector((state) => state);
+
+  if (navigator.language.includes("sv")) {
+    i18n.changeLanguage("sv");
+    store.dispatch({ type: "SET_LANGUAGE", payload: "sv" });
+  }
+
   const our_custome_theme = useMemo(
     () =>
       createTheme({
@@ -57,7 +65,7 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Events />} />
               <Route path="/departments" element={<Departments />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </>
         )}

@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import { Department } from "../modules/departments";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { makeStyles } from "@mui/styles";
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
-
+  const { t } = useTranslation();
   useEffect(() => {
     Department.index();
   }, []);
@@ -23,23 +25,54 @@ const Departments = () => {
   const columns = [
     {
       field: "department",
-      headerName: "Departments",
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
+      headerName: t("departments"),
       flex: 1,
+      cellClassName: "super-app-theme--cell",
       renderCell: (params) => (
-        <Link to={`/departments/${params.value}`} style={{ color: 'inherit', textDecoration: 'inherit'}} >{params.value}</Link>
+        <Link
+          to={`/departments/${params.value}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
+          {params.value}
+        </Link>
       ),
     },
     {
       field: "score",
-      headerName: "Average Fika Score",
+      headerName: t("fikaScore"),
       type: "number",
-      flex: 1,
+      flex: 0.5,
+      headerClassName: "super-app-theme--header",
+      headerAlign: "center",
+      cellClassName: "super-app-theme--cell",
     },
   ];
 
+  const useStyles = makeStyles({
+    root: {
+      "& .super-app-theme--header": {
+        backgroundColor: "rgba(0,0,0,.85)",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      },
+      "& .super-app-theme--cell": {
+        fontWeight: "600",
+        textAlign: "center",
+      },
+    },
+  });
+
+  const classes = useStyles();
+
   return (
     <Container maxWidth="sm">
-      <div style={{ width: "100%", height: 400 }} data-cy="department-table">
+      <div
+        style={{ width: "100%", height: 400 }}
+        data-cy="department-table"
+        className={classes.root}
+      >
         <DataGrid
           rows={rows}
           columns={columns}

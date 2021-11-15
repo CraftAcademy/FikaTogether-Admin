@@ -1,13 +1,24 @@
 describe("A login view render on site load", () => {
   beforeEach(() => {
-    cy.intercept("POST", "**auth/sign_in", {
+    cy.intercept("POST", "**api/auth/sign_in", {
       fixture: "authenticationSuccess.json",
       headers: { uid: "user@email.com" },
     });
-    cy.intercept("GET", "**auth/validate_token**", {
+    cy.intercept("GET", "**api/auth/validate_token**", {
       fixture: "authenticationSuccess.json",
     });
-    cy.visit("/");
+    cy.intercept("GET", "**/api/fikas**", {
+      fixture: "fikaList.json",
+      statusCode: 200,
+    });
+
+    cy.visit("/", {
+      onBeforeLoad(window) {
+        Object.defineProperty(window.navigator, "language", {
+          get: cy.stub().returns("en-GB").as("language"),
+        });
+      },
+    });
   });
 
   it("is expected to have two input fields and a submit button", () => {
@@ -31,11 +42,11 @@ describe("A login view render on site load", () => {
 
   describe("when sign in is not successful", () => {
     beforeEach(() => {
-      cy.intercept("POST", "**auth/sign_in", {
+      cy.intercept("POST", "**api/auth/sign_in", {
         statusCode: 401,
         fixture: "authenticationFailure.json",
       });
-      cy.intercept("GET", "**auth/validate_token**", {
+      cy.intercept("GET", "**api/auth/validate_token**", {
         statusCode: 401,
         fixture: "authenticationFailure.json",
       });

@@ -20,7 +20,10 @@ const Fika = {
         headers: headers,
       });
       toast.success(response.data.message, {
-        onClose: () => setLoading(false),
+        onClose: () => {
+          setLoading(false);
+          Fika.index();
+        },
       });
     } catch (error) {
       toast.error(error.response.data.message, {

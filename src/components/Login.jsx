@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { LoadingButton } from "@mui/lab";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import auth from "../modules/auth";
 import logo from "../img/logo.png";
 import logoCup from "../img/FikaTogetherCup.png";
@@ -11,6 +12,8 @@ import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const border = isTabletOrMobile
     ? { border: "" }
@@ -23,8 +26,8 @@ const Login = () => {
     const password = form.password.value;
     try {
       const response = await auth.signIn(email, password);
-
-      toast.success("Login Successful", {
+      setLoading(true);
+      toast.success(t("loginSuccess"), {
         onClose: () =>
           dispatch({
             type: "SET_CURRENT_USER",
@@ -54,7 +57,7 @@ const Login = () => {
           position: "absolute",
           left: "15%",
           top: "25%",
-          display:"inline-block",
+          display: "inline-block",
         }}
         noValidate
         autoComplete="on"
@@ -64,29 +67,30 @@ const Login = () => {
           <TextField
             data-cy="email-input"
             id="email"
-            label="Email"
+            label={t("email")}
             variant="outlined"
             margin="dense"
           />
           <TextField
             data-cy="password-input"
             id="password"
-            label="Password"
+            label={t("password")}
             variant="outlined"
             margin="dense"
             type="password"
           />
-          <Button
+          <LoadingButton
             data-cy="btn-login"
             type="submit"
             variant="contained"
             margin="dense"
+            loading={loading}
             sx={{
               backgroundColor: "#4C9074",
             }}
           >
-            Sign In
-          </Button>
+            {t("login")}
+          </LoadingButton>
         </form>
       </Box>
       <div data-cy="sign-in-toast">
