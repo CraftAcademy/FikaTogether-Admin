@@ -21,18 +21,31 @@ describe("Admin can see a list of departments", () => {
         payload: true,
       });
       cy.get("[data-cy=departments-btn]").click();
-      cy.get("[data-cy=department-table]").within(() => {
-        cy.contains("HR").click();
-      });
     });
 
     it("is expected that the participant table is visible", () => {
+      cy.get("[data-cy=department-table]").within(() => {
+        cy.contains("HR").click();
+      });
       cy.get("[data-cy=participant-table]")
         .should("be.visible")
         .within(() => {
           cy.contains("Name").should("be.visible");
           cy.contains("Fika Score").should("be.visible");
         });
+      cy.get(".MuiDataGrid-virtualScrollerRenderZone")
+        .children()
+        .should("have.length", 6);
+    });
+
+    it("is expected that changing department renders new participants", () => {
+      cy.get("[data-cy=departments-btn]").click();
+      cy.get("[data-cy=department-table]").within(() => {
+        cy.contains("Production").click();
+      });
+      cy.get(".MuiDataGrid-virtualScrollerRenderZone")
+        .children()
+        .should("have.length", 2);
     });
   });
 });
