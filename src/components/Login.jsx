@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { LoadingButton } from "@mui/lab";
@@ -62,7 +62,7 @@ const Login = () => {
         noValidate
         autoComplete="on"
         className="login-box"
-        >
+      >
         <form onSubmit={handleSubmit} data-cy="sign-in-form">
           <TextField
             data-cy="email-input"
@@ -70,7 +70,7 @@ const Login = () => {
             label={t("email")}
             variant="outlined"
             margin="dense"
-            />
+          />
           <TextField
             data-cy="password-input"
             id="password"
@@ -78,7 +78,7 @@ const Login = () => {
             variant="outlined"
             margin="dense"
             type="password"
-            />
+          />
           <LoadingButton
             data-cy="btn-login"
             type="submit"

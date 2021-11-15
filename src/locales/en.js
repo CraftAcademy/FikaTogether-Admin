@@ -13,8 +13,7 @@ const en = {
     participant: "Participant",
     fikaScore: "Average Fika Score",
     contactText: "If you have any questions, please contact us at:",
-    en: "English",
-    sv: "Swedish",
+    language: "Svenska",
   },
 };
 export default en;

@@ -27,7 +27,7 @@ describe("User can navigate through the app", () => {
       .and("have.text", "Departments");
     cy.get("[data-cy=language-btn]")
       .should("be.visible")
-      .and("have.text", "Swedish");
+      .and("have.text", "Svenska");
     cy.get("[data-cy=contact-btn]")
       .should("be.visible")
       .and("have.text", "Contact");
@@ -45,10 +45,9 @@ describe("User can navigate through the app", () => {
 
   it("is expected to chose the language of the browser on load", () => {
     cy.get("[data-cy=language-btn]").within(() => {
-      cy.contains("Swedish").should("be.visible");
+      cy.contains("Svenska").should("be.visible");
     });
   });
-
 });
 
 describe("When the language button is pressed", () => {
@@ -68,10 +67,10 @@ describe("When the language button is pressed", () => {
     });
   });
 
-  it.only("is expected to change language when language button is clicked", () => {
+  it("is expected to change language when language button is clicked", () => {
     cy.get("[data-cy=language-btn]").click();
     cy.get("[data-cy=language-btn]").within(() => {
-      cy.contains("en").should("be.visible");
+      cy.contains("Svenska").should("be.visible");
     });
   });
 });

@@ -14,8 +14,7 @@ const sv = {
     fikaScore: "Fika-poäng",
     contactText:
       "Fika-Together är ett projekt av Fika-Together-gruppen. För mer information om projektet, se",
-    en: "Engelska",
-    sv: "Svenska",
+    language: "English",
   },
 };
 export default sv;
