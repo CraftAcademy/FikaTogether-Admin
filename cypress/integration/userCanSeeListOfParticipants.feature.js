@@ -26,12 +26,12 @@ describe("Admin can see a list of departments", () => {
       });
     });
 
-    it("is expected that the employee table is visible", () => {
-      cy.get("[data-cy=employee-table]")
+    it("is expected that the participant table is visible", () => {
+      cy.get("[data-cy=participant-table]")
         .should("be.visible")
         .within(() => {
-          cy.contains("name").should("be.visible");
-          cy.contains("Total Fika Score").should("be.visible");
+          cy.contains("Name").should("be.visible");
+          cy.contains("Fika Score").should("be.visible");
         });
     });
   });

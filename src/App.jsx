@@ -8,16 +8,11 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Login from "./components/Login";
 import { useSelector } from "react-redux";
-import store from "./state/store/configureStore";
-import i18n from "./i18n";
+import ParticipantList from "./components/ParticipantList";
 
 const App = () => {
   const { authenticated } = useSelector((state) => state);
-
-  if (navigator.language.includes("sv")) {
-    i18n.changeLanguage("sv");
-    store.dispatch({ type: "SET_LANGUAGE", payload: "sv" });
-  }
+  const { participantList } = useSelector((state) => state);
 
   const our_custome_theme = useMemo(
     () =>
@@ -66,6 +61,7 @@ const App = () => {
               <Route exact path="/" element={<Events />} />
               <Route path="/departments" element={<Departments />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/departments/HR" element={<ParticipantList />} />
             </Routes>
           </>
         )}

@@ -6,9 +6,9 @@
       "average_score": 4,
       "participants": [
         { "id": 1, "name": "Fraser Hughes" },
-        { "id": 5, "name": "Dorian Buck" },
-        { "id": 5, "name": "Max Anderson" },
-        { "id": 5, "name": "August Enhager" },
+        { "id": 2, "name": "Dorian Buck" },
+        { "id": 3, "name": "Max Anderson" },
+        { "id": 4, "name": "August Enhager" },
         { "id": 5, "name": "Thomas Ochman" },
         { "id": 6, "name": "Oliver Ochman" }
       ]

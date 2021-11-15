@@ -6,9 +6,11 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { makeStyles } from "@mui/styles";
+import { useDispatch } from "react-redux";
 
 const Departments = () => {
   const { departments } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   useEffect(() => {
     Department.index();
@@ -34,6 +36,12 @@ const Departments = () => {
         <Link
           to={`/departments/${params.value}`}
           style={{ color: "inherit", textDecoration: "inherit" }}
+          onClick={() => {
+            dispatch({
+              type: "SET_EMPLOYEE_LIST",
+              payload: params.value,
+            });
+          }}
         >
           {params.value}
         </Link>
