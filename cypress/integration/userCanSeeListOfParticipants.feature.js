@@ -46,7 +46,7 @@ describe("Admin can see a list of departments", () => {
   });
 
   describe("unsuccessfully", () => {
-    it("is expected that a toast will be displayed", () => {
+    it("is expected that when no participants are in the department", () => {
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").within(() => {
         cy.contains("Marketing").click();

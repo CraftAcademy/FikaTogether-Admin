@@ -11,8 +11,7 @@ import { useSelector } from "react-redux";
 import ParticipantList from "./components/ParticipantList";
 
 const App = () => {
-  const { authenticated } = useSelector((state) => state);
-  const { participantList } = useSelector((state) => state);
+  const { authenticated, participantList } = useSelector((state) => state);
 
   const our_custome_theme = useMemo(
     () =>
@@ -48,7 +47,7 @@ const App = () => {
     []
   );
 
-  let departmentUrl = `/departments/${participantList.department}`
+  let departmentUrl = `/departments/${participantList.department}`;
 
   return (
     <ThemeProvider theme={our_custome_theme}>

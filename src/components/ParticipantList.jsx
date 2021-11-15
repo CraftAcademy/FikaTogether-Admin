@@ -4,8 +4,7 @@ import Container from "@mui/material/Container";
 import { useSelector } from "react-redux";
 
 const ParticipantList = () => {
-  const { participantList } = useSelector((state) => state);
-  const { departments } = useSelector((state) => state);
+  const { participantList, departments } = useSelector((state) => state);
 
   const columns = [
     {
