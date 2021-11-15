@@ -14,18 +14,17 @@ const ParticipantList = () => {
       flex: 1,
     },
     {
-      field: "fikaScore",
+      field: "score",
       headerName: "Fika Score",
       flex: 1,
     },
   ];
 
-  
   let rows = departments[participantList.id - 1].participants.map((participant) => {
     return {
       id: participant.id,
       name: participant.name,
-      // score: participant.fika_score,
+      score: participant.fika_score,
     };
   });
 

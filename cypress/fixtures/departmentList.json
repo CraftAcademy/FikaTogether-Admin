@@ -25,22 +25,26 @@
     {
       "id": 3,
       "name": "Marketing",
-      "average_score": 5
+      "average_score": 5,
+      "participants": []
     },
     {
       "id": 4,
       "name": "Management",
-      "average_score": 2
+      "average_score": 2,
+      "participants": []
     },
     {
       "id": 5,
       "name": "Sales",
-      "average_score": 3
+      "average_score": 3,
+      "participants": []
     },
     {
       "id": 6,
       "name": "Accounting",
-      "average_score": 4
+      "average_score": 4,
+      "participants": []
     }
   ]
 }
