@@ -2,7 +2,7 @@ const initialState = {
   fikas: [],
   departments: [],
   authenticated: false,
-  participantList: []
+  participantList: {}
 };
 
 export default initialState;
