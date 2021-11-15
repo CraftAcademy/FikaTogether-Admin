@@ -48,6 +48,8 @@ const App = () => {
     []
   );
 
+  let departmentUrl = `/departments/${participantList.department}`
+
   return (
     <ThemeProvider theme={our_custome_theme}>
       <CssBaseline />
@@ -61,7 +63,7 @@ const App = () => {
               <Route exact path="/" element={<Events />} />
               <Route path="/departments" element={<Departments />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/departments/HR" element={<ParticipantList />} />
+              <Route path={departmentUrl} element={<ParticipantList />} />
             </Routes>
           </>
         )}

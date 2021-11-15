@@ -39,7 +39,7 @@ const Departments = () => {
           onClick={() => {
             dispatch({
               type: "SET_PARTICIPANT_LIST",
-              payload: departments[0].id - 1,
+              payload: params.row,
             });
           }}
         >
