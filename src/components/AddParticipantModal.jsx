@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import FormLabel from "@mui/material/FormLabel";
 // import { useTranslation } from "react-i18next";
-// import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-// import DateAdapter from "@mui/lab/AdapterDayjs";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import DateAdapter from "@mui/lab/AdapterDayjs";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { Modal } from "@mui/material";
 // import SeniorityMenu from "./SeniorityMenu";
@@ -16,19 +16,17 @@ import { Modal } from "@mui/material";
 const AddParticipantModal = (props) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
+  const dateRef = useRef("");
   // const { t } = useTranslation();
-  // const [dateValue, setDateValue] = useState();
-  // const [participantName, setParticipantName] = useState("");
 
   const handleSubmit = () => {
     // event.preventDefault();
     console.log(nameRef.current.value);
     console.log(emailRef.current.value);
+    console.log(dateRef.current.value);
 
     // const form = event.target;
-    // const email = form.email.value;
     // const seniority = form.seniority.value;
-    // const date = dateValue;
 
     // try {
     //   const response = await post(name, email, seniority, date);
@@ -47,65 +45,66 @@ const AddParticipantModal = (props) => {
   };
 
   return (
-    <Modal
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-      {...props}
-    >
-      <Box
-        data-cy="add-participant-form"
-        sx={style}
-        component="form"
-        onSubmit={handleSubmit}
+    <LocalizationProvider dateAdapter={DateAdapter}>
+      <Modal
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        {...props}
       >
-        <TextField
-          data-cy="name-input"
-          // label={t("inputNameLabel")}
-          variant="outlined"
-          margin="dense"
-          inputRef={nameRef}
-          // fullWidth="true"
-        />
-        <TextField
-          data-cy="email-input"
-          // label={t("email")}
-          variant="outlined"
-          margin="dense"
-          inputRef={emailRef}
-          // fullWidth="true"
-        />
-
-        <Button
-          data-cy="add-btn"
-          type="submit"
-          variant="contained"
-          margin="dense"
-          // fullWidth="true"
-          sx={{
-            backgroundColor: "#4C9074",
-            m: 2,
-          }}
+        <Box
+          data-cy="add-participant-form"
+          sx={style}
+          component="form"
+          onSubmit={handleSubmit}
         >
-          {/* {t("addsParticipantBtn")} */}
-        </Button>
-      </Box>
-    </Modal>
+          <TextField
+            data-cy="name-input"
+            // label={t("inputNameLabel")}
+            variant="outlined"
+            margin="dense"
+            inputRef={nameRef}
+            // fullWidth="true"
+          />
+          <TextField
+            data-cy="email-input"
+            // label={t("email")}
+            variant="outlined"
+            margin="dense"
+            inputRef={emailRef}
+            // fullWidth="true"
+          />
+          <div data-cy="start-date-input">
+            <DesktopDatePicker
+              // label={t("InputStartDate")}
+              // inputFormat="yyyy/mm/dd"              
+              onChange={() => {}}
+              renderInput={(params) => (
+                <TextField {...params} inputRef={dateRef} />
+              )}
+            />
+          </div>
+
+          <Button
+            data-cy="add-btn"
+            type="submit"
+            variant="contained"
+            margin="dense"
+            // fullWidth="true"
+            sx={{
+              backgroundColor: "#4C9074",
+              m: 2,
+            }}
+          >
+            {/* {t("addsParticipantBtn")} */}
+          </Button>
+        </Box>
+      </Modal>
+    </LocalizationProvider>
   );
 };
 
 export default AddParticipantModal;
 
-// <LocalizationProvider dateAdapter={DateAdapter}>
-
-//   <div data-cy="start-date-input">
-//     <DesktopDatePicker
-//       label={t("InputStartDate")}
-//       // inputFormat="yyyy/mm/dd"
-//       // value={dateValue}
-//       // onChange={handleChange}
-//       renderInput={(params) => <TextField {...params} />}
-//     />
-//   </div>
 //   <FormLabel component="legend">{t("Management")}</FormLabel>
 //   <RadioGroup
 //     row
