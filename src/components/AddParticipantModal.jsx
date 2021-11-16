@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
 import { useTranslation } from "react-i18next";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
@@ -9,7 +13,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 const AddParticipantModal = () => {
   const { t } = useTranslation();
-  const [value, setValue] = useState(new Date(""));
+  const [value, setValue] = useState();
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -47,14 +51,34 @@ const AddParticipantModal = () => {
             margin="dense"
             fullWidth="true"
           />
-          <DesktopDatePicker
-            data-cy="start-date-input"
-            label="Date"
-            inputFormat="yyyy/mm/dd"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
+          <div data-cy="start-date-input">
+            <DesktopDatePicker
+              label="Date"
+              // inputFormat="yyyy/mm/dd"
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </div>
+          <FormLabel component="legend">Management</FormLabel>
+          <RadioGroup
+            row
+            aria-label="Management"
+            name="row-radio-buttons-group"
+            defaultValue="Non Management"
+            data-cy="management"
+          >
+            <FormControlLabel
+              value="Management"
+              control={<Radio />}
+              label="Management"
+            />
+            <FormControlLabel
+              value="Non Management"
+              control={<Radio />}
+              label="Non Management"
+            />
+          </RadioGroup>
 
           <Button
             data-cy="add-btn"

@@ -31,11 +31,15 @@ describe("Admin can create and delete participants", () => {
     it.only("is expected that the form has the following input fields", () => {
       cy.get("[data-cy=manage-participants-btn").click();
       cy.get("[data-cy=name-input]").type("Ben Smith");
-      cy.get("[data-cy=email-input]").type("Ben@email.com")
-      cy.get("[data-cy=start-date-input]")
-      cy.get("[data-cy=management")
-      cy.get("[data-cy=senority]")
-      cy.get("[data-cy=add-btn]").should("be.visible")
+      cy.get("[data-cy=email-input]").type("Ben@email.com");
+      cy.get("[data-cy=start-date-input]").within(() => {
+        cy.get("input:first").clear().type("11/17/2021");
+      });
+      cy.get("[data-cy=management").within(() => {
+        cy.get("input:first").click();
+      });
+      cy.get("[data-cy=senority]");
+      cy.get("[data-cy=add-btn]").should("be.visible");
     });
   });
 });
