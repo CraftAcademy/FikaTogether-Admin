@@ -20,6 +20,18 @@ const AddParticipantModal = () => {
     setDateValue(newValue);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.email.value;
+    const email = form.email.value;
+    const seniority = form.seniority.value;
+    const date = dateValue;
+
+    console.log(form);
+  };
+
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -35,7 +47,7 @@ const AddParticipantModal = () => {
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <Box sx={style}>
-        <form data-cy="add-participant-form">
+        <form data-cy="add-participant-form" onSubmit={handleSubmit}>
           <TextField
             data-cy="name-input"
             id="name"
@@ -61,7 +73,7 @@ const AddParticipantModal = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </div>
-          <FormLabel component="legend">Management</FormLabel>
+          <FormLabel component="legend">{t(Management)}</FormLabel>
           <RadioGroup
             row
             aria-label={t("selectManagementLabel")}
