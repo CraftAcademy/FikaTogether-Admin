@@ -35,9 +35,9 @@ describe("Admin can create and delete participants", () => {
       cy.get("[data-cy=start-date-input]").within(() => {
         cy.get("input:first").clear().type("17/11/2021");
       });
-      // cy.get("[data-cy=management]").within(() => {
-      //   cy.get("input:first").click();
-      // });
+      cy.get("[data-cy=management]").within(() => {
+        cy.get("input:first").click();
+      });
       // cy.get("[data-cy=seniority-level]").click();
       // cy.contains("3").should("be.visible").click();
       cy.get("[data-cy=add-btn]").click();

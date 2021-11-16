@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-// import Radio from "@mui/material/Radio";
-// import RadioGroup from "@mui/material/RadioGroup";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
 // import { useTranslation } from "react-i18next";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
@@ -17,6 +17,7 @@ const AddParticipantModal = (props) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const dateRef = useRef("");
+  const [management, setManagement] = useState();
   // const { t } = useTranslation();
 
   const handleSubmit = () => {
@@ -24,12 +25,16 @@ const AddParticipantModal = (props) => {
     console.log(nameRef.current.value);
     console.log(emailRef.current.value);
     console.log(dateRef.current.value);
-
+    console.log(management);
     // const form = event.target;
     // const seniority = form.seniority.value;
 
     // try {
     //   const response = await post(name, email, seniority, date);
+  };
+
+  const handleChange = (event) => {
+    setManagement(event.target.value)
   };
 
   const style = {
@@ -76,13 +81,36 @@ const AddParticipantModal = (props) => {
           <div data-cy="start-date-input">
             <DesktopDatePicker
               // label={t("InputStartDate")}
-              // inputFormat="yyyy/mm/dd"              
+              // inputFormat="dd/mm/yyyy"
               onChange={() => {}}
               renderInput={(params) => (
                 <TextField {...params} inputRef={dateRef} />
               )}
             />
           </div>
+          <FormLabel component="legend">
+            Management
+            {/* {t("Management")} */}
+          </FormLabel>
+          <RadioGroup
+            onChange={handleChange}
+            row
+            // aria-label={t("selectManagementLabel")}
+            name="row-radio-buttons-group"
+            defaultValue="Non Management"
+            data-cy="management"
+          >
+            <FormControlLabel
+              value="Management"
+              control={<Radio />}
+              label="Management"
+            />
+            <FormControlLabel
+              value="Non Management"
+              control={<Radio />}
+              label="nonManagement"
+            />
+          </RadioGroup>
 
           <Button
             data-cy="add-btn"
@@ -105,26 +133,4 @@ const AddParticipantModal = (props) => {
 
 export default AddParticipantModal;
 
-//   <FormLabel component="legend">{t("Management")}</FormLabel>
-//   <RadioGroup
-//     row
-//     aria-label={t("selectManagementLabel")}
-//     name="row-radio-buttons-group"
-//     defaultValue="Non Management"
-//     data-cy="management"
-//   >
-//     <FormControlLabel
-//       value="Management"
-//       control={<Radio />}
-//       label={t("Management")}
-//     />
-//     <FormControlLabel
-//       value="Non Management"
-//       control={<Radio />}
-//       label={t("nonManagement")}
-//     />
-//   </RadioGroup>
 //   <SeniorityMenu />
-
-// </Box>
-// // </LocalizationProvider>
