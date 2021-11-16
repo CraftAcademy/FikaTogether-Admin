@@ -2,8 +2,8 @@
   "fikas": [
     {
       "id": 1,
-      "start_date": "2017-01-25T09:00:00",
-      "end_date": "2017-01-25T09:30:00",
+      "formated_start_date": "2017-01-25T09:00:00",
+      "formated_end_date": "2017-01-25T09:30:00",
       "participants": [
         {
           "name": "Jane Doe",
@@ -17,8 +17,8 @@
     },
     {
       "id": 2,
-      "start_date": "2017-01-25T09:30:00",
-      "end_date": "2017-01-25T10:00:00",
+      "formated_start_date": "2017-01-25T09:30:00",
+      "formated_end_date": "2017-01-25T10:00:00",
       "participants": [
         {
           "name": "Bend Doe",
@@ -32,8 +32,8 @@
     },
     {
       "id": 3,
-      "start_date": "2017-01-25T10:00:00",
-      "end_date": "2017-01-25T10:30:00",
+      "formated_start_date": "2017-01-25T10:00:00",
+      "formated_end_date": "2017-01-25T10:30:00",
       "participants": [
         {
           "name": "Petar File",
@@ -47,8 +47,8 @@
     },
     {
       "id": 4,
-      "start_date": "2017-01-25T10:30:00",
-      "end_date": "2017-01-25T11:00:00",
+      "formated_start_date": "2017-01-25T10:30:00",
+      "formated_end_date": "2017-01-25T11:00:00",
       "participants": [
         {
           "name": "Christy Doe",
@@ -62,8 +62,8 @@
     },
     {
       "id": 5,
-      "start_date": "2017-01-25T10:30:00",
-      "end_date": "2017-01-25T11:00:00",
+      "formated_start_date": "2017-01-25T10:30:00",
+      "formated_end_date": "2017-01-25T11:00:00",
       "participants": [
         {
           "name": "Last Doe",
