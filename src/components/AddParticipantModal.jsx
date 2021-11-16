@@ -73,7 +73,7 @@ const AddParticipantModal = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </div>
-          <FormLabel component="legend">{t(Management)}</FormLabel>
+          <FormLabel component="legend">{t("Management")}</FormLabel>
           <RadioGroup
             row
             aria-label={t("selectManagementLabel")}
