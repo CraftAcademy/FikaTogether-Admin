@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import SeniorityMenu from "./SeniorityMenu";
 
 const AddParticipantModal = () => {
   const { t } = useTranslation();
@@ -79,7 +80,7 @@ const AddParticipantModal = () => {
               label="Non Management"
             />
           </RadioGroup>
-
+          <SeniorityMenu />
           <Button
             data-cy="add-btn"
             type="submit"
