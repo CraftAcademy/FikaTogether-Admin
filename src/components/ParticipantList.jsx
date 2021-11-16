@@ -5,7 +5,6 @@ import Container from "@mui/material/Container";
 import { makeStyles } from "@mui/styles";
 import { LoadingButton } from "@mui/lab";
 import AddParticipantModal from "./AddParticipantModal";
-import Modal from "@mui/material/Modal";
 
 const ParticipantList = () => {
   const { participantList, departments } = useSelector((state) => state);
@@ -32,15 +31,15 @@ const ParticipantList = () => {
     },
   ];
 
-  let rows = departments[participantList.id - 1].participants.map(
-    (participant) => {
+  let rows = departments
+    .find((department) => department.id === participantList.id)
+    .participants.map((participant) => {
       return {
         id: participant.id,
         name: participant.name,
         score: participant.fika_score,
       };
-    }
-  );
+    });
 
   const useStyles = makeStyles({
     root: {
@@ -64,24 +63,15 @@ const ParticipantList = () => {
         type="link"
         variant="contained"
         margin="dense"
-        // loading={loading}
         sx={{
           backgroundColor: "#4C9074",
-          m: 5
+          m: 5,
         }}
         onClick={handleOpen}
       >
         Manage Participant
       </LoadingButton>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <AddParticipantModal />
-      </Modal>
-
+      <AddParticipantModal open={open} onCLose={handleClose} />
       <div
         style={{ width: "100%", height: 400 }}
         data-cy="participant-table"
