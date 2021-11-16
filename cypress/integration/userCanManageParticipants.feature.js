@@ -11,7 +11,7 @@ describe("Admin can create and delete participants", () => {
     });
   });
 
-  describe('successfully', () => {
+  describe("successfully", () => {
     beforeEach(() => {
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").within(() => {
@@ -19,13 +19,23 @@ describe("Admin can create and delete participants", () => {
       });
     });
 
-    it.only('is expected to display a manage participants button', () => {
-      cy.get('[data-cy=manage-participants-btn').should('be.visible')
+    it("is expected to display a manage participants button", () => {
+      cy.get("[data-cy=manage-participants-btn").should("be.visible");
     });
 
-    it('is expected to display an input form when clicked', () => {
-      cy.get('[data-cy=manage-participants-btn').click()
-      cy.get('[data-cy=participant-input-form]').should('be.visible')
+    it("is expected to display an input form when clicked", () => {
+      cy.get("[data-cy=manage-participants-btn").click();
+      cy.get("[data-cy=add-participant-form]").should("be.visible");
+    });
+
+    it.only("is expected that the form has the following input fields", () => {
+      cy.get("[data-cy=manage-participants-btn").click();
+      cy.get("[data-cy=name-input]").type("Ben Smith");
+      cy.get("[data-cy=email-input]").type("Ben@email.com")
+      cy.get("[data-cy=start-date-input]")
+      cy.get("[data-cy=management")
+      cy.get("[data-cy=senority]")
+      cy.get("[data-cy=add-btn]").should("be.visible")
     });
   });
 });
