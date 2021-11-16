@@ -14,10 +14,10 @@ import SeniorityMenu from "./SeniorityMenu";
 
 const AddParticipantModal = () => {
   const { t } = useTranslation();
-  const [value, setValue] = useState();
+  const [dateValue, setDateValue] = useState();
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setDateValue(newValue);
   };
 
   const style = {
@@ -56,7 +56,7 @@ const AddParticipantModal = () => {
             <DesktopDatePicker
               label="Date"
               // inputFormat="yyyy/mm/dd"
-              value={value}
+              value={dateValue}
               onChange={handleChange}
               renderInput={(params) => <TextField {...params} />}
             />
