@@ -4,21 +4,21 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const SeniorityMenu = () => {
-  const [age, setAge] = React.useState("");
-
+const SeniorityMenu = ({rank, setRank}) => {
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setRank(event.target.value);
   };
 
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 200 }}>
-        <InputLabel id="demo-simple-select-autowidth-label">Seniority Level</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label">
+          Seniority Level
+        </InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={age}
+          value={rank}
           onChange={handleChange}
           label="Seniority Level"
           data-cy="seniority-level"

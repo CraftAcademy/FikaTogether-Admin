@@ -11,7 +11,7 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { Modal } from "@mui/material";
-// import SeniorityMenu from "./SeniorityMenu";
+import SeniorityMenu from "./SeniorityMenu";
 
 const AddParticipantModal = (props) => {
   const nameRef = useRef("");
@@ -19,22 +19,23 @@ const AddParticipantModal = (props) => {
   const dateRef = useRef("");
   const [management, setManagement] = useState();
   // const { t } = useTranslation();
+  const [rank, setRank] = useState("");
 
   const handleSubmit = () => {
     // event.preventDefault();
     console.log(nameRef.current.value);
     console.log(emailRef.current.value);
     console.log(dateRef.current.value);
-    console.log(management);
-    // const form = event.target;
-    // const seniority = form.seniority.value;
+    console.log(management, rank);  
+
+    // const form = event.target;  
 
     // try {
     //   const response = await post(name, email, seniority, date);
   };
 
   const handleChange = (event) => {
-    setManagement(event.target.value)
+    setManagement(event.target.value);
   };
 
   const style = {
@@ -112,6 +113,8 @@ const AddParticipantModal = (props) => {
             />
           </RadioGroup>
 
+          <SeniorityMenu rank={rank} setRank={setRank} />
+
           <Button
             data-cy="add-btn"
             type="submit"
@@ -132,5 +135,3 @@ const AddParticipantModal = (props) => {
 };
 
 export default AddParticipantModal;
-
-//   <SeniorityMenu />

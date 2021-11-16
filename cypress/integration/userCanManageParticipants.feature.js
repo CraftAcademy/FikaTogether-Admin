@@ -38,8 +38,8 @@ describe("Admin can create and delete participants", () => {
       cy.get("[data-cy=management]").within(() => {
         cy.get("input:first").click();
       });
-      // cy.get("[data-cy=seniority-level]").click();
-      // cy.contains("3").should("be.visible").click();
+      cy.get("[data-cy=seniority-level]").click();
+      cy.contains("3").should("be.visible").click();
       cy.get("[data-cy=add-btn]").click();
       cy.wait(500);
       cy.get("[data-cy=submit-response-toast]").should(
