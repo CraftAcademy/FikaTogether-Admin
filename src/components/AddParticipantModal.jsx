@@ -14,27 +14,28 @@ import SeniorityMenu from "./SeniorityMenu";
 
 const AddParticipantModal = () => {
   const { t } = useTranslation();
-  const [dateValue, setDateValue] = useState();
-
-  const handleChange = (newValue) => {
-    setDateValue(newValue);
-  };
-
+  // const [dateValue, setDateValue] = useState();
+  const [name, setName] = useState()
+  
+  // const handleChange = (event) => {    
+  //   setName(event.target.value);    
+  // };
+  
   const handleSubmit = async (event) => {
+    debugger;
     event.preventDefault();
+
+    // const name = form.name.value;
     const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const seniority = form.seniority.value;
-    const date = dateValue;
+    // const email = form.email.value;
+    // const seniority = form.seniority.value;
+    // const date = dateValue;
 
     // try {
     //   const response = await post(name, email, seniority, date);
-      
-
+  
     console.log(form);
   };
-
 
   const style = {
     position: "absolute",
@@ -50,67 +51,72 @@ const AddParticipantModal = () => {
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <Box sx={style}>
-        <form data-cy="add-participant-form" onSubmit={handleSubmit}>
-          <TextField
-            data-cy="name-input"
-            id="name"
-            label={t("inputNameLabel")}
-            variant="outlined"
-            margin="dense"
-            fullWidth="true"
+      <Box
+        data-cy="add-participant-form"
+        sx={style}
+        component="form"
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          data-cy="name-input"
+          id="name"
+          label={t("inputNameLabel")}
+          variant="outlined"
+          margin="dense"
+          fullWidth="true"
+          value={name}
+          // onChange={handleChange}
+        />
+        <TextField
+          data-cy="email-input"
+          id="email"
+          label={t("email")}
+          variant="outlined"
+          margin="dense"
+          fullWidth="true"
+        />
+        <div data-cy="start-date-input">
+          {/* <DesktopDatePicker
+            label={t("InputStartDate")}
+            // inputFormat="yyyy/mm/dd"
+            // value={dateValue}
+            // onChange={handleChange}
+            renderInput={(params) => <TextField {...params} />}
+          /> */}
+        </div>
+        <FormLabel component="legend">{t("Management")}</FormLabel>
+        <RadioGroup
+          row
+          aria-label={t("selectManagementLabel")}
+          name="row-radio-buttons-group"
+          defaultValue="Non Management"
+          data-cy="management"
+        >
+          <FormControlLabel
+            value="Management"
+            control={<Radio />}
+            label={t("Management")}
           />
-          <TextField
-            data-cy="email-input"
-            id="email"
-            label={t("email")}
-            variant="outlined"
-            margin="dense"
-            fullWidth="true"
+          <FormControlLabel
+            value="Non Management"
+            control={<Radio />}
+            label={t("nonManagement")}
           />
-          <div data-cy="start-date-input">
-            <DesktopDatePicker
-              label={t("InputStartDate")}
-              // inputFormat="yyyy/mm/dd"
-              value={dateValue}
-              onChange={handleChange}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </div>
-          <FormLabel component="legend">{t("Management")}</FormLabel>
-          <RadioGroup
-            row
-            aria-label={t("selectManagementLabel")}
-            name="row-radio-buttons-group"
-            defaultValue="Non Management"
-            data-cy="management"
-          >
-            <FormControlLabel
-              value="Management"
-              control={<Radio />}
-              label={t("Management")}
-            />
-            <FormControlLabel
-              value="Non Management"
-              control={<Radio />}
-              label={t("nonManagement")}
-            />
-          </RadioGroup>
-          <SeniorityMenu />
-          <Button
-            data-cy="add-btn"
-            type="submit"
-            variant="contained"
-            margin="dense"
-            fullWidth="true"
-            sx={{
-              backgroundColor: "#4C9074",
-              m: 2,
-            }}
-          >
-            {t("addsParticipantBtn")}
-          </Button>
-        </form>
+        </RadioGroup>
+        <SeniorityMenu />
+        <Button
+          data-cy="add-btn"
+          type="submit"
+          variant="contained"
+          margin="dense"
+          fullWidth="true"
+          sx={{
+            backgroundColor: "#4C9074",
+            m: 2,
+          }}
+        >
+          {t("addsParticipantBtn")}
+        </Button>
       </Box>
     </LocalizationProvider>
   );
