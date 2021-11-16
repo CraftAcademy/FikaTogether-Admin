@@ -17,7 +17,7 @@ const Events = () => {
 
   let rows = fikas.map((fika) => {
     return {
-      date: fika.formated_start_date,
+      date: fika.start_date,
       id: fika.id,
       participant_1: fika.participants[0].name,
       participant_2: fika.participants[1].name,

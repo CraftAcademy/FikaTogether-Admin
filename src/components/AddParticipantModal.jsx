@@ -23,10 +23,14 @@ const AddParticipantModal = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.email.value;
+    const name = form.name.value;
     const email = form.email.value;
     const seniority = form.seniority.value;
     const date = dateValue;
+
+    // try {
+    //   const response = await post(name, email, seniority, date);
+      
 
     console.log(form);
   };
