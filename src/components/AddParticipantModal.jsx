@@ -39,7 +39,7 @@ const AddParticipantModal = () => {
           <TextField
             data-cy="name-input"
             id="name"
-            label="Name"
+            label={t("inputNameLabel")}
             variant="outlined"
             margin="dense"
             fullWidth="true"
@@ -54,7 +54,7 @@ const AddParticipantModal = () => {
           />
           <div data-cy="start-date-input">
             <DesktopDatePicker
-              label="Date"
+              label={t("InputStartDate")}
               // inputFormat="yyyy/mm/dd"
               value={value}
               onChange={handleChange}
@@ -64,7 +64,7 @@ const AddParticipantModal = () => {
           <FormLabel component="legend">Management</FormLabel>
           <RadioGroup
             row
-            aria-label="Management"
+            aria-label={t("selectManagementLabel")}
             name="row-radio-buttons-group"
             defaultValue="Non Management"
             data-cy="management"
@@ -72,12 +72,12 @@ const AddParticipantModal = () => {
             <FormControlLabel
               value="Management"
               control={<Radio />}
-              label="Management"
+              label={t("Management")}
             />
             <FormControlLabel
               value="Non Management"
               control={<Radio />}
-              label="Non Management"
+              label={t("nonManagement")}
             />
           </RadioGroup>
           <SeniorityMenu />
@@ -92,7 +92,7 @@ const AddParticipantModal = () => {
               m: 2,
             }}
           >
-            Add Participant
+            {t("addsParticipantBtn")}
           </Button>
         </form>
       </Box>
