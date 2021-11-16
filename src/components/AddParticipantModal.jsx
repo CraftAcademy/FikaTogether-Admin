@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-// import TextField from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 // import Radio from "@mui/material/Radio";
 // import RadioGroup from "@mui/material/RadioGroup";
@@ -16,68 +16,83 @@ import { Modal } from "@mui/material";
 const AddParticipantModal = (props) => {
   // const { t } = useTranslation();
   // const [dateValue, setDateValue] = useState();
-  // const [name, setName] = useState()
+  const [name, setName] = useState()
 
   // const handleChange = (event) => {
   //   setName(event.target.value);
   // };
 
-  // const handleSubmit = async (event) => {
-  //   debugger;
-  //   event.preventDefault();
+  const handleSubmit = async (event) => {
+    debugger;
+    event.preventDefault();
 
-  //   // const name = form.name.value;
-  //   const form = event.target;
-  //   // const email = form.email.value;
-  //   // const seniority = form.seniority.value;
-  //   // const date = dateValue;
+    // const name = form.name.value;
+    // const form = event.target;
+    // const email = form.email.value;
+    // const seniority = form.seniority.value;
+    // const date = dateValue;
 
-  //   // try {
-  //   //   const response = await post(name, email, seniority, date);
+    // try {
+    //   const response = await post(name, email, seniority, date);
+  };
 
-  //   console.log(form);
-  // };
-
-  // const style = {
-  //   position: "absolute",
-  //   top: "50%",
-  //   left: "50%",
-  //   transform: "translate(-50%, -50%)",
-  //   width: 400,
-  //   bgcolor: "background.paper",
-  //   border: "2px solid #000",
-  //   boxShadow: 24,
-  //   p: 4,
-  // };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
   return (
-    <Modal aria-labelledby="modal-modal-title"
-    aria-describedby="modal-modal-description">
+    <Modal
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      {...props}
+    >
+      <Box
+        data-cy="add-participant-form"
+        sx={style}
+        component="form"
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          data-cy="name-input"
+          id="name"
+          // label={t("inputNameLabel")}
+          variant="outlined"
+          margin="dense"
+          // fullWidth="true"
+          value={name}
+          onChange={event => setName(event.target.value)}
+        />
 
+        <Button
+          data-cy="add-btn"
+          type="submit"
+          variant="contained"
+          margin="dense"
+          // fullWidth="true"
+          sx={{
+            backgroundColor: "#4C9074",
+            m: 2,
+          }}
+        >
+          {/* {t("addsParticipantBtn")} */}
+        </Button>
+      </Box>
     </Modal>
-  
-  
-    );
+  );
 };
 
 export default AddParticipantModal;
 
-// // <LocalizationProvider dateAdapter={DateAdapter}>
-// <Box
-//   data-cy="add-participant-form"
-//   sx={style}
-//   component="form"
-//   onSubmit={handleSubmit}
-// >
-//   <TextField
-//     data-cy="name-input"
-//     // id="name"
-//     // label={t("inputNameLabel")}
-//     variant="outlined"
-//     margin="dense"
-//     // fullWidth="true"
-//     // onChange={handleChange}
-//   />
+// <LocalizationProvider dateAdapter={DateAdapter}>
+
 //   <TextField
 //     data-cy="email-input"
 //     id="email"
@@ -115,18 +130,6 @@ export default AddParticipantModal;
 //     />
 //   </RadioGroup>
 //   <SeniorityMenu />
-//   <Button
-//     // data-cy="add-btn"
-//     // type="submit"
-//     variant="contained"
-//     margin="dense"
-//     // fullWidth="true"
-//     sx={{
-//       backgroundColor: "#4C9074",
-//       m: 2,
-//     }}
-//   >
-//     {t("addsParticipantBtn")}
-//   </Button>
+
 // </Box>
 // // </LocalizationProvider>

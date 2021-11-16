@@ -71,7 +71,7 @@ const ParticipantList = () => {
       >
         Manage Participant
       </LoadingButton>
-      <AddParticipantModal open={open} onCLose={handleClose} />
+      <AddParticipantModal open={open} onClose={handleClose} />
       <div
         style={{ width: "100%", height: 400 }}
         data-cy="participant-table"
