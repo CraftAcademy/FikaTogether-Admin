@@ -31,7 +31,7 @@ describe("Admin can create and delete participants", () => {
     it.only("is expected that the form shows a message on submit", () => {
       cy.get("[data-cy=manage-participants-btn]").click();
       cy.get("[data-cy=name-input]").type("Ben Smith");
-      // cy.get("[data-cy=email-input]").type("Ben@email.com");
+      cy.get("[data-cy=email-input]").type("Ben@email.com");
       // cy.get("[data-cy=start-date-input]").within(() => {
       //   cy.get("input:first").clear().type("11/17/2021");
       // });

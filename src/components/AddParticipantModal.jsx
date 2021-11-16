@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,19 +14,17 @@ import { Modal } from "@mui/material";
 // import SeniorityMenu from "./SeniorityMenu";
 
 const AddParticipantModal = (props) => {
+  const nameRef = useRef("");
+  const emailRef = useRef("");
   // const { t } = useTranslation();
   // const [dateValue, setDateValue] = useState();
-  const [name, setName] = useState()
+  // const [participantName, setParticipantName] = useState("");
 
-  // const handleChange = (event) => {
-  //   setName(event.target.value);
-  // };
+  const handleSubmit = () => {
+    // event.preventDefault();
+    console.log(nameRef.current.value);
+    console.log(emailRef.current.value);
 
-  const handleSubmit = async (event) => {
-    debugger;
-    event.preventDefault();
-
-    // const name = form.name.value;
     // const form = event.target;
     // const email = form.email.value;
     // const seniority = form.seniority.value;
@@ -62,13 +60,19 @@ const AddParticipantModal = (props) => {
       >
         <TextField
           data-cy="name-input"
-          id="name"
           // label={t("inputNameLabel")}
           variant="outlined"
           margin="dense"
+          inputRef={nameRef}
           // fullWidth="true"
-          value={name}
-          onChange={event => setName(event.target.value)}
+        />
+        <TextField
+          data-cy="email-input"
+          // label={t("email")}
+          variant="outlined"
+          margin="dense"
+          inputRef={emailRef}
+          // fullWidth="true"
         />
 
         <Button
@@ -93,14 +97,6 @@ export default AddParticipantModal;
 
 // <LocalizationProvider dateAdapter={DateAdapter}>
 
-//   <TextField
-//     data-cy="email-input"
-//     id="email"
-//     label={t("email")}
-//     variant="outlined"
-//     margin="dense"
-//     fullWidth="true"
-//   />
 //   <div data-cy="start-date-input">
 //     <DesktopDatePicker
 //       label={t("InputStartDate")}
