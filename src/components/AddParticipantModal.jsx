@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import Box from "@mui/material/Box";
@@ -21,6 +22,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const dateRef = useRef("");
   const [management, setManagement] = useState();
   const [rank, setRank] = useState("");
+  const { participantList } = useSelector((state) => state);
   const { t } = useTranslation();
 
   const handleSubmit = () => {
@@ -31,10 +33,10 @@ const AddParticipantModal = ({ open, setOpen }) => {
         start_date: dateRef.current.value,
         management: management,
         rank: rank,
+        department: participantList.department,
       },
     };
     Participants.create(participant);
-
     setOpen(false);
   };
 
@@ -54,7 +56,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
     p: 4,
   };
 
-  return (    
+  return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <Modal
         aria-labelledby="modal-modal-title"
