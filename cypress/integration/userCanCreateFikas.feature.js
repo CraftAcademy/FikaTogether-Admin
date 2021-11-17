@@ -18,6 +18,9 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
+      cy.get("[data-cy=date-time-fika]").within(() => {
+        cy.get("input:first").clear().type("17/11/2021 11:00");
+      });
       cy.get("[data-cy=submit-btn]").click();
     });
 
@@ -59,14 +62,16 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
-    });
-
-    it.only("is expected to disable the button until a date and time is chosen", () => {
-      cy.get("[data-cy=submit-btn]").should("be.disabled");
       cy.get("[data-cy=date-time-fika]").within(() => {
         cy.get("input:first").clear().type("17/11/2021 11:00");
       });
-      cy.get("[data-cy=submit-btn]").should("not.be.disabled");
+    });
+
+    it("is expected to disable the button when the date and time is in the wrong format", () => {
+      cy.get("[data-cy=date-time-fika]").within(() => {
+        cy.get("input:first").clear().type("I am not a date");
+      });
+      cy.get("[data-cy=submit-btn]").should("be.disabled");      
     });
 
     it("is expected to warn the user when no fikas are created", () => {
