@@ -25,6 +25,10 @@ describe("Admin can create Fikas by clicking a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
+    it("is expected to render a dateTime input", () => {
+      cy.get("[data-cy=date-time-fika]").should("be.visible");
+    });
+
     it("is expected that clicking the create fika button will display a message", () => {
       cy.wait(500);
       cy.get("[data-cy=submit-response-toast]").should(
