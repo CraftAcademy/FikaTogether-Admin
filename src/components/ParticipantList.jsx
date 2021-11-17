@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { DataGrid } from "@mui/x-data-grid";
 import Container from "@mui/material/Container";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
+import { LoadingButton } from "@mui/lab";
+import AddParticipantModal from "./AddParticipantModal";
 
 const ParticipantList = () => {
   const { participantList, departments } = useSelector((state) => state);
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const columns = [
     {
@@ -26,15 +31,15 @@ const ParticipantList = () => {
     },
   ];
 
-  let rows = departments[participantList.id - 1].participants.map(
-    (participant) => {
+  let rows = departments
+    .find((department) => department.id === participantList.id)
+    .participants.map((participant) => {
       return {
         id: participant.id,
         name: participant.name,
         score: participant.fika_score,
       };
-    }
-  );
+    });
 
   const useStyles = makeStyles({
     root: {
@@ -53,6 +58,19 @@ const ParticipantList = () => {
 
   return (
     <Container maxWidth="sm">
+      <LoadingButton
+        data-cy="manage-participants-btn"
+        variant="contained"
+        margin="dense"
+        sx={{
+          backgroundColor: "#4C9074",
+          m: 5,
+        }}
+        onClick={() => setOpen(true)}
+      >
+        {t("addsParticipantBtn")}
+      </LoadingButton>
+      <AddParticipantModal open={open} setOpen={setOpen} />
       <div
         style={{ width: "100%", height: 400 }}
         data-cy="participant-table"
