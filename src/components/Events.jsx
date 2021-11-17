@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { makeStyles } from "@mui/styles";
 
 import FikaButton from "./FikaButton";
+import FikaDateTime from "./FikaDateTime";
 const Events = () => {
   const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);
@@ -70,6 +71,7 @@ const Events = () => {
 
   return (
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>
+      <FikaDateTime />
       <FikaButton />
       <div
         style={{ height: 400, width: "100%" }}

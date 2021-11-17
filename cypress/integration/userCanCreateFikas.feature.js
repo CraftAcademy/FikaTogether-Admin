@@ -25,7 +25,7 @@ describe("Admin can create Fikas by clicking a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
-    it("is expected to render a dateTime input", () => {
+    it.only("is expected to render a dateTime input", () => {
       cy.get("[data-cy=date-time-fika]").should("be.visible");
     });
 
