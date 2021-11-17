@@ -4,9 +4,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const SeniorityMenu = ({rank, setRank}) => {
+const SeniorityMenu = ({seniority, setSeniority}) => {
   const handleChange = (event) => {
-    setRank(event.target.value);
+    setSeniority(event.target.value);
   };
 
   return (
@@ -18,7 +18,7 @@ const SeniorityMenu = ({rank, setRank}) => {
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={rank}
+          value={seniority}
           onChange={handleChange}
           label="Seniority Level"
           data-cy="seniority-level"

@@ -21,7 +21,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const emailRef = useRef("");
   const dateRef = useRef("");
   const [management, setManagement] = useState();
-  const [rank, setRank] = useState("");
+  const [seniority, setSeniority] = useState("");
   const { participantList } = useSelector((state) => state);
   const { t } = useTranslation();
 
@@ -32,7 +32,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
         email: emailRef.current.value,
         start_date: dateRef.current.value,
         management: management,
-        rank: rank,
+        seniority: seniority,
         department: participantList.department,
       },
     };
@@ -113,7 +113,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
               label={t("nonManagement")}
             />
           </RadioGroup>
-          <SeniorityMenu rank={rank} setRank={setRank} />
+          <SeniorityMenu seniority={seniority} setSeniority={setSeniority} />
           <Button
             data-cy="add-btn"
             type="submit"
