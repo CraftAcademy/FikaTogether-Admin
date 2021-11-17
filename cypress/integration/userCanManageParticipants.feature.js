@@ -74,8 +74,9 @@ describe("Admin can create and delete participants", () => {
       cy.get("[data-cy=seniority-level]").click();
       cy.contains("3").click();
       cy.get("[data-cy=add-btn]").click();
+      cy.wait(500)
       cy.get("[data-cy=participant-table").within(() => {
-        cy.contains("Ben Smith").should("be.visible");
+        cy.contains("Ben Smith").scrollIntoView().should("be.visible");
       });
     });
   });

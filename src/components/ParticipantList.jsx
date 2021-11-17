@@ -58,7 +58,6 @@ const ParticipantList = () => {
     <Container maxWidth="sm">
       <LoadingButton
         data-cy="manage-participants-btn"
-        // type="link"
         variant="contained"
         margin="dense"
         sx={{
