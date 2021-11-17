@@ -6,14 +6,17 @@ import DateTimePicker from "@mui/lab/DateTimePicker";
 import "dayjs/locale/fr";
 
 const FikaDateTime = ({ setDisabled }) => {
-  const [value, setValue] = useState(new Date());
+  const [fikaDate, setFikaDate] = useState("");
 
-  const handleChange = () => {
-    if (/^[0-2][0-9]\/[1?][1-9]\/[1-9][0-9]{3} [0-2][0-9]:[0-5][0-9]$/.test(value)) {
-      setDisabled(true)
+  const handleChange = (data) => {
+    if (
+      /^[0-2][0-9]\/[0-1?][1-9]\/[1-9][0-9]{3} [0-2][0-9]:[0-5][0-9]$/.test(data)
+    ) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
     }
-
-  }
+  };
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter} locale={"fr"}>
@@ -22,9 +25,10 @@ const FikaDateTime = ({ setDisabled }) => {
           renderInput={(props) => <TextField {...props} />}
           ampm={false}
           label="Choose next Fika"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
+          value={fikaDate}
+          onChange={(newValue, data) => {
+            setFikaDate(newValue);
+            handleChange(data);
           }}
           onAccept={() => {
             setDisabled(false);

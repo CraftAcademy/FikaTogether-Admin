@@ -37,7 +37,7 @@ describe("Admin can create Fikas by clicking a button", () => {
       );
     });
 
-    it("is expected that there will be five meeting in the table", () => {
+    it("is expected that there will be five meetings in the table", () => {
       cy.get(".MuiDataGrid-virtualScrollerRenderZone")
         .children()
         .should("have.length", 5);
