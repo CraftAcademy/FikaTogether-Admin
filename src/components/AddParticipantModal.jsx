@@ -140,7 +140,6 @@ const AddParticipantModal = ({ open, setOpen }) => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          // onClose={() => setLoading(false)}
         />
       </div>
     </LocalizationProvider>
