@@ -6,7 +6,7 @@ import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/fikas";
 import { useTranslation } from "react-i18next";
 
-const FikaButton = () => {
+const FikaButton = ({disabled}) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
@@ -18,6 +18,7 @@ const FikaButton = () => {
   return (
     <>
       <LoadingButton
+        disabled={disabled}
         sx={{ m: 5 }}
         data-cy="submit-btn"
         variant="outlined"

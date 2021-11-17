@@ -12,6 +12,7 @@ import FormLabel from "@mui/material/FormLabel";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+// Refactor to import all mui materials inside curlies
 import { Modal } from "@mui/material";
 import SeniorityMenu from "./SeniorityMenu";
 import { Participants } from "../modules/participants";

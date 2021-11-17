@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import FikaDateTime from "./FikaDateTime";
 const Events = () => {
   const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     Fika.index();
@@ -71,8 +72,8 @@ const Events = () => {
 
   return (
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>
-      <FikaDateTime />
-      <FikaButton />
+      <FikaDateTime setDisabled={setDisabled}/>
+      <FikaButton disabled={disabled} />
       <div
         style={{ height: 400, width: "100%" }}
         data-cy="fika-table"
