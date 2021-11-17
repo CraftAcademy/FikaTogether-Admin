@@ -24,7 +24,6 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
-    // event.preventDefault();
     const participant = {
       participant: {
         name: nameRef.current.value,
@@ -55,83 +54,79 @@ const AddParticipantModal = ({ open, setOpen }) => {
     p: 4,
   };
 
-  return (
-    <>
-      <LocalizationProvider dateAdapter={DateAdapter}>
-        <Modal
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          open={open}
+  return (    
+    <LocalizationProvider dateAdapter={DateAdapter}>
+      <Modal
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        open={open}
+      >
+        <Box
+          data-cy="add-participant-form"
+          sx={style}
+          component="form"
+          onSubmit={handleSubmit}
         >
-          <Box
-            data-cy="add-participant-form"
-            sx={style}
-            component="form"
-            onSubmit={handleSubmit}
+          <TextField
+            data-cy="name-input"
+            label={t("inputNameLabel")}
+            variant="outlined"
+            margin="dense"
+            inputRef={nameRef}
+            fullWidth={true}
+          />
+          <TextField
+            data-cy="email-input"
+            label={t("email")}
+            variant="outlined"
+            margin="dense"
+            inputRef={emailRef}
+            fullWidth={true}
+          />
+          <div data-cy="start-date-input">
+            <DesktopDatePicker
+              label={t("InputStartDate")}
+              onChange={() => {}}
+              renderInput={(params) => (
+                <TextField {...params} inputRef={dateRef} />
+              )}
+            />
+          </div>
+          <FormLabel component="legend">{t("selectManagementLabel")}</FormLabel>
+          <RadioGroup
+            onChange={handleManagement}
+            row
+            aria-label={t("selectManagementLabel")}
+            defaultValue="Non Management"
+            data-cy="management"
           >
-            <TextField
-              data-cy="name-input"
-              label={t("inputNameLabel")}
-              variant="outlined"
-              margin="dense"
-              inputRef={nameRef}
-              fullWidth={true}
+            <FormControlLabel
+              value="Management"
+              control={<Radio />}
+              label={t("selectManagementLabel")}
             />
-            <TextField
-              data-cy="email-input"
-              label={t("email")}
-              variant="outlined"
-              margin="dense"
-              inputRef={emailRef}
-              fullWidth={true}
+            <FormControlLabel
+              value="Non Management"
+              control={<Radio />}
+              label={t("nonManagement")}
             />
-            <div data-cy="start-date-input">
-              <DesktopDatePicker
-                label={t("InputStartDate")}
-                onChange={() => {}}
-                renderInput={(params) => (
-                  <TextField {...params} inputRef={dateRef} />
-                )}
-              />
-            </div>
-            <FormLabel component="legend">
-              {t("selectManagementLabel")}
-            </FormLabel>
-            <RadioGroup
-              onChange={handleManagement}
-              row
-              aria-label={t("selectManagementLabel")}
-              defaultValue="Non Management"
-              data-cy="management"
-            >
-              <FormControlLabel
-                value="Management"
-                control={<Radio />}
-                label={t("selectManagementLabel")}
-              />
-              <FormControlLabel
-                value="Non Management"
-                control={<Radio />}
-                label={t("nonManagement")}
-              />
-            </RadioGroup>
-            <SeniorityMenu rank={rank} setRank={setRank} />
-            <Button
-              data-cy="add-btn"
-              type="submit"
-              variant="contained"
-              margin="dense"
-              fullWidth={true}
-              sx={{
-                backgroundColor: "#4C9074",
-                m: 2,
-              }}
-            >
-              {t("addsParticipantBtn")}
-            </Button>
-          </Box>
-        </Modal>
-      </LocalizationProvider>
+          </RadioGroup>
+          <SeniorityMenu rank={rank} setRank={setRank} />
+          <Button
+            data-cy="add-btn"
+            type="submit"
+            variant="contained"
+            margin="dense"
+            fullWidth={true}
+            sx={{
+              backgroundColor: "#4C9074",
+              m: 2,
+            }}
+          >
+            {t("addsParticipantBtn")}
+          </Button>
+        </Box>
+      </Modal>
       <div data-cy="submit-response-toast">
         <ToastContainer
           position="top-center"
@@ -146,7 +141,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
           // onClose={() => setLoading(false)}
         />
       </div>
-    </>
+    </LocalizationProvider>
   );
 };
 

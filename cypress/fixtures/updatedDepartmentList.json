@@ -1,0 +1,51 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "HR",
+      "average_score": 4,
+      "participants": [
+        { "id": 1, "name": "Fraser Hughes" },
+        { "id": 2, "name": "Dorian Buck" },
+        { "id": 3, "name": "Max Anderson" },
+        { "id": 4, "name": "August Enhager" },
+        { "id": 5, "name": "Thomas Ochman" },
+        { "id": 6, "name": "Oliver Ochman" },
+        { "id": 7, "name": "Ben Smith"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Production",
+      "average_score": 3,
+      "participants": [
+        { "id": 7, "name": "John Snow" },
+        { "id": 8, "name": "Bruce Banner" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Marketing",
+      "average_score": 5,
+      "participants": []
+    },
+    {
+      "id": 4,
+      "name": "Management",
+      "average_score": 2,
+      "participants": []
+    },
+    {
+      "id": 5,
+      "name": "Sales",
+      "average_score": 3,
+      "participants": []
+    },
+    {
+      "id": 6,
+      "name": "Accounting",
+      "average_score": 4,
+      "participants": []
+    }
+  ]
+}

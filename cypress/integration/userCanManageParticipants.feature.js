@@ -21,6 +21,7 @@ describe("Admin can create and delete participants", () => {
         body: { message: "Participant succesfully added" },
         statusCode: 201,
       });
+
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").within(() => {
         cy.contains("HR").click();
@@ -36,7 +37,7 @@ describe("Admin can create and delete participants", () => {
       cy.get("[data-cy=add-participant-form]").should("be.visible");
     });
 
-    it.only("is expected that the form shows a message on submit", () => {
+    it("is expected that the form shows a message on submit", () => {
       cy.get("[data-cy=manage-participants-btn]").click();
       cy.get("[data-cy=name-input]").type("Ben Smith");
       cy.get("[data-cy=email-input]").type("Ben@email.com");
@@ -54,6 +55,28 @@ describe("Admin can create and delete participants", () => {
         "contain.text",
         "Participant succesfully added"
       );
+    });
+
+    it.only("is expected that the added participant is in the table", () => {
+      cy.intercept("GET", "**/api/departments**", {
+        fixture: "updatedDepartmentList.json",
+        statusCode: 200,
+      });
+      cy.get("[data-cy=manage-participants-btn]").click();
+      cy.get("[data-cy=name-input]").type("Ben Smith");
+      cy.get("[data-cy=email-input]").type("Ben@email.com");
+      cy.get("[data-cy=start-date-input]").within(() => {
+        cy.get("input:first").clear().type("17/11/2021");
+      });
+      cy.get("[data-cy=management]").within(() => {
+        cy.get("input:first").click();
+      });
+      cy.get("[data-cy=seniority-level]").click();
+      cy.contains("3").click();
+      cy.get("[data-cy=add-btn]").click();
+      cy.get("[data-cy=participant-table").within(() => {
+        cy.contains("Ben Smith").should("be.visible");
+      });
     });
   });
 });
