@@ -12,11 +12,11 @@ const Participants = {
       });
       toast.success(response.data.message, {
         onClose: () => {
-          Department.index()
+          Department.index();
         },
       });
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   },
 };

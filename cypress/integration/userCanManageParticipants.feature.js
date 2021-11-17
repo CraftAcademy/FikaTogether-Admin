@@ -57,7 +57,7 @@ describe("Admin can create and delete participants", () => {
       );
     });
 
-    it.only("is expected that the added participant is in the table", () => {
+    it("is expected that the added participant is in the table", () => {
       cy.intercept("GET", "**/api/departments**", {
         fixture: "updatedDepartmentList.json",
         statusCode: 200,
@@ -74,10 +74,35 @@ describe("Admin can create and delete participants", () => {
       cy.get("[data-cy=seniority-level]").click();
       cy.contains("3").click();
       cy.get("[data-cy=add-btn]").click();
-      cy.wait(500)
+      cy.wait(500);
       cy.get("[data-cy=participant-table").within(() => {
         cy.contains("Ben Smith").scrollIntoView().should("be.visible");
       });
+    });
+  });
+
+  describe("unsuccessfully", () => {
+    beforeEach(() => {
+      cy.intercept("POST", "**/api/participants**", {
+        body: { message: "Sorry that department does not exist" },
+        statusCode: 422,
+      });
+
+      cy.get("[data-cy=departments-btn]").click();
+      cy.get("[data-cy=department-table]").within(() => {
+        cy.contains("HR").click();
+      });
+    });
+
+    it.only("is expected to warn the user when the participant is not added", () => {
+      cy.get("[data-cy=manage-participants-btn]").click();
+
+      cy.get("[data-cy=add-btn]").click();
+      cy.wait(500);
+      cy.get("[data-cy=submit-response-toast]").should(
+        "contain.text",
+        "Sorry that department does not exist"
+      );
     });
   });
 });
