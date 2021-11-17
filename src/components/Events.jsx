@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import { Fika } from "../modules/fikas";
 import { useSelector } from "react-redux";
-import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { DataGrid } from "@mui/x-data-grid";
+import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
+import { Fika } from "../modules/fikas";
 import FikaButton from "./FikaButton";
 import FikaDateTime from "./FikaDateTime";
+
 const Events = () => {
   const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);

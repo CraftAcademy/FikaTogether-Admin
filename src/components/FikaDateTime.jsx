@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import DateAdapter from "@mui/lab/AdapterDayjs";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DateTimePicker from "@mui/lab/DateTimePicker";
+import { DateTimePicker, LocalizationProvider } from "@mui/lab";
 import "dayjs/locale/fr";
 
 const FikaDateTime = ({ setDisabled }) => {
@@ -10,7 +9,9 @@ const FikaDateTime = ({ setDisabled }) => {
 
   const handleChange = (data) => {
     if (
-      /^[0-2][0-9]\/[0-1?][1-9]\/[1-9][0-9]{3} [0-2][0-9]:[0-5][0-9]$/.test(data)
+      /^[0-2][0-9]\/[0-1?][1-9]\/[1-9][0-9]{3} [0-2][0-9]:[0-5][0-9]$/.test(
+        data
+      )
     ) {
       setDisabled(false);
     } else {

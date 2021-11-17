@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { LoadingButton } from "@mui/lab";
-import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { useMediaQuery } from "react-responsive";
+import { ToastContainer, toast } from "react-toastify";
+import {Box, TextField} from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
 import auth from "../modules/auth";
 import logo from "../img/logo.png";
 import logoCup from "../img/FikaTogetherCup.png";
-import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
