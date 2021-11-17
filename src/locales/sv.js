@@ -21,6 +21,7 @@ const sv = {
     Management: "Ledning",
     nonManagement: "Icke-ledning",
     addsParticipantBtn: "Lägg till deltagare",
+    seniorityLevel: "Jobbtitel",
   },
 };
 export default sv;

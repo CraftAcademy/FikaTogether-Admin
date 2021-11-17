@@ -19,6 +19,7 @@ const en = {
     selectManagementLabel: "Management",
     nonManagement: "Non-Management",
     addsParticipantBtn: "Add Participant",
+    seniorityLevel: "Seniority Level",
   },
 };
 export default en;

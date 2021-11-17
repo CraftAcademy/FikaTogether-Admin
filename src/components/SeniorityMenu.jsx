@@ -1,10 +1,13 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 const SeniorityMenu = ({seniority, setSeniority}) => {
+  const { t } = useTranslation();
+
   const handleChange = (event) => {
     setSeniority(event.target.value);
   };
@@ -13,14 +16,12 @@ const SeniorityMenu = ({seniority, setSeniority}) => {
     <div>
       <FormControl sx={{ m: 1, minWidth: 200 }}>
         <InputLabel id="demo-simple-select-autowidth-label">
-          Seniority Level
+        {t("Seniority Level")}
         </InputLabel>
         <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
           value={seniority}
           onChange={handleChange}
-          label="Seniority Level"
+          label={t("Seniority Level")}
           data-cy="seniority-level"
         >
           <MenuItem value="">

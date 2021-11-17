@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { DataGrid } from "@mui/x-data-grid";
 import Container from "@mui/material/Container";
 import { makeStyles } from "@mui/styles";
@@ -9,6 +10,7 @@ import AddParticipantModal from "./AddParticipantModal";
 const ParticipantList = () => {
   const { participantList, departments } = useSelector((state) => state);
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const columns = [
     {
@@ -66,7 +68,7 @@ const ParticipantList = () => {
         }}
         onClick={() => setOpen(true)}
       >
-        Manage Participant
+        {t("addsParticipantBtn")}
       </LoadingButton>
       <AddParticipantModal open={open} setOpen={setOpen} />
       <div
