@@ -9,8 +9,6 @@ import AddParticipantModal from "./AddParticipantModal";
 const ParticipantList = () => {
   const { participantList, departments } = useSelector((state) => state);
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
 
   const columns = [
     {
@@ -60,18 +58,18 @@ const ParticipantList = () => {
     <Container maxWidth="sm">
       <LoadingButton
         data-cy="manage-participants-btn"
-        type="link"
+        // type="link"
         variant="contained"
         margin="dense"
         sx={{
           backgroundColor: "#4C9074",
           m: 5,
         }}
-        onClick={handleOpen}
+        onClick={() => setOpen(true)}
       >
         Manage Participant
       </LoadingButton>
-      <AddParticipantModal open={open} onClose={handleClose} />
+      <AddParticipantModal open={open} setOpen={setOpen} />
       <div
         style={{ width: "100%", height: 400 }}
         data-cy="participant-table"

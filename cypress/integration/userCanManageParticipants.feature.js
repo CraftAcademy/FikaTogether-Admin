@@ -1,5 +1,9 @@
 describe("Admin can create and delete participants", () => {
   beforeEach(() => {
+    cy.intercept("GET", "**/api/fikas**", {
+      fixture: "fikaList.json",
+      statusCode: 200,
+    });
     cy.intercept("GET", "**/api/departments**", {
       fixture: "departmentList.json",
       statusCode: 200,
@@ -13,6 +17,10 @@ describe("Admin can create and delete participants", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
+      cy.intercept("POST", "**/api/participants**", {
+        body: { message: "Participant succesfully added" },
+        statusCode: 201,
+      });
       cy.get("[data-cy=departments-btn]").click();
       cy.get("[data-cy=department-table]").within(() => {
         cy.contains("HR").click();
@@ -39,7 +47,7 @@ describe("Admin can create and delete participants", () => {
         cy.get("input:first").click();
       });
       cy.get("[data-cy=seniority-level]").click();
-      cy.contains("3").should("be.visible").click();
+      cy.contains("3").click();
       cy.get("[data-cy=add-btn]").click();
       cy.wait(500);
       cy.get("[data-cy=submit-response-toast]").should(

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -6,35 +7,39 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { Modal } from "@mui/material";
 import SeniorityMenu from "./SeniorityMenu";
+import { Participants } from "../modules/participants";
 
-const AddParticipantModal = (props) => {
+const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const dateRef = useRef("");
   const [management, setManagement] = useState();
-  // const { t } = useTranslation();
   const [rank, setRank] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     // event.preventDefault();
-    console.log(nameRef.current.value);
-    console.log(emailRef.current.value);
-    console.log(dateRef.current.value);
-    console.log(management, rank);  
+    const participant = {
+      participant: {
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+        start_date: dateRef.current.value,
+        management: management,
+        rank: rank,
+      },
+    };
+    Participants.create(participant);
 
-    // const form = event.target;  
-
-    // try {
-    //   const response = await post(name, email, seniority, date);
+    setOpen(false);
   };
 
-  const handleChange = (event) => {
+  const handleManagement = (event) => {
     setManagement(event.target.value);
   };
 
@@ -51,86 +56,97 @@ const AddParticipantModal = (props) => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={DateAdapter}>
-      <Modal
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        {...props}
-      >
-        <Box
-          data-cy="add-participant-form"
-          sx={style}
-          component="form"
-          onSubmit={handleSubmit}
+    <>
+      <LocalizationProvider dateAdapter={DateAdapter}>
+        <Modal
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          open={open}
         >
-          <TextField
-            data-cy="name-input"
-            // label={t("inputNameLabel")}
-            variant="outlined"
-            margin="dense"
-            inputRef={nameRef}
-            // fullWidth="true"
-          />
-          <TextField
-            data-cy="email-input"
-            // label={t("email")}
-            variant="outlined"
-            margin="dense"
-            inputRef={emailRef}
-            // fullWidth="true"
-          />
-          <div data-cy="start-date-input">
-            <DesktopDatePicker
-              // label={t("InputStartDate")}
-              // inputFormat="dd/mm/yyyy"
-              onChange={() => {}}
-              renderInput={(params) => (
-                <TextField {...params} inputRef={dateRef} />
-              )}
-            />
-          </div>
-          <FormLabel component="legend">
-            Management
-            {/* {t("Management")} */}
-          </FormLabel>
-          <RadioGroup
-            onChange={handleChange}
-            row
-            // aria-label={t("selectManagementLabel")}
-            name="row-radio-buttons-group"
-            defaultValue="Non Management"
-            data-cy="management"
+          <Box
+            data-cy="add-participant-form"
+            sx={style}
+            component="form"
+            onSubmit={handleSubmit}
           >
-            <FormControlLabel
-              value="Management"
-              control={<Radio />}
-              label="Management"
+            <TextField
+              data-cy="name-input"
+              label={t("inputNameLabel")}
+              variant="outlined"
+              margin="dense"
+              inputRef={nameRef}
+              fullWidth={true}
             />
-            <FormControlLabel
-              value="Non Management"
-              control={<Radio />}
-              label="nonManagement"
+            <TextField
+              data-cy="email-input"
+              label={t("email")}
+              variant="outlined"
+              margin="dense"
+              inputRef={emailRef}
+              fullWidth={true}
             />
-          </RadioGroup>
-
-          <SeniorityMenu rank={rank} setRank={setRank} />
-
-          <Button
-            data-cy="add-btn"
-            type="submit"
-            variant="contained"
-            margin="dense"
-            // fullWidth="true"
-            sx={{
-              backgroundColor: "#4C9074",
-              m: 2,
-            }}
-          >
-            {/* {t("addsParticipantBtn")} */}
-          </Button>
-        </Box>
-      </Modal>
-    </LocalizationProvider>
+            <div data-cy="start-date-input">
+              <DesktopDatePicker
+                label={t("InputStartDate")}
+                onChange={() => {}}
+                renderInput={(params) => (
+                  <TextField {...params} inputRef={dateRef} />
+                )}
+              />
+            </div>
+            <FormLabel component="legend">
+              {t("selectManagementLabel")}
+            </FormLabel>
+            <RadioGroup
+              onChange={handleManagement}
+              row
+              aria-label={t("selectManagementLabel")}
+              defaultValue="Non Management"
+              data-cy="management"
+            >
+              <FormControlLabel
+                value="Management"
+                control={<Radio />}
+                label={t("selectManagementLabel")}
+              />
+              <FormControlLabel
+                value="Non Management"
+                control={<Radio />}
+                label={t("nonManagement")}
+              />
+            </RadioGroup>
+            <SeniorityMenu rank={rank} setRank={setRank} />
+            <Button
+              data-cy="add-btn"
+              type="submit"
+              variant="contained"
+              margin="dense"
+              fullWidth={true}
+              sx={{
+                backgroundColor: "#4C9074",
+                m: 2,
+              }}
+            >
+              {t("addsParticipantBtn")}
+            </Button>
+          </Box>
+        </Modal>
+      </LocalizationProvider>
+      <div data-cy="submit-response-toast">
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          // onClose={() => setLoading(false)}
+        />
+      </div>
+    </>
   );
 };
 
