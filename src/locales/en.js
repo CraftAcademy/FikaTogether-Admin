@@ -14,6 +14,12 @@ const en = {
     fikaScore: "Average Fika Score",
     contactText: "If you have any questions, please contact us at:",
     language: "Svenska",
+    inputNameLabel: "Name",
+    InputStartDate: "Start Date",
+    selectManagementLabel: "Management",
+    nonManagement: "Non-Management",
+    addsParticipantBtn: "Add Participant",
+    seniorityLevel: "Seniority Level",
   },
 };
 export default en;

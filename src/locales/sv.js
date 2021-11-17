@@ -15,6 +15,13 @@ const sv = {
     contactText:
       "Fika-Together är ett projekt av Fika-Together-gruppen. För mer information om projektet, se",
     language: "English",
+    inputNameLabel: "Namn",
+    InputStartDate: "Startdatum",
+    selectManagementLabel: "Lednings roll",
+    Management: "Ledning",
+    nonManagement: "Icke-ledning",
+    addsParticipantBtn: "Lägg till deltagare",
+    seniorityLevel: "Jobbtitel",
   },
 };
 export default sv;
