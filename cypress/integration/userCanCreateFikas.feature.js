@@ -1,5 +1,5 @@
 describe("Admin can create Fikas by clicking a button", () => {
-  describe("successfully After create request is sent", () => {
+  describe("successfully after create request is sent", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/api/fikas**", {
         body: { message: "There are no fikas in the database" },
@@ -18,8 +18,11 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
-      cy.get("[data-cy=date-time-fika]").within(() => {
-        cy.get("input:first").clear().type("17/11/2021 11:00");
+      cy.get("[data-cy=date-fika]").within(() => {
+        cy.get("input:first").clear().type("2021/11/18");
+      });
+      cy.get("[data-cy=time-fika]").within(() => {
+        cy.get("input:first").clear().type("11:00");
       });
       cy.get("[data-cy=submit-btn]").click();
     });
@@ -28,8 +31,12 @@ describe("Admin can create Fikas by clicking a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
-    it("is expected to render a dateTime input", () => {
-      cy.get("[data-cy=date-time-fika]").should("be.visible");
+    it("is expected to render a date input", () => {
+      cy.get("[data-cy=date-fika]").should("be.visible");
+    });
+
+    it("is expected to render a time slot input", () => {
+      cy.get("[data-cy=time-fika]").should("be.visible");
     });
 
     it("is expected that clicking the create fika button will display a message", () => {
@@ -62,16 +69,26 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
-      cy.get("[data-cy=date-time-fika]").within(() => {
-        cy.get("input:first").clear().type("17/11/2021 11:00");
+      cy.get("[data-cy=date-fika]").within(() => {
+        cy.get("input:first").clear().type("17/11/2021");
+      });
+      cy.get("[data-cy=time-fika]").within(() => {
+        cy.get("input:first").clear().type("11:00");
       });
     });
 
-    it("is expected to disable the button when the date and time is in the wrong format", () => {
-      cy.get("[data-cy=date-time-fika]").within(() => {
+    it("is expected to disable the button when the date is in the wrong format", () => {
+      cy.get("[data-cy=date-fika]").within(() => {
         cy.get("input:first").clear().type("I am not a date");
       });
-      cy.get("[data-cy=submit-btn]").should("be.disabled");      
+      cy.get("[data-cy=submit-btn]").should("be.disabled");
+    });
+
+    it("is expected to disable the button when the time is in the wrong format", () => {
+      cy.get("[data-cy=time-fika]").within(() => {
+        cy.get("input:first").clear().type("I am not a time");
+      });
+      cy.get("[data-cy=submit-btn]").should("be.disabled");
     });
 
     it("is expected to warn the user when no fikas are created", () => {
