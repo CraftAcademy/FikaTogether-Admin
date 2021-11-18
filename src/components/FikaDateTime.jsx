@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import DateAdapter from "@mui/lab/AdapterDayjs";
-import { DateTimePicker, LocalizationProvider } from "@mui/lab";
-import "dayjs/locale/fr";
+import { TimePicker, DatePicker, LocalizationProvider } from "@mui/lab";
+import { TextField } from "@mui/material";
+import "dayjs/locale/en-gb";
 
 const FikaDateTime = ({ setDisabled }) => {
   const [fikaDate, setFikaDate] = useState("");
+  const [fikaTime, setFikaTime] = useState("");
 
-  const handleChange = (data) => {
-    if (
-      /^[0-2][0-9]\/[0-1?][1-9]\/[1-9][0-9]{3} [0-2][0-9]:[0-5][0-9]$/.test(
-        data
-      )
+  const handleChange = () => {
+    if (      
+      /^[0-3]?[0-9]\/[0-1]?[0-9]\/[1-2][0-9]{3}$/.test(fikaDate) &&
+      /^[0-2][0-9]:[0-5][0-9]$/.test(fikaTime)
     ) {
       setDisabled(false);
     } else {
@@ -20,8 +21,34 @@ const FikaDateTime = ({ setDisabled }) => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={DateAdapter} locale={"fr"}>
-      <div data-cy="date-time-fika">
+    <LocalizationProvider dateAdapter={DateAdapter} locale={"en-gb"}>
+      <div data-cy="date-fika">
+        <DatePicker
+          label="Pick a date"
+          type="date"
+          value={fikaDate}
+          renderInput={(props) => <TextField {...props} />}
+          onChange={(newValue, data) => {
+            setFikaDate(newValue);
+            handleChange();
+          }}
+        />
+      </div>
+      <div data-cy="time-fika">
+        <TimePicker
+          ampm={false}
+          value={fikaTime}
+          renderInput={(props) => <TextField {...props} />}
+          label="Choose time"
+          type="time"
+          onChange={(newValue, data) => {
+            setFikaTime(newValue);
+            handleChange();
+          }}
+        />
+      </div>
+
+      {/* <div data-cy="date-time-fika">
         <DateTimePicker
           renderInput={(props) => <TextField {...props} />}
           ampm={false}
@@ -35,7 +62,7 @@ const FikaDateTime = ({ setDisabled }) => {
             setDisabled(false);
           }}
         />
-      </div>
+      </div> */}
     </LocalizationProvider>
   );
 };

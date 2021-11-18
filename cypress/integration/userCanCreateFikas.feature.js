@@ -19,12 +19,13 @@ describe("Admin can create Fikas by clicking a button", () => {
         payload: true,
       });
       cy.get("[data-cy=date-fika]").within(() => {
-        cy.get("input:first").clear().type("2021/11/18");
+        cy.get("input:first").clear().type("18/11/2021");
       });
       cy.get("[data-cy=time-fika]").within(() => {
         cy.get("input:first").clear().type("11:00");
       });
       cy.get("[data-cy=submit-btn]").click();
+
     });
 
     it("is expected to render a button", () => {
