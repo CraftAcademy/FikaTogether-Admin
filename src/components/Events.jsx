@@ -74,10 +74,15 @@ const Events = () => {
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>
       <div
         style={{
-          display: "flex", alignContent: "center", justifyContent: "center",
-      }}>
-      <FikaDateTime setDisabled={setDisabled}/>
-      <FikaButton disabled={disabled} />
+          display: "flex",
+          // justifyContent: "center",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "75%",
+        }}
+      >
+        <FikaDateTime setDisabled={setDisabled} />
+        <FikaButton disabled={disabled} />
       </div>
       <div
         style={{ height: 400, width: "100%" }}
