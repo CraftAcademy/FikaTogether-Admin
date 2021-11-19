@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import { TimePicker, DatePicker, LocalizationProvider } from "@mui/lab";
 import { TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import "dayjs/locale/en-gb";
 
 const FikaDateTime = ({ setDisabled }) => {
@@ -9,6 +10,7 @@ const FikaDateTime = ({ setDisabled }) => {
   const [fikaTime, setFikaTime] = useState("");
   const [fikaDateInput, setFikaDateInput] = useState("");
   const [fikaTimeInput, setFikaTimeInput] = useState("");
+  const { t } = useTranslation();
 
   const handleChange = () => {
     if (
@@ -25,14 +27,17 @@ const FikaDateTime = ({ setDisabled }) => {
     <LocalizationProvider dateAdapter={DateAdapter} locale={"en-gb"}>
       <div data-cy="date-fika">
         <DatePicker
-          label="Pick a date"
+          label={t("chooseDate")}
           type="date"
           value={fikaDate}
           renderInput={(props) => <TextField {...props} />}
           onChange={(newValue, data) => {
             setFikaDate(newValue);
-            setFikaDateInput(data)
+            setFikaDateInput(data);
             handleChange();
+          }}
+          onAccept={() => {
+            setDisabled(false);
           }}
         />
       </div>
@@ -41,31 +46,18 @@ const FikaDateTime = ({ setDisabled }) => {
           ampm={false}
           value={fikaTime}
           renderInput={(props) => <TextField {...props} />}
-          label="Choose time"
+          label={t("chooseTime")}
           type="time"
           onChange={(newValue, data) => {
             setFikaTime(newValue);
-            setFikaTimeInput(data)
+            setFikaTimeInput(data);
             handleChange();
-          }}
-        />
-      </div>
-
-      {/* <div data-cy="date-time-fika">
-        <DateTimePicker
-          renderInput={(props) => <TextField {...props} />}
-          ampm={false}
-          label="Choose next Fika"
-          value={fikaDate}
-          onChange={(newValue, data) => {
-            setFikaDate(newValue);
-            handleChange(data);
           }}
           onAccept={() => {
             setDisabled(false);
           }}
         />
-      </div> */}
+      </div>
     </LocalizationProvider>
   );
 };

@@ -20,6 +20,8 @@ const en = {
     nonManagement: "Non-Management",
     addsParticipantBtn: "Add Participant",
     seniorityLevel: "Seniority Level",
+    chooseTime: "Choose Time",
+    chooseDate: "Pick a date"
   },
 };
 export default en;
