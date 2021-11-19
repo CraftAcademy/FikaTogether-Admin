@@ -72,8 +72,13 @@ const Events = () => {
 
   return (
     <Container maxWidth="lg" sx={{ textAlign: "center" }}>
+      <div
+        style={{
+          display: "flex", alignContent: "center", justifyContent: "center",
+      }}>
       <FikaDateTime setDisabled={setDisabled}/>
       <FikaButton disabled={disabled} />
+      </div>
       <div
         style={{ height: 400, width: "100%" }}
         data-cy="fika-table"

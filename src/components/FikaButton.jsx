@@ -19,12 +19,12 @@ const FikaButton = ({disabled}) => {
     <>
       <LoadingButton
         disabled={disabled}
-        sx={{ m: 5 }}
+        sx={{ m: .1, ml: 1 }}
         data-cy="submit-btn"
         variant="outlined"
         startIcon={<CoffeeIcon />}
         loadingPosition="start"
-        style={{ color: "inherit", textDecoration: "inherit" }}
+        style={{ color: "inherit", textDecoration: "inherit", height: "3.5rem" }}
         onClick={onSubmit}
         disableElevation
         loading={loading}
