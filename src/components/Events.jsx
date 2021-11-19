@@ -79,6 +79,9 @@ const Events = () => {
           alignItems: "center",
           justifyContent: "space-between",
           width: "75%",
+          color: "inherit",
+          textDecoration: "inherit",
+          marginBottom: "2rem",
         }}
       >
         <FikaDateTime setDisabled={setDisabled} />
