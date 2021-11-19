@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import TextField from "@mui/material/TextField";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import { TimePicker, DatePicker, LocalizationProvider } from "@mui/lab";
 import { TextField } from "@mui/material";
@@ -8,11 +7,13 @@ import "dayjs/locale/en-gb";
 const FikaDateTime = ({ setDisabled }) => {
   const [fikaDate, setFikaDate] = useState("");
   const [fikaTime, setFikaTime] = useState("");
+  const [fikaDateInput, setFikaDateInput] = useState("");
+  const [fikaTimeInput, setFikaTimeInput] = useState("");
 
   const handleChange = () => {
-    if (      
-      /^[0-3]?[0-9]\/[0-1]?[0-9]\/[1-2][0-9]{3}$/.test(fikaDate) &&
-      /^[0-2][0-9]:[0-5][0-9]$/.test(fikaTime)
+    if (
+      /^[0-3]?[0-9]\/[0-1]?[0-9]\/[1-2][0-9]{3}$/.test(fikaDateInput) &&
+      /^[0-2][0-9]:[0-5]$/.test(fikaTimeInput)
     ) {
       setDisabled(false);
     } else {
@@ -30,6 +31,7 @@ const FikaDateTime = ({ setDisabled }) => {
           renderInput={(props) => <TextField {...props} />}
           onChange={(newValue, data) => {
             setFikaDate(newValue);
+            setFikaDateInput(data)
             handleChange();
           }}
         />
@@ -43,6 +45,7 @@ const FikaDateTime = ({ setDisabled }) => {
           type="time"
           onChange={(newValue, data) => {
             setFikaTime(newValue);
+            setFikaTimeInput(data)
             handleChange();
           }}
         />
