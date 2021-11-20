@@ -5,7 +5,6 @@ import { LoadingButton } from "@mui/lab";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/fikas";
 import { useTranslation } from "react-i18next";
-import delay from "delay";
 
 const FikaButton = ({ disabled, showInputs, setShowInputs }) => {
   const { t } = useTranslation();
@@ -13,15 +12,13 @@ const FikaButton = ({ disabled, showInputs, setShowInputs }) => {
 
   const onSubmit = () => {
     setLoading(true);
-    Fika.create(setLoading);
-    delay(1000)
-    setShowInputs(!showInputs);
+    showInputs? (Fika.create(setLoading, setShowInputs)): setShowInputs(!showInputs);
   };
 
   return (
     <>
       <LoadingButton
-        // disabled={disabled}
+        disabled={disabled}
         sx={{ m: 0.1, ml: 1 }}
         data-cy="submit-btn"
         variant="outlined"
@@ -54,7 +51,6 @@ const FikaButton = ({ disabled, showInputs, setShowInputs }) => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          onClose={() => setLoading(false)}
         />
       </div>
     </>

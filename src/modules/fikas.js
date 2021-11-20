@@ -12,7 +12,7 @@ const Fika = {
       });
     } catch (error) {}
   },
-  async create(setLoading) {
+  async create(setLoading, setShowInputs) {
     try {
       const params = {};
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
@@ -22,6 +22,7 @@ const Fika = {
       toast.success(response.data.message, {
         onClose: () => {
           setLoading(false);
+          setShowInputs(false)
           Fika.index();
         },
       });
