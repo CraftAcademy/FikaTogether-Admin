@@ -19,6 +19,8 @@ describe("A login view render on site load", () => {
         });
       },
     });
+
+    cy.get("[data-cy=login-modal-btn]").click()
   });
 
   it("is expected to have two input fields and a submit button", () => {

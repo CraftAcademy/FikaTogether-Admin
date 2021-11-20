@@ -6,9 +6,9 @@ import Events from "./components/Events";
 import Contact from "./components/Contact";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import Login from "./components/Login";
 import { useSelector } from "react-redux";
 import ParticipantList from "./components/ParticipantList";
+import WelcomePage from "./components/WelcomePage";
 
 const App = () => {
   const { authenticated, participantList } = useSelector((state) => state);
@@ -54,7 +54,7 @@ const App = () => {
       <CssBaseline />
       <BrowserRouter>
         {!authenticated ? (
-          <Login />
+          <WelcomePage />
         ) : (
           <>
             <Header />
