@@ -12,6 +12,7 @@ const Events = () => {
   const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);
   const [disabled, setDisabled] = useState(true);
+  const [showInputs, setShowInputs] = useState(false);
 
   useEffect(() => {
     Fika.index();
@@ -75,7 +76,6 @@ const Events = () => {
       <div
         style={{
           display: "flex",
-          // justifyContent: "center",
           alignItems: "center",
           justifyContent: "space-between",
           width: "75%",
@@ -84,8 +84,15 @@ const Events = () => {
           marginBottom: "2rem",
         }}
       >
-        <FikaDateTime setDisabled={setDisabled} />
-        <FikaButton disabled={disabled} />
+        {showInputs ? (
+          <>
+            <FikaDateTime setDisabled={setDisabled} />
+            <FikaButton disabled={disabled} setShowInputs={setShowInputs} showInputs={showInputs} />
+          </>
+        ) : (
+          <FikaButton setShowInputs={setShowInputs} showInputs={showInputs}/>
+        )}
+
       </div>
       <div
         style={{ height: 400, width: "100%" }}
