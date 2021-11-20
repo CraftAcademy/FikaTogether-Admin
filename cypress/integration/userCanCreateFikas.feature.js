@@ -18,9 +18,8 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
-      
-      cy.get("[data-cy=submit-btn]").click();
 
+      cy.get("[data-cy=submit-btn]").click();
       cy.get("[data-cy=date-fika]").within(() => {
         cy.get("input:first").clear().type("18/11/2021");
       });
@@ -30,7 +29,7 @@ describe("Admin can create Fikas by clicking a button", () => {
       cy.get("[data-cy=submit-btn]").click();
     });
 
-    it.only("is expected to render a button", () => {
+    it("is expected to render a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
@@ -72,6 +71,8 @@ describe("Admin can create Fikas by clicking a button", () => {
         type: "SET_CURRENT_USER",
         payload: true,
       });
+      
+      cy.get("[data-cy=submit-btn]").click();
       cy.get("[data-cy=date-fika]").within(() => {
         cy.get("input:first").clear().type("17/11/2021");
       });
