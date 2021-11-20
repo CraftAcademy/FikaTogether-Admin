@@ -6,29 +6,38 @@ import CoffeeIcon from "@mui/icons-material/Coffee";
 import { Fika } from "../modules/fikas";
 import { useTranslation } from "react-i18next";
 
-const FikaButton = () => {
+const FikaButton = ({ disabled, showInputs, setShowInputs }) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
     setLoading(true);
-    Fika.create(setLoading);
+    showInputs? (Fika.create(setLoading, setShowInputs)): setShowInputs(!showInputs);
   };
 
   return (
     <>
       <LoadingButton
-        sx={{ m: 5 }}
+        disabled={disabled}
+        sx={{ m: 0.1, ml: 1 }}
         data-cy="submit-btn"
         variant="outlined"
         startIcon={<CoffeeIcon />}
         loadingPosition="start"
-        style={{ color: "inherit", textDecoration: "inherit" }}
+        style={{
+          color: "inherit",
+          textDecoration: "inherit",
+          height: "3.5rem",
+        }}
         onClick={onSubmit}
         disableElevation
         loading={loading}
       >
-        {`${loading === false ? t("create") : t("creating")}`}
+        {!showInputs ? (
+          "Schedule some fikas"
+        ) : (
+          <>{`${!loading ? t("create") : t("creating")}`}</>
+        )}
       </LoadingButton>
 
       <div data-cy="submit-response-toast">
@@ -42,7 +51,6 @@ const FikaButton = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          onClose={() => setLoading(false)}
         />
       </div>
     </>

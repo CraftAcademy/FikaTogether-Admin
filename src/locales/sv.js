@@ -22,6 +22,8 @@ const sv = {
     nonManagement: "Icke-ledning",
     addsParticipantBtn: "Lägg till deltagare",
     seniorityLevel: "Jobbtitel",
+    chooseTime: "Välj en tid",
+    chooseDate: "Välj ett datum",
   },
 };
 export default sv;

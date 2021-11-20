@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { Box, Paper } from "@mui/material";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import BusinessIcon from "@mui/icons-material/Business";
-import HelpIcon from "@mui/icons-material/Help";
-import LanguageIcon from "@mui/icons-material/Language";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Box,
+  Paper,
+} from "@mui/material";
+import BusinessIcon from '@mui/icons-material/Business';
+import HelpIcon from '@mui/icons-material/Help';
+import LanguageIcon from '@mui/icons-material/Language';
 import logo from "../img/logo.png";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
