@@ -16,7 +16,6 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "cypress-dark": "^1.8.3",
-    "delay": "^5.0.0",
     "i18next": "^21.4.2",
     "j-tockauth": "^1.2.7",
     "moment": "^2.29.1",

@@ -7,12 +7,16 @@ import { makeStyles } from "@mui/styles";
 import { Fika } from "../modules/fikas";
 import FikaButton from "./FikaButton";
 import FikaDateTime from "./FikaDateTime";
+import { useMediaQuery } from "react-responsive";
 
 const Events = () => {
   const { t } = useTranslation();
   const { fikas } = useSelector((state) => state);
   const [disabled, setDisabled] = useState(true);
   const [showInputs, setShowInputs] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
+
+  const width = isTabletOrMobile ? "100%" : "75%";
 
   useEffect(() => {
     Fika.index();
@@ -78,7 +82,7 @@ const Events = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          width: "75%",
+          width: width,
           color: "inherit",
           textDecoration: "inherit",
           marginBottom: "2rem",
@@ -87,12 +91,15 @@ const Events = () => {
         {showInputs ? (
           <>
             <FikaDateTime setDisabled={setDisabled} />
-            <FikaButton disabled={disabled} setShowInputs={setShowInputs} showInputs={showInputs} />
+            <FikaButton
+              disabled={disabled}
+              setShowInputs={setShowInputs}
+              showInputs={showInputs}
+            />
           </>
         ) : (
-          <FikaButton setShowInputs={setShowInputs} showInputs={showInputs}/>
+          <FikaButton setShowInputs={setShowInputs} showInputs={showInputs} />
         )}
-
       </div>
       <div
         style={{ height: 400, width: "100%" }}
