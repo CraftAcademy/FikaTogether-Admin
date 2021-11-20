@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { useSelector } from "react-redux";
 import ParticipantList from "./components/ParticipantList";
-import WelcomePage from "./components/WelcomePage";
+import WelcomePage from "./components/welcomeView/WelcomePage";
 
 const App = () => {
   const { authenticated, participantList } = useSelector((state) => state);
@@ -26,6 +26,7 @@ const App = () => {
             background: {
               default: "#011326",
               paper: "#011326",
+              container: "#4C9074",
             },
             text: {
               primary: "#D6BC01",
@@ -35,10 +36,11 @@ const App = () => {
         },
         components: {
           MuiButton: {
-            text: "#011326",
             styleOverrides: {
               outlined: {
                 backgroundColor: "#4C9074",
+                color: "#D6BC01",
+                fontWeight: "bold",
               },
             },
           },
@@ -53,11 +55,11 @@ const App = () => {
     <ThemeProvider theme={our_custome_theme}>
       <CssBaseline />
       <BrowserRouter>
+        <Header />
         {!authenticated ? (
           <WelcomePage />
         ) : (
           <>
-            <Header />
             <Routes>
               <Route exact path="/" element={<Events />} />
               <Route path="/departments" element={<Departments />} />

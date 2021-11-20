@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useMediaQuery } from "react-responsive";
 import { ToastContainer, toast } from "react-toastify";
 import { Box, TextField, Modal } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
-import auth from "../modules/auth";
+import auth from "../../modules/auth";
 
 const LoginModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
-  const border = isTabletOrMobile
-    ? { border: "" }
-    : { border: "3px solid #4C9074" };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
