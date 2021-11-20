@@ -36,26 +36,24 @@ const LoginModal = ({ open, setOpen }) => {
     }
   };
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 300,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
     <>
-      <Modal open={open}>
-        <Box
-          sx={{
-            "& > :not(style)": { m: 1, width: "20ch" },
-            textAlign: "center",
-            boxShadow: 1,
-            borderRadius: 0,
-            p: 5,
-            border: border,
-            position: "absolute",
-            left: "15%",
-            top: "25%",
-            display: "inline-block",
-          }}
-          noValidate
-          autoComplete="on"
-          className="login-box"
+      <Modal open={open} 
+        aria-labelledby="modal-modal-title"
         >
+        <Box sx={style} noValidate autoComplete="on" className="login-box">
           <form onSubmit={handleSubmit} data-cy="sign-in-form">
             <TextField
               data-cy="email-input"
@@ -79,7 +77,8 @@ const LoginModal = ({ open, setOpen }) => {
               margin="dense"
               loading={loading}
               sx={{
-                backgroundColor: "#4C9074",
+              m: 2,
+              backgroundColor: "#4C9074",
               }}
             >
               {t("login")}

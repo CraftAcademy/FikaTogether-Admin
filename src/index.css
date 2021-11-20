@@ -1,25 +1,29 @@
-.logo{
+.logo {
   position: absolute;
   left: 10%;
 }
 
-.login-logo{
+.login-logo {
   position: absolute;
   right: 15%;
   top: 25%;
-  display:inline-block;
+  display: inline-block;
 }
 
-.login-cup{
+.login-cup {
   position: relative;
   left: 20%;
-  top: 150%
+  top: 150%;
 }
 
-.body{
-  font-family:Arial, Helvetica, sans-serif
+.body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.MuiSvgIcon-root{
-  color: #D6BC01;
+.MuiSvgIcon-root {
+  color: #d6bc01;
+}
+
+.MuiCircularProgress-root {
+  color: #d6bc01;
 }

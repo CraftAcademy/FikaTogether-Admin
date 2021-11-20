@@ -17,7 +17,7 @@ const WelcomePage = () => {
         }}
         onClick={() => setOpen(true)}
       >
-        Login In
+        Sign In
       </Button>
       <LoginModal open={open} setOpen={setOpen} />
     </div>
