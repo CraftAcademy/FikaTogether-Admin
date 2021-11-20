@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next";
 import "dayjs/locale/en-gb";
 
 const FikaDateTime = ({ setDisabled }) => {
-  const [fikaDate, setFikaDate] = useState("");
-  const [fikaTime, setFikaTime] = useState("");
+  const [fikaDate, setFikaDate] = useState(Date.now());
+  const [fikaTime, setFikaTime] = useState(Date.now());
   const [fikaDateInput, setFikaDateInput] = useState("");
   const [fikaTimeInput, setFikaTimeInput] = useState("");
   const { t } = useTranslation();
@@ -57,6 +57,7 @@ const FikaDateTime = ({ setDisabled }) => {
             setDisabled(false);
           }}
         />
+  
       </div>
     </LocalizationProvider>
   );

@@ -28,7 +28,7 @@ describe("Admin can create Fikas by clicking a button", () => {
 
     });
 
-    it("is expected to render a button", () => {
+    it.only("is expected to render a button", () => {
       cy.get("[data-cy=submit-btn]").should("be.visible");
     });
 
