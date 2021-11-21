@@ -21,7 +21,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const dateRef = useRef("");
-  const [management, setManagement] = useState();
+  const [management, setManagement] = useState(false);
   const [seniority, setSeniority] = useState("");
   const { participantList } = useSelector((state) => state);
   const { t } = useTranslation();
@@ -42,7 +42,8 @@ const AddParticipantModal = ({ open, setOpen }) => {
   };
 
   const handleManagement = (event) => {
-    setManagement(event.target.value);
+    const managementBool = event.target.value === "Management" ? true : false;
+    setManagement(managementBool);
   };
 
   const style = {
