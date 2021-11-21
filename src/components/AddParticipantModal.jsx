@@ -22,6 +22,8 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const dateRef = useRef("");
+  const [startDate, setStartDate] = useState(Date.now());
+  const [startDateInput, setStartDateInput] = useState("");
   const [management, setManagement] = useState(false);
   const [seniority, setSeniority] = useState("");
   const { participantList } = useSelector((state) => state);
@@ -32,7 +34,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
       participant: {
         name: nameRef.current.value,
         email: emailRef.current.value,
-        start_date: dateRef.current.value,
+        start_date: startDateInput,
         management: management,
         seniority: seniority,
         department: participantList.department,
@@ -91,7 +93,11 @@ const AddParticipantModal = ({ open, setOpen }) => {
           <div data-cy="start-date-input">
             <DesktopDatePicker
               label={t("InputStartDate")}
-              onChange={() => {}}
+              value={startDate}
+              onChange={(newValue, data) => {
+                setStartDate(newValue);
+                setStartDateInput(data);
+              }}
               renderInput={(params) => (
                 <TextField {...params} inputRef={dateRef} />
               )}
