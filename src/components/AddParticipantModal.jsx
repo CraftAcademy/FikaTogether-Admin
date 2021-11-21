@@ -16,6 +16,7 @@ import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import SeniorityMenu from "./SeniorityMenu";
 import { Participants } from "../modules/participants";
+import "dayjs/locale/en-gb";
 
 const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
@@ -59,7 +60,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={DateAdapter}>
+    <LocalizationProvider dateAdapter={DateAdapter} locale={"en-gb"}>
       <Modal
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
