@@ -15,7 +15,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
-    "cypress-dark": "^1.8.3",
     "i18next": "^21.4.2",
     "j-tockauth": "^1.2.7",
     "moment": "^2.29.1",
@@ -58,7 +57,8 @@
     ]
   },
   "devDependencies": {
-    "cypress": "9.0.0",
+    "cypress": "^9.0.0",
+    "cypress-dark": "^1.8.3",
     "start-server-and-test": "^1.14.0"
   }
 }
