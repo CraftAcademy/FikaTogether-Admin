@@ -9,6 +9,12 @@ const AboutSection = () => {
         {" "}
         <h3 >{section.header}</h3>
         <body>{section.content}</body>
+        <body>{section.list.point_1}</body>
+        <body>{section.list.point_2}</body>
+        <body>{section.list.point_3}</body>
+        <body>{section.list.point_4}</body>
+        <body>{section.list.point_5}</body>
+
       </div>
     );
   });

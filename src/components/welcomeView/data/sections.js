@@ -2,17 +2,29 @@ export const sections = [
   {
     category: "what",
     header: "What is FikaTogether?",
-    content: "FikaTogether is ",
+    content:
+      "At FikaTogether, we believe that bringing people together, from all walks of life, will lead to a better world. This belief extends into the workplace. FikaTogether fosters a better work enivorment by creating bonds between co-workers, who would never have the chance to mix. ",
+    list: "",
   },
   {
     category: "how",
     header: "How does FikaTogether work?",
     content:
-      "At FikaTogether, we believe that bring people together, from all walks of life, will lead to a better world. This belief extends into the workspace. FikaTogether fosters a better work enivorment by creating bonds between co-workers, who would never have the chance to mix.",
+      " FikaTogether uses Machine Learning technology to identify connections between members of organizations based on how dissimilar they are. We take into account four different employee attributes; their start date at the company, the department they work in, whether or not they are management, and, their seniority, or rank, within the company. It then automatically schedules informal Fikas and sends out invites.",
+    list: "",
   },
   {
     category: "why",
     header: "What are the benefits in using FikaTogether?",
-    content: "This is why",
+    content: "",
+    list: {
+      point_1: "Improve work culture",
+      point_2: "Secure institutional memory",
+      point_3:
+        "Foster creative solutions to complex problems by leveraging the talents of all members of the organization",
+      point_4:
+        "Democratise the connections in the organization and thereby breaking down barriers to entry to contribute to the organization's mission",
+      point_5: "Create avenues for informal mentorship",
+    },
   },
 ];

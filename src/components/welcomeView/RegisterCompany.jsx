@@ -59,7 +59,7 @@ const RegisterCompany = () => {
             color: "inherit",
             textDecoration: "inherit",
             height: "3.5rem",
-            width: "25%",
+            width: "30%",
             left: "36%",
           }}
         >

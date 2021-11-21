@@ -65,6 +65,8 @@ const ParticipantList = () => {
         sx={{
           backgroundColor: "#4C9074",
           m: 5,
+          color: "inherit",
+          textDecoration: "inherit",
         }}
         onClick={() => setOpen(true)}
       >
