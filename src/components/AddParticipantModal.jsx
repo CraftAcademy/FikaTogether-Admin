@@ -16,11 +16,13 @@ import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import DateAdapter from "@mui/lab/AdapterDayjs";
 import SeniorityMenu from "./SeniorityMenu";
 import { Participants } from "../modules/participants";
+import "dayjs/locale/en-gb";
 
 const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
-  const dateRef = useRef("");
+  const [startDate, setStartDate] = useState(Date.now());
+  const [startDateInput, setStartDateInput] = useState("");
   const [management, setManagement] = useState(false);
   const [seniority, setSeniority] = useState("");
   const { participantList } = useSelector((state) => state);
@@ -31,7 +33,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
       participant: {
         name: nameRef.current.value,
         email: emailRef.current.value,
-        start_date: dateRef.current.value,
+        start_date: startDateInput,
         management: management,
         seniority: seniority,
         department: participantList.department,
@@ -59,7 +61,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={DateAdapter}>
+    <LocalizationProvider dateAdapter={DateAdapter} locale={"en-gb"}>
       <Modal
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -90,10 +92,12 @@ const AddParticipantModal = ({ open, setOpen }) => {
           <div data-cy="start-date-input">
             <DesktopDatePicker
               label={t("InputStartDate")}
-              onChange={() => {}}
-              renderInput={(params) => (
-                <TextField {...params} inputRef={dateRef} />
-              )}
+              value={startDate}
+              onChange={(newValue, data) => {
+                setStartDate(newValue);
+                setStartDateInput(data);
+              }}
+              renderInput={(params) => <TextField {...params} />}
             />
           </div>
           <FormLabel component="legend">{t("selectManagementLabel")}</FormLabel>
