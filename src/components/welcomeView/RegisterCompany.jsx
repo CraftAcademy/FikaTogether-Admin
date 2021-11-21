@@ -5,16 +5,6 @@ import { useTranslation } from "react-i18next";
 const RegisterCompany = () => {
   const { t } = useTranslation();
 
-  const box_1 = {
-    position: "absolute",
-    left: "50%",
-    transform: "translate(-50%)",
-    width: "100%",
-    height: "800px",
-    p: 4,
-    bgcolor: "#4C9074",
-  };
-
   const typography = {
     fontSize: 35,
     m: 1,
@@ -26,10 +16,6 @@ const RegisterCompany = () => {
       sx={{
         p: 1,
         m: 1,
-        bgcolor: "#011326",
-        borderRadius: 50,
-        border: "20px solid",
-        borderColor: "background.container",
         width: "100%",
       }}
     >
@@ -68,7 +54,6 @@ const RegisterCompany = () => {
           type="submit"
           variant="outlined"
           margin="dense"
-          loadingPosition="start"
           sx={{
             m: 2,
             color: "inherit",

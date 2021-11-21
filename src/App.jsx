@@ -40,7 +40,8 @@ const App = () => {
               outlined: {
                 backgroundColor: "#4C9074",
                 color: "#D6BC01",
-                fontWeight: "bold",
+                font: "small-caption",
+                fontWeight: "bold"
               },
             },
           },

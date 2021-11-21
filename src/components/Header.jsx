@@ -17,7 +17,6 @@ import i18n from "../i18n";
 import { useSelector } from "react-redux";
 import LoginModal from "./welcomeView/LoginModal";
 
-
 const Header = () => {
   const { t } = useTranslation();
   const [languageChoice, setLanguageChoice] = useState(true);
@@ -48,7 +47,7 @@ const Header = () => {
       <Paper sx={sx} elevation={3}>
         <BottomNavigation showLabels sx={{ height: 100 }}>
           {!authenticated ? (
-            <>
+            <BottomNavigation>
               <Button
                 data-cy="login-modal-btn"
                 variant="outlined"
@@ -66,9 +65,9 @@ const Header = () => {
                 Sign In
               </Button>
               <LoginModal open={open} setOpen={setOpen} />
-            </>
+            </BottomNavigation>
           ) : (
-            <> </>
+            <BottomNavigation> </BottomNavigation>
           )}
 
           <BottomNavigationAction
@@ -85,7 +84,7 @@ const Header = () => {
             }
           />
           {authenticated ? (
-            <>
+            <BottomNavigation>
               <BottomNavigationAction
                 component={Link}
                 to="/departments"
@@ -100,9 +99,9 @@ const Header = () => {
                 icon={<HelpIcon sx={{ fontSize: 45 }} />}
                 label={t("contact")}
               />
-            </>
+            </BottomNavigation>
           ) : (
-            <></>
+            <BottomNavigation></BottomNavigation>
           )}
           <BottomNavigationAction
             data-cy="language-btn"
