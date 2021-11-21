@@ -20,11 +20,10 @@ export const sections = [
     list: {
       point_1: "Improve work culture",
       point_2: "Secure institutional memory",
-      point_3:
-        "Foster creative solutions to complex problems by leveraging the talents of all members of the organization",
-      point_4:
-        "Democratise the connections in the organization and thereby breaking down barriers to entry to contribute to the organization's mission",
-      point_5: "Create avenues for informal mentorship",
+      point_3: "Foster creative solutions by leveraging talents from all members of the organization",
+      point_4: "Democratise the connections in the organization",
+      point_5: "Breaking down barriers to entry to the organization",
+      point_6: "Create avenues for informal mentorship",
     },
   },
 ];

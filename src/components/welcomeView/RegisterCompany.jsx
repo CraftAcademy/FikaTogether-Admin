@@ -1,12 +1,18 @@
 import React from "react";
 import { Button, Box, TextField, Typography, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 const RegisterCompany = () => {
   const { t } = useTranslation();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
+
+  const btnLocation = isTabletOrMobile
+    ? { left: "25%", width: "100px" }
+    : { left: "39.5%", width: "20%" };
 
   const typography = {
-    fontSize: 35,
+    fontSize: 30,
     m: 1,
     fontWeight: "bold",
   };
@@ -15,7 +21,6 @@ const RegisterCompany = () => {
     <Box
       sx={{
         p: 1,
-        m: 1,
         width: "100%",
       }}
     >
@@ -59,8 +64,8 @@ const RegisterCompany = () => {
             color: "inherit",
             textDecoration: "inherit",
             height: "3.5rem",
-            width: "30%",
-            left: "36%",
+            width: "100px",
+            left: btnLocation,
           }}
         >
           Register Interest
