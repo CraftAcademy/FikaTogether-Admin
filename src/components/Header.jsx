@@ -25,7 +25,7 @@ const Header = () => {
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
-    ? { position: "fixed", bottom: 0, left: 0, right: 0 }
+    ? { position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 2000 }
     : { position: "relative" };
 
   const handleLanguageClick = () => {
@@ -44,7 +44,7 @@ const Header = () => {
 
   return (
     <Box sx={{ pb: 7 }}>
-      <Paper sx={sx} elevation={3}>
+      <Paper sx={sx} elevation={3} >
         <BottomNavigation showLabels sx={{ height: 100 }}>
           {!authenticated ? (
             <BottomNavigation>
