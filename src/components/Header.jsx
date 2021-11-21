@@ -84,24 +84,26 @@ const Header = () => {
             }
           />
           {authenticated ? (
-            <BottomNavigation>
-              <BottomNavigationAction
-                component={Link}
-                to="/departments"
-                data-cy="departments-btn"
-                label={t("departments")}
-                icon={<BusinessIcon sx={{ fontSize: 45 }} />}
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/contact"
-                data-cy="contact-btn"
-                icon={<HelpIcon sx={{ fontSize: 45 }} />}
-                label={t("contact")}
-              />
-            </BottomNavigation>
+            <BottomNavigationAction
+              component={Link}
+              to="/departments"
+              data-cy="departments-btn"
+              icon={<BusinessIcon sx={{ fontSize: 45 }} />}
+              label={t("departments")}
+            />
           ) : (
-            <BottomNavigation></BottomNavigation>
+            null
+          )}
+          {authenticated ? (
+            <BottomNavigationAction
+              component={Link}
+              to="/contact"
+              data-cy="contact-btn"
+              icon={<HelpIcon sx={{ fontSize: 45 }} />}
+              label={t("contact")}
+            />
+          ) : (
+            null
           )}
           <BottomNavigationAction
             data-cy="language-btn"
