@@ -1,16 +1,25 @@
 import React from "react";
 import { sections } from "./data/sections";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-scroll";
+import { useMediaQuery } from "react-responsive";
 
 const SectionNames = () => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 675px)" });
+
+  const header = {
+    m: "1rem",
+    fontSize: 20,
+    textDecorationLine: 'underline'
+  };
+
   let headers = sections.map((section) => {
     return (
-      <li key={section.header}>
+      <Typography sx={header} key={section.header}>
         <Link to={section.category} spy={true} smooth={true}>
           {section.header}
         </Link>{" "}
-      </li>
+      </Typography>
     );
   });
 
@@ -20,8 +29,13 @@ const SectionNames = () => {
         display: "flex",
         justifyContent: "center",
       }}
+      data-cy="section-headers"
     >
-      <ul data-cy="section-headers">{headers}</ul>
+      {!isTabletOrMobile ? (
+         headers
+      ) : (
+        <ul >{headers}</ul>
+      )}
     </Box>
   );
 };

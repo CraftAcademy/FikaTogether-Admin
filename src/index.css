@@ -30,11 +30,5 @@
 
 ul {
   list-style: none;
-  margin-bottom: 1.5rem;
 }
 
-ul li {
-  cursor: pointer;
-  display: inline-block;
-  margin-left: 2rem;
-}

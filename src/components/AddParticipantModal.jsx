@@ -129,8 +129,6 @@ const AddParticipantModal = ({ open, setOpen }) => {
             sx={{
               backgroundColor: "#4C9074",
               m: 2,
-              color: "inherit",
-              textDecoration: "inherit",
             }}
           >
             {t("addsParticipantBtn")}

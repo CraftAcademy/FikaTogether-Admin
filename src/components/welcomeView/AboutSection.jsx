@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 
 
 const AboutSection = () => {
-
   const header = {
     fontSize: 22,
     m: 1,
