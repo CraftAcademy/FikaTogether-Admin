@@ -21,7 +21,6 @@ import "dayjs/locale/en-gb";
 const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
-  const dateRef = useRef("");
   const [startDate, setStartDate] = useState(Date.now());
   const [startDateInput, setStartDateInput] = useState("");
   const [management, setManagement] = useState(false);
@@ -98,9 +97,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
                 setStartDate(newValue);
                 setStartDateInput(data);
               }}
-              renderInput={(params) => (
-                <TextField {...params} inputRef={dateRef} />
-              )}
+              renderInput={(params) => <TextField {...params} />}
             />
           </div>
           <FormLabel component="legend">{t("selectManagementLabel")}</FormLabel>
