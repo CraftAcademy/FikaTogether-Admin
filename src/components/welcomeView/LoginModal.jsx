@@ -21,12 +21,13 @@ const LoginModal = ({ open, setOpen }) => {
       setLoading(true);
       toast.success(t("loginSuccess"), {
         onClose: () =>
-          dispatch({
-            type: "SET_CURRENT_USER",
-            payload: response.data,
-          }),
+        dispatch({
+          type: "SET_CURRENT_USER",
+          payload: response.data,
+        }),
       });
     } catch (error) {
+      debugger
       toast.error(error.response.data.errors[0]);
     }
   };

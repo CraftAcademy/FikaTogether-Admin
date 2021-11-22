@@ -44,46 +44,52 @@ const Header = () => {
 
   return (
     <Box sx={{ pb: 7 }}>
-      <Paper sx={sx} elevation={3} >
-        <BottomNavigation showLabels sx={{ height: 100 }}>
-          {!authenticated ? (
-            <BottomNavigation>
-              <Button
-                data-cy="login-modal-btn"
-                variant="outlined"
-                margin="dense"
-                sx={{
-                  m: 2.5,
-                }}
-                onClick={() => setOpen(true)}
-                style={{
-                  color: "inherit",
-                  textDecoration: "inherit",
-                  height: "3.5rem",
-                }}
-              >
-                Sign In
-              </Button>
-              <LoginModal open={open} setOpen={setOpen} />
-            </BottomNavigation>
-          ) : (
-            <BottomNavigation> </BottomNavigation>
-          )}
+      <Paper sx={sx} elevation={3}>
+        {!authenticated ? (
+          <BottomNavigation showLabels sx={{ height: 100 }}>
+            <Button
+              data-cy="login-modal-btn"
+              variant="outlined"
+              margin="dense"
+              sx={{
+                m: 2.5,
+              }}
+              onClick={() => setOpen(true)}
+              style={{
+                color: "inherit",
+                textDecoration: "inherit",
+                height: "3.5rem",
+              }}
+            >
+              Sign In
+            </Button>
+            <BottomNavigationAction
+              data-cy="language-btn"
+              icon={<LanguageIcon sx={{ fontSize: 45 }} />}
+              label={t("language")}
+              onClick={() => {
+                handleLanguageClick();
+              }}
+            />
 
-          <BottomNavigationAction
-            component={Link}
-            to="/"
-            data-cy="events-btn"
-            icon={
-              <img
-                src={logo}
-                alt="Logo"
-                height={isTabletOrMobile ? "60" : "85"}
-                className="logo"
-              />
-            }
-          />
-          {authenticated ? (
+            <LoginModal open={open} setOpen={setOpen} />
+          </BottomNavigation>
+        ) : (
+          <BottomNavigation showLabels sx={{ height: 100 }}>
+            <BottomNavigationAction
+              component={Link}
+              to="/"
+              data-cy="events-btn"
+              icon={
+                <img
+                  src={logo}
+                  alt="Logo"
+                  height={isTabletOrMobile ? "60" : "85"}
+                  className="logo"
+                />
+              }
+            />
+
             <BottomNavigationAction
               component={Link}
               to="/departments"
@@ -91,10 +97,7 @@ const Header = () => {
               icon={<BusinessIcon sx={{ fontSize: 45 }} />}
               label={t("departments")}
             />
-          ) : (
-            null
-          )}
-          {authenticated ? (
+
             <BottomNavigationAction
               component={Link}
               to="/contact"
@@ -102,18 +105,17 @@ const Header = () => {
               icon={<HelpIcon sx={{ fontSize: 45 }} />}
               label={t("contact")}
             />
-          ) : (
-            null
-          )}
-          <BottomNavigationAction
-            data-cy="language-btn"
-            icon={<LanguageIcon sx={{ fontSize: 45 }} />}
-            label={t("language")}
-            onClick={() => {
-              handleLanguageClick();
-            }}
-          />
-        </BottomNavigation>
+
+            <BottomNavigationAction
+              data-cy="language-btn"
+              icon={<LanguageIcon sx={{ fontSize: 45 }} />}
+              label={t("language")}
+              onClick={() => {
+                handleLanguageClick();
+              }}
+            />
+          </BottomNavigation>
+        )}
       </Paper>
     </Box>
   );
