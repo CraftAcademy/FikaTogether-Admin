@@ -19,9 +19,6 @@ const welcomePageStyle = makeStyles((theme) => ({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  header: {
-    marginBottom: '15px',
-  },
   inputBox: {
     display: 'flex',
     flexDirection: 'column',
@@ -42,11 +39,11 @@ const welcomePageStyle = makeStyles((theme) => ({
   },
   sectionHeaders: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'left',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: "0 20px",
     marginBottom: '50px',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('sm')]: {
       flexDirection: 'row',
       justifyContent: 'center',
     },

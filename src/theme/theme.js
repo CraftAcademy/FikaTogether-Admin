@@ -23,6 +23,7 @@ const theme = createTheme({
     h1: {
       fontSize: 30,
       fontWeight: 'bold',
+      marginBottom: '15px',
     },
     h2: {
       fontSize: 30,
@@ -31,6 +32,11 @@ const theme = createTheme({
     h3: {
       fontSize: 22,
       fontWeight: 'bold',
+    },
+    faqLinks: {
+      fontSize: 20,
+      textDecorationLine: 'underline',
+      margin: "1rem",
     },
     p: {
       fontSize: 17,
