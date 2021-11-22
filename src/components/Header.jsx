@@ -11,11 +11,11 @@ import {
 import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
 import LanguageIcon from "@mui/icons-material/Language";
-import logo from "../img/logo.png";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
 import { useSelector } from "react-redux";
 import LoginModal from "./welcomeView/LoginModal";
+import Logo from "./misc/Logo";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -47,6 +47,7 @@ const Header = () => {
       <Paper sx={sx} elevation={3}>
         {!authenticated ? (
           <BottomNavigation showLabels sx={{ height: 100 }}>
+            <Logo />
             <Button
               data-cy="login-modal-btn"
               variant="outlined"
@@ -76,20 +77,7 @@ const Header = () => {
           </BottomNavigation>
         ) : (
           <BottomNavigation showLabels sx={{ height: 100 }}>
-            <BottomNavigationAction
-              component={Link}
-              to="/"
-              data-cy="events-btn"
-              icon={
-                <img
-                  src={logo}
-                  alt="Logo"
-                  height={isTabletOrMobile ? "60" : "85"}
-                  className="logo"
-                />
-              }
-            />
-
+            <Logo />
             <BottomNavigationAction
               component={Link}
               to="/departments"

@@ -27,7 +27,6 @@ const LoginModal = ({ open, setOpen }) => {
         }),
       });
     } catch (error) {
-      debugger
       toast.error(error.response.data.errors[0]);
     }
   };

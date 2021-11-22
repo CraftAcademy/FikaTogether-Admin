@@ -3,28 +3,19 @@ import RegisterCompany from "./RegisterCompany";
 import { Container, Box } from "@mui/material";
 import SectionNames from "./SectionNames";
 import AboutSection from "./AboutSection";
+import welcomePageStyle from "../../theme/welcomePage"
 
 const WelcomePage = () => {
-  const box_1 = {
-    position: "relative",
-    left: "50%",
-    transform: "translate(-50%, -10%)",
-    width: "100%",
-    p: 4,
-    background: "linear-gradient(0deg, #011326 10%, #4C9074 90%)",
-  };
+ const classes = welcomePageStyle()
 
-  const style = {
-    bgcolor: "background.welcome",
-  };
   return (
     <>
-      <Box component="form" data-cy="register-interest" sx={box_1}>
+      <Box component="form" data-cy="register-interest" className={classes.topBox}>
         <RegisterCompany />
         <SectionNames />
       </Box>
 
-      <Container sx={style}>
+      <Container >
         <AboutSection />
       </Container>
     </>
