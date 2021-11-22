@@ -25,10 +25,10 @@ const RegisterCompany = () => {
       }}
     >
       <Typography sx={typography} component="div" align="center">
-        If you believe in developing a better work culture,
+        {t("culture")}
       </Typography>{" "}
       <Typography sx={typography} component="div" gutterBottom align="center">
-        register your interest here.
+       { t("register1")}
       </Typography>{" "}
       <br />
       <Box
@@ -68,7 +68,7 @@ const RegisterCompany = () => {
             left: btnLocation,
           }}
         >
-          Register Interest
+         { t("register2")}
         </Button>
       </Stack>
       <Typography sx={typography} component="div" gutterBottom align="center">

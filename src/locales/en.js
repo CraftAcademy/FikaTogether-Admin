@@ -21,7 +21,10 @@ const en = {
     addsParticipantBtn: "Add Participant",
     seniorityLevel: "Seniority Level",
     chooseTime: "Choose Time",
-    chooseDate: "Pick a date"
+    chooseDate: "Pick a date",
+    culture: "If you believe in developing a better work culture,",
+    register1: "register your interest here.",
+    register2: "Register Interest"
   },
 };
 export default en;
