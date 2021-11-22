@@ -14,7 +14,7 @@ const welcomePageStyle = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '80vh',
+    height: '45rem',
     fontSize: '30px',
     fontWeight: 'bold',
     textAlign: 'center',

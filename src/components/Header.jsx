@@ -47,7 +47,6 @@ const Header = () => {
       <Paper sx={sx} elevation={3}>
         {!authenticated ? (
           <BottomNavigation showLabels sx={{ height: 100 }}>
-            <Logo />
             <Button
               data-cy="login-modal-btn"
               variant="outlined"
@@ -64,6 +63,7 @@ const Header = () => {
             >
               Sign In
             </Button>
+              <Logo />
             <BottomNavigationAction
               data-cy="language-btn"
               icon={<LanguageIcon sx={{ fontSize: 45 }} />}
