@@ -16,7 +16,7 @@ const RegisterCompany = () => {
           className={classes.input}
           data-cy='company-name'
           id='name'
-          label='Company Name'
+          label={t('companyName')}
           variant='outlined'
           margin='dense'
           type='password'
@@ -39,7 +39,7 @@ const RegisterCompany = () => {
         {t('register2')}
       </Button>
       <Typography variant='h2'>
-        Or read on to find out why you should.
+      {t("readInfo")}
       </Typography>{' '}
     </Box>
   )

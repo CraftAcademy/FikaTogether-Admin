@@ -24,7 +24,10 @@ const en = {
     chooseDate: "Pick a date",
     culture: "If you believe in developing a better work culture,",
     register1: "register your interest here.",
-    register2: "Register Interest"
+    register2: "Register Interest",
+    readInfo: "Or read on to find out why you should.",
+    companyName: "Company Name",
+    schedule: "Schedule some fikas",
   },
 };
 export default en;
