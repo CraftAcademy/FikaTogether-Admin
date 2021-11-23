@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { Box, TextField, Modal } from "@mui/material";
+import { Box, TextField, Modal, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
 import auth from "../../modules/auth";
+import welcomePageStyle from '../../theme/welcomePage'
 
-const LoginModal = ({ open, setOpen }) => {
+
+const LoginModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  
+  const [open, setOpen] = useState(false);
+  const classes = welcomePageStyle();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,36 +25,42 @@ const LoginModal = ({ open, setOpen }) => {
       setLoading(true);
       toast.success(t("loginSuccess"), {
         onClose: () =>
-        dispatch({
-          type: "SET_CURRENT_USER",
-          payload: response.data,
-        }),
+          dispatch({
+            type: "SET_CURRENT_USER",
+            payload: response.data,
+          }),
       });
     } catch (error) {
       toast.error(error.response.data.errors[0]);
     }
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 300,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
     <>
-      <Modal open={open} 
+      <Button
+        data-cy="login-modal-btn"
+        variant="outlined"
+        margin="dense"
+        sx={{
+          m: 2.5,
+          color: "D6BC01",
+          textDecoration: "inherit",
+          height: "3.5rem",
+        }}
+        onClick={() => setOpen(true)}
+      >
+        Sign In
+      </Button>
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
-        >
-        <Box sx={style} noValidate autoComplete="on" className="login-box">
+      >
+        <Box  noValidate autoComplete="on" className={classes.loginBox}>
           <form onSubmit={handleSubmit} data-cy="sign-in-form">
             <TextField
+              className={classes.inputLogin}
               data-cy="email-input"
               id="email"
               label={t("email")}
@@ -58,6 +68,7 @@ const LoginModal = ({ open, setOpen }) => {
               margin="dense"
             />
             <TextField
+              className={classes.inputLogin}
               data-cy="password-input"
               id="password"
               label={t("password")}
@@ -72,8 +83,9 @@ const LoginModal = ({ open, setOpen }) => {
               margin="dense"
               loading={loading}
               sx={{
-              m: 2,
-              backgroundColor: "#4C9074",
+                m: 2,
+                backgroundColor: "#4C9074",
+                color: "#D6BC01"
               }}
             >
               {t("login")}

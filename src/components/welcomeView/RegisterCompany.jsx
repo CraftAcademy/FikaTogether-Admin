@@ -13,7 +13,7 @@ const RegisterCompany = () => {
       <Typography variant='h2'>{t('register1')}</Typography> <br />
       <Box className={classes.inputBox}>
         <TextField
-          className={classes.input}
+          className={classes.inputRegister}
           data-cy='company-name'
           id='name'
           label={t('companyName')}
@@ -22,7 +22,7 @@ const RegisterCompany = () => {
           type='password'
         />
         <TextField
-          className={classes.input}
+          className={classes.inputRegister}
           data-cy='company-email'
           id='email'
           label={t('email')}

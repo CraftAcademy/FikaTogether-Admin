@@ -28,7 +28,7 @@
   color: #d6bc01;
 }
 
-ul {
-  list-style: none;
+.MuiOutlinedInput-notchedOutline {
+  border-color: #4C9074 !important; 
 }
 

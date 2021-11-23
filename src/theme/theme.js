@@ -1,41 +1,41 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     ...{
       primary: {
-        main: '#ffffff',
-        default: '#ffffff',
-        container: '#011326',
+        main: "#ffffff",
+        default: "#ffffff",
+        container: "#011326",
       },
       background: {
-        default: '#011326',
-        paper: '#011326',
-        container: '#4C9074',
+        default: "#011326",
+        paper: "#011326",
+        container: "#4C9074",
       },
       text: {
-        primary: '#ccc',
-        secondary: '#4C9074',
+        primary: "#ccc",
+        secondary: "#4C9074",
       },
     },
   },
   typography: {
     h1: {
       fontSize: 30,
-      fontWeight: 'bold',
-      marginBottom: '15px',
+      fontWeight: "bold",
+      marginBottom: "15px",
     },
     h2: {
       fontSize: 30,
-      fontWeight: 'bold',
+      fontWeight: "bold",
     },
     h3: {
       fontSize: 22,
-      fontWeight: 'bold',
+      fontWeight: "bold",
     },
     faqLinks: {
       fontSize: 20,
-      textDecorationLine: 'underline',
+      textDecorationLine: "underline",
       margin: "1rem",
     },
     p: {
@@ -46,10 +46,10 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         outlined: {
-          backgroundColor: '#4C9074',
-          color: '#D6BC01',
-          font: 'small-caption',
-          fontWeight: 'bold',
+          backgroundColor: "#4C9074",
+          color: "#D6BC01",
+          font: "small-caption",
+          fontWeight: "bold",
         },
       },
     },
@@ -57,6 +57,6 @@ const theme = createTheme({
   zIndex: {
     Paper: 1500,
   },
-})
+});
 
-export default theme
+export default theme;

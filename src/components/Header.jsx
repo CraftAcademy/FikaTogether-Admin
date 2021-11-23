@@ -6,7 +6,6 @@ import {
   BottomNavigationAction,
   Box,
   Paper,
-  Button,
 } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import HelpIcon from "@mui/icons-material/Help";
@@ -21,7 +20,6 @@ const Header = () => {
   const { t } = useTranslation();
   const [languageChoice, setLanguageChoice] = useState(true);
   const { authenticated } = useSelector((state) => state);
-  const [open, setOpen] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
   const sx = isTabletOrMobile
@@ -47,23 +45,8 @@ const Header = () => {
       <Paper sx={sx} elevation={3}>
         {!authenticated ? (
           <BottomNavigation showLabels sx={{ height: 100 }}>
-            <Button
-              data-cy="login-modal-btn"
-              variant="outlined"
-              margin="dense"
-              sx={{
-                m: 2.5,
-              }}
-              onClick={() => setOpen(true)}
-              style={{
-                color: "inherit",
-                textDecoration: "inherit",
-                height: "3.5rem",
-              }}
-            >
-              Sign In
-            </Button>
-              <Logo />
+            <LoginModal />
+            <Logo />
             <BottomNavigationAction
               data-cy="language-btn"
               icon={<LanguageIcon sx={{ fontSize: 45 }} />}
@@ -72,8 +55,6 @@ const Header = () => {
                 handleLanguageClick();
               }}
             />
-
-            <LoginModal open={open} setOpen={setOpen} />
           </BottomNavigation>
         ) : (
           <BottomNavigation showLabels sx={{ height: 100 }}>

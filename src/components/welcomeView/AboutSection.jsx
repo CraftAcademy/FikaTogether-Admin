@@ -17,12 +17,12 @@ const AboutSection = () => {
           {section.header}
         </Typography>
         <Typography variant='p'>{section.content}</Typography>
-        <Typography variant='p'>{section.list.point_1}</Typography>
-        <Typography variant='p'>{section.list.point_2}</Typography>
-        <Typography variant='p'>{section.list.point_3}</Typography>
-        <Typography variant='p'>{section.list.point_4}</Typography>
-        <Typography variant='p'>{section.list.point_5}</Typography>
-        <Typography variant='p'>{section.list.point_6}</Typography>
+        <Typography variant='p'>{section.list.point_1}</Typography><br />
+        <Typography variant='p'>{section.list.point_2}</Typography><br />
+        <Typography variant='p'>{section.list.point_3}</Typography><br />
+        <Typography variant='p'>{section.list.point_4}</Typography><br />
+        <Typography variant='p'>{section.list.point_5}</Typography><br />
+        <Typography variant='p'>{section.list.point_6}</Typography><br />
       </div>
     )
   })
