@@ -34,7 +34,7 @@ const FikaButton = ({ disabled, showInputs, setShowInputs }) => {
         loading={loading}
       >
         {!showInputs ? (
-          "Schedule some fikas"
+          t("schedule")
         ) : (
           <>{`${!loading ? t("create") : t("creating")}`}</>
         )}

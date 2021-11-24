@@ -19,6 +19,7 @@ describe("A login view render on site load", () => {
         });
       },
     });
+    cy.get("[data-cy=login-modal-btn]").click();
   });
 
   it("is expected to have two input fields and a submit button", () => {
@@ -51,6 +52,7 @@ describe("A login view render on site load", () => {
         fixture: "authenticationFailure.json",
       });
       cy.visit("/");
+      cy.get("[data-cy=login-modal-btn]").click();
       cy.get("[data-cy=email-input]").type("user@email.com");
       cy.get("[data-cy=password-input]").type("wrong password");
       cy.get("[data-cy=btn-login]").click();

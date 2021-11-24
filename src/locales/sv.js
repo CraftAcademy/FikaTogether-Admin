@@ -10,7 +10,7 @@ const sv = {
     create: "Skapa fika möten",
     creating: "Skapar fika möten",
     date: "Datum",
-    participant: "Person",
+    participant: "Deltagare",
     fikaScore: "Fika-poäng",
     contactText:
       "Fika-Together är ett projekt av Fika-Together-gruppen. För mer information om projektet, se",
@@ -24,6 +24,12 @@ const sv = {
     seniorityLevel: "Jobbtitel",
     chooseTime: "Välj en tid",
     chooseDate: "Välj ett datum",
+    culture: "Om du har i fokus att utveckla en bättre arbetskultur,",
+    register1: "registrera din intresse här.",
+    register2: "Registrera intresse",
+    readInfo: "Eller läs på för att få mer information.",
+    companyName: "Företags Namn",
+    schedule: "Schemalägg fika evenemang",
   },
 };
 export default sv;
