@@ -33,7 +33,7 @@ const Departments = () => {
       cellClassName: "super-app-theme--cell",
       renderCell: (params) => (
         <Link
-          to={`/departments/${params.value}`}
+          to={`/departments/${params.value.toLowerCase()}`}
           style={{ color: "inherit", textDecoration: "inherit" }}
           onClick={() => {
             dispatch({
