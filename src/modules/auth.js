@@ -1,4 +1,8 @@
+import store from "../state/store/configureStore";
 import JtockAuth from "j-tockauth";
+// import axios from "axios";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 let url = "";
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
@@ -11,4 +15,25 @@ const auth = new JtockAuth({
   prefixUrl: "/api",
 });
 
-export default auth;
+
+
+const Authentication = {
+  async signIn(data) {
+    try {
+      let response = await auth.signIn(data.email.value, data.password.value);
+      toast.success("it worked", {
+        onClose: () =>
+          store.dispatch({
+            type: "SET_CURRENT_USER",
+            payload: response.data,
+          }),
+      });
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
+  },
+};
+
+export default Authentication;
+
+// export default auth;
