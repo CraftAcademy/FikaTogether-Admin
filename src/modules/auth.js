@@ -1,8 +1,6 @@
 import store from "../state/store/configureStore";
 import JtockAuth from "j-tockauth";
-// import axios from "axios";
 import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
 
 let url = "";
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
@@ -33,5 +31,3 @@ const Authentication = {
 };
 
 export default Authentication;
-
-// export default auth;

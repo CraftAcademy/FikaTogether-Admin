@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { Box, TextField, Modal, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
@@ -8,7 +7,6 @@ import Authentication from "../../modules/auth";
 import welcomePageStyle from "../../theme/welcomePage";
 
 const LoginModal = () => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
