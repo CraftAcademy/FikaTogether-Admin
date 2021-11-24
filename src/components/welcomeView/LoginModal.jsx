@@ -1,38 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { Box, TextField, Modal, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
-import auth from "../../modules/auth";
-import welcomePageStyle from '../../theme/welcomePage'
-
+import Authentication from "../../modules/auth";
+import welcomePageStyle from "../../theme/welcomePage";
 
 const LoginModal = () => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const classes = welcomePageStyle();
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    try {
-      const response = await auth.signIn(email, password);
-      setLoading(true);
-      toast.success(t("loginSuccess"), {
-        onClose: () =>
-          dispatch({
-            type: "SET_CURRENT_USER",
-            payload: response.data,
-          }),
-      });
-    } catch (error) {
-      toast.error(error.response.data.errors[0]);
-    }
+    Authentication.signIn(event.target, t("loginSuccess"));
+    setLoading(false);
   };
 
   return (
@@ -57,7 +41,7 @@ const LoginModal = () => {
         onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
       >
-        <Box  noValidate autoComplete="on" className={classes.loginBox}>
+        <Box noValidate autoComplete="on" className={classes.loginBox}>
           <form onSubmit={handleSubmit} data-cy="sign-in-form">
             <TextField
               className={classes.inputLogin}
@@ -85,7 +69,7 @@ const LoginModal = () => {
               sx={{
                 m: 2,
                 backgroundColor: "#4C9074",
-                color: "#D6BC01"
+                color: "#D6BC01",
               }}
             >
               {t("login")}
