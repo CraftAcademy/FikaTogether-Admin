@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { Box, TextField, Modal, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
-// import auth from "../../modules/auth";
 import Authentication from "../../modules/auth";
 import welcomePageStyle from "../../theme/welcomePage";
 
@@ -16,24 +15,10 @@ const LoginModal = () => {
   const classes = welcomePageStyle();
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
-    Authentication.signIn(event.target);
-    // const form = event.target;
-    // const email = form.email.value;
-    // const password = form.password.value;
-    // try {
-    //   const response = await auth.signIn(email, password);
-    //   setLoading(true);
-    //   toast.success(t("loginSuccess"), {
-    //     onClose: () =>
-    //       dispatch({
-    //         type: "SET_CURRENT_USER",
-    //         payload: response.data,
-    //       }),
-    //   });
-    // } catch (error) {
-    //   toast.error(error.response.data.errors[0]);
-    // }
+    Authentication.signIn(event.target, t("loginSuccess"));
+    setLoading(false);
   };
 
   return (

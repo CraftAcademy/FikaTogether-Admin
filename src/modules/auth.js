@@ -15,13 +15,11 @@ const auth = new JtockAuth({
   prefixUrl: "/api",
 });
 
-
-
 const Authentication = {
-  async signIn(data) {
+  async signIn(data, loginSuccessMessage) {
     try {
       let response = await auth.signIn(data.email.value, data.password.value);
-      toast.success("it worked", {
+      toast.success(loginSuccessMessage, {
         onClose: () =>
           store.dispatch({
             type: "SET_CURRENT_USER",
