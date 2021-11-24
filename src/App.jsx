@@ -14,7 +14,7 @@ import theme from "../src/theme/theme";
 const App = () => {
   const { authenticated, participantList } = useSelector((state) => state);
 
-  let departmentUrl = `/departments/${participantList.department}`;
+  let departmentUrl = `/departments/${participantList.department?.toLowerCase()}`;
 
   return (
     <ThemeProvider theme={theme}>
