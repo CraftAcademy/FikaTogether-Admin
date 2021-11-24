@@ -43,6 +43,13 @@ describe("Admin can see a list of departments", () => {
         .children()
         .should("have.length", 2);
     });
+
+    it.only("is expected that the URL path is rendered in lowercase", () => {
+      cy.get("[data-cy=department-table]").within(() => {
+        cy.contains("Management").click();
+        cy.url().should("contain", "management");
+      });
+    });
   });
 
   describe("unsuccessfully", () => {
