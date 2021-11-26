@@ -22,18 +22,24 @@ const AddParticipantModal = ({ open, setOpen }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const [startDate, setStartDate] = useState(Date.now());
-  const [startDateInput, setStartDateInput] = useState("");
   const [management, setManagement] = useState(false);
   const [seniority, setSeniority] = useState("");
+  const [disableButton, setDisableButton] = useState(true);
   const { participantList } = useSelector((state) => state);
   const { t } = useTranslation();
+
+  const validDate = () => {
+    if (startDate === "Invalid Date") {
+      setDisableButton(true);
+    } else setDisableButton(false);
+  };
 
   const handleSubmit = () => {
     const participant = {
       participant: {
         name: nameRef.current.value,
         email: emailRef.current.value,
-        start_date: startDateInput,
+        start_date: startDate,
         management: management,
         seniority: seniority,
         department: participantList.department,
@@ -93,9 +99,9 @@ const AddParticipantModal = ({ open, setOpen }) => {
             <DesktopDatePicker
               label={t("InputStartDate")}
               value={startDate}
-              onChange={(newValue, data) => {
-                setStartDate(newValue);
-                setStartDateInput(data);
+              onChange={(newValue) => {
+                setStartDate(newValue.$d);
+                validDate();
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -122,6 +128,7 @@ const AddParticipantModal = ({ open, setOpen }) => {
           <SeniorityMenu seniority={seniority} setSeniority={setSeniority} />
           <Button
             data-cy="add-btn"
+            disabled={disableButton}
             type="submit"
             variant="contained"
             margin="dense"

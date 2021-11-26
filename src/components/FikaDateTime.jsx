@@ -44,7 +44,7 @@ const FikaDateTime = ({ setDisabled }) => {
       <div data-cy="time-fika">
         <TimePicker
           ampm={false}
-          value={fikaTime}
+          value={fikaTimeInput}
           renderInput={(props) => <TextField {...props} />}
           label={t("chooseTime")}
           type="time"
